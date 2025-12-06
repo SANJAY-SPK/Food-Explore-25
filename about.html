@@ -119,7 +119,7 @@
         /* HERO */
         .hero {
             background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(26, 35, 126, 0.85)), 
-                        url('https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg');
+                        url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -282,6 +282,56 @@
             z-index: 1;
         }
 
+        /* THEMES */
+        .themes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .theme-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .theme-item:hover::before { left: 100%; }
+
+        .theme-item:hover { 
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .theme-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .theme-item h4 {
+            color: var(--dark);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
         /* IMAGES SECTION */
         .images-grid {
             display: grid;
@@ -331,92 +381,295 @@
             transform: translateY(0);
         }
 
-        /* IMPORTANT DATES */
-.dates-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
+        /* DATES */
+        .dates-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
 
-.dates-card,
-.guidelines-card {
-    background: var(--white);
+        .dates-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .dates-table th, .dates-table td {
+            padding: 1.3rem;
+            text-align: left;
+        }
+
+        .dates-table th { 
+            background: linear-gradient(135deg, var(--secondary), #283593);
+            color: var(--white);
+            font-size: 1.15rem;
+        }
+
+        .dates-table tr {
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s;
+        }
+
+        .dates-table tbody tr:hover {
+            background: linear-gradient(90deg, rgba(46, 125, 50, 0.05), transparent);
+            transform: translateX(5px);
+        }
+
+        .guidelines-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .guidelines-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .guidelines-box ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        .guidelines-box li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* REGISTRATION */
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2.5rem;
+            background: var(--white);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .fees-table th, .fees-table td {
+            padding: 1.3rem;
+            text-align: center;
+        }
+
+        .fees-table th { 
+            background: linear-gradient(135deg, var(--primary), #1B5E20);
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .fees-table tbody tr {
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .fees-table tbody tr:hover {
+            background: rgba(46, 125, 50, 0.05);
+            transform: scale(1.01);
+        }
+
+        .fees-table tbody tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .bank-details {
+            background: linear-gradient(135deg, var(--secondary), #283593);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            box-shadow: 0 15px 50px rgba(26, 35, 126, 0.4);
+        }
+        
+        .detail-item h4 { 
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-item p {
+            font-size: 1.05rem;
+        }
+
+        /* SPONSORSHIP */
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .sponsor-card {
+            background: var(--white);
             padding: 2.5rem;
             border-radius: 20px;
+            text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary);
             transition: all 0.4s;
             position: relative;
             overflow: hidden;
-}
+        }
 
-.card-title {
-    color: var(--secondary); 
+        .sponsor-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .sponsor-card:hover::after { opacity: 1; }
+
+        .sponsor-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .sponsor-card.platinum { border-top: 8px solid #E5E4E2; }
+        .sponsor-card.gold { border-top: 8px solid #FFD700; }
+        .sponsor-card.silver { border-top: 8px solid #C0C0C0; }
+        .sponsor-card.bronze { border-top: 8px solid #CD7F32; }
+
+        .sponsor-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sponsor-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
             font-size: 1.4rem;
             position: relative;
             z-index: 1;
-}
+        }
 
-/* TABLE */
-.dates-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        .price { 
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
 
-.dates-table td {
-    padding: 1rem 0.5rem;
-    border-bottom: 1px solid #f1f1f1;
-}
+        .sponsor-card p {
+            position: relative;
+            z-index: 1;
+        }
 
-.dates-table tr:last-child td {
-    border-bottom: none;
-}
-
-.dates-table tr:hover {
-    background: rgba(46, 125, 50, 0.05);
-    transition: 0.3s ease;
-}
-
-/* GUIDELINES LIST */
-.guidelines-list {
-    margin-top: 1rem;
-    padding-left: 1.3rem;
-}
-
-.guidelines-list li {
-    margin-bottom: 0.7rem;
-    line-height: 1.6;
-}
-
-.text-muted {
-    color: #555;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-.award-note {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: #f8fff8;
-    border-left: 6px solid var(--primary);
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .dates-wrapper {
-        grid-template-columns: 1fr;
-    }
-}
-
-
+        /* COMMITTEES */
+        .committee-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
         
+        .committee-list {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .committee-list::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .committee-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .committee-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+        
+        .committee-list h3 {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--primary);
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            z-index: 10;
+        }
 
+        .committee-list ul li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #eee;
+            padding: 10px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .committee-list ul li:hover {
+            background: linear-gradient(90deg, rgba(46, 125, 50, 0.05), transparent);
+            transform: translateX(8px);
+        }
+
+        /* VENUE */
+        .venue-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .venue-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .venue-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .places-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .places-list li {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 0.9rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .places-list li:hover {
+            background: linear-gradient(135deg, var(--primary), #1B5E20);
+            color: white;
+            transform: scale(1.08);
+        }
 
         /* CONTACT */
         .contact-grid {
@@ -505,33 +758,21 @@
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <div class="logo">FoodXplore'25</div>
             <ul class="nav-links">
-                 <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="speakers.html">Speakers</a></li>
                 <li><a href="themes.html">Themes</a></li>
                 <li><a href="registration.html">Registration</a></li>
                 <li><a href="committee.html">Committees</a></li>
                 <li><a href="venue.html">Venue</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">🌍 International Symposium 2026</span>
-            <h1>Safe, Standard, Sustainable</h1>
-            <h2>Transforming Food Processing for a Healthier Tomorrow</h2>
-            <p style="font-size: 1.3rem; margin: 2.5rem 0;">
-                📅 <strong>January 29 & 30, 2026</strong><br>
-                📍 Tamil Nadu Agricultural University (TNAU), Coimbatore, India
-            </p>
-            <a href="https://forms.gle/giCMUTttj3yvaAQx7" class="cta-btn" style="font-size: 1.15rem; padding: 0.9rem 2.5rem;">Register Now →</a>
-        </div>
-    </section>
 
     <section id="about">
         <div class="section-title">
@@ -577,108 +818,6 @@
             </div>
         </div>
     </section>
-
-   
-
-    <section id="dates">
-    <div class="section-title">
-        <h2>Important Dates & Guidelines</h2>
-        <div class="divider"></div>
-    </div>
-
-    <div class="dates-wrapper">
-        
-        <!-- Event Dates Card -->
-        <div class="dates-card">
-            <h3 class="card-title">📅 Event Schedule</h3>
-            <table class="dates-table">
-                <tbody>
-                    <tr>
-                        <td><strong>Abstract Submission Deadline</strong></td>
-                        <td>January 10, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Notification of Acceptance</strong></td>
-                        <td>January 15, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Early Bird Registration Deadline</strong></td>
-                        <td>January 10, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Full Paper Submission</strong></td>
-                        <td>January 20, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Conference Dates</strong></td>
-                        <td>January 29 & 30, 2026</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Guidelines Card -->
-        <div class="guidelines-card">
-            <h3 class="card-title">📝 Call for Abstracts & Author Guidelines</h3>
-            <p class="text-muted">Original research papers, reviews, and case studies aligned with conference themes are invited.</p>
-
-            <ul class="guidelines-list">
-                <li><strong>Title:</strong> Times New Roman, 12, Bold.</li>
-                <li><strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding author with *.</li>
-                <li><strong>Abstract:</strong> Times New Roman, 12, single-spaced, max 300 words.</li>
-                <li><strong>Format:</strong> .doc or .docx only.</li>
-                <li><strong>Poster:</strong> Single PPTX converted to PDF for e-poster (Virtual Mode Only).</li>
-            </ul>
-
-            <p class="award-note">
-                🏅 Awards for outstanding Oral and Poster presentations will be given separately for students and scientists.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-
     
-    <section id="contact" style="background: linear-gradient(135deg, var(--secondary), #0d1642); color: var(--white); padding: 5rem 2.5rem;">
-        <div class="section-title">
-            <h2 style="color: var(--white);">Contact Us</h2>
-            <div class="line" style="background: linear-gradient(90deg, var(--accent), #FF9800);"></div>
-        </div>
-        
-        <div class="contact-grid">
-            <div class="contact-person">
-                <div class="contact-icon">👤</div>
-                <h4>Organizing Secretary</h4>
-                <p><strong>Dr. M. Balakrishnan</strong></p>
-                <p>Professor and Head (FPE)</p>
-                <p>📧 bala_tnau@tnau.ac.in</p>
-                <p>📱 +91 98420 10693</p>
-            </div>
-            <div class="contact-person">
-                <div class="contact-icon">👤</div>
-                <h4>Joint Organizing Secretary</h4>
-                <p><strong>Dr. A. Ramalakshmi</strong></p>
-                <p>Professor, Dept of FPE</p>
-                <p>📧 ramalakshmi.a@tnau.ac.in</p>
-                <p>📱 +91 99940 60865</p>
-            </div>
-            <div class="contact-person">
-                <div class="contact-icon">👤</div>
-                <h4>Joint Organizing Secretary</h4>
-                <p><strong>Dr. M. Anand</strong></p>
-                <p>Assoc. Professor, Dept of FPE</p>
-                <p>📧 anandhort@gmail.com</p>
-                <p>📱 +91 88702 22090</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">&copy; 2026 FoodXplore '25 - International Symposium</p>
-        <p>Safe, Standard, Sustainable Food Processing</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">Department of Food Process Engineering, TNAU, Coimbatore</p>
-    </footer>
-
 </body>
 </html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodXplore '25 - International Symposium</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --secondary: #1A237E;
+            --accent: #FFC107;
+            --light: #F5F7FA;
+            --dark: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* NAVIGATION */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '🌾';
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:not(.cta-btn):hover { 
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:not(.cta-btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:not(.cta-btn):hover::after { width: 100%; }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary), #1B5E20);
+            color: var(--white) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        .cta-btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+        }
+
+        
+        /* SECTIONS */
+        section {
+            padding: 2rem 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-title .line {
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+
+       
+
+        /* THEMES */
+        .themes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .theme-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .theme-item:hover::before { left: 100%; }
+
+        .theme-item:hover { 
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .theme-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .theme-item h4 {
+            color: var(--dark);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+    
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1a1a1a);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h2 { font-size: 1.3rem; }
+            .section-title h2 { font-size: 2rem; }
+            
+            .dates-container, 
+            .committee-container, 
+            .venue-section,
+            .images-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FoodXplore'25</div>
+            <ul class="nav-links">
+                 <li><a href="index.html">Home</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="themes.html">Themes</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="committee.html">Committees</a></li>
+                <li><a href="venue.html">Venue</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="themes" style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9);">
+        <div class="section-title">
+            <h2>Conference Themes</h2>
+            <div class="line"></div>
+        </div>
+        <div class="themes-list">
+            <div class="theme-item">
+                <div class="theme-icon">⚙️</div>
+                <h4>Advances in Food Processing & Post-Harvest Machinery</h4>
+            </div>
+            <div class="theme-item">
+                <div class="theme-icon">💡</div>
+                <h4>Innovative Technologies in Food Processing</h4>
+            </div>
+            <div class="theme-item">
+                <div class="theme-icon">📦</div>
+                <h4>Sustainable Food Packaging & Preservation</h4>
+            </div>
+            <div class="theme-item">
+                <div class="theme-icon">🥗</div>
+                <h4>Functional Foods for Nutritional Security</h4>
+            </div>
+            <div class="theme-item">
+                <div class="theme-icon">♻️</div>
+                <h4>Valorisation of Agro Residues for Circular Economy</h4>
+            </div>
+            <div class="theme-item">
+                <div class="theme-icon">🌤️</div>
+                <h4>Climate Smart Agriculture for Food Processing</h4>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">&copy; 2026 FoodXplore '25 - International Symposium</p>
+        <p>Safe, Standard, Sustainable Food Processing</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Department of Food Process Engineering, TNAU, Coimbatore</p>
+    </footer>
+</body>
+
+</html>

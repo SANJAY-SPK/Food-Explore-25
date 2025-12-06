@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodXplore '25 - International Symposium</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --secondary: #1A237E;
+            --accent: #FFC107;
+            --light: #F5F7FA;
+            --dark: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* NAVIGATION */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '🌾';
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:not(.cta-btn):hover { 
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:not(.cta-btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:not(.cta-btn):hover::after { width: 100%; }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary), #1B5E20);
+            color: var(--white) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        .cta-btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+        }
+
+        
+        /* SECTIONS */
+        section {
+            padding: 2rem 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-title .line {
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+
+        /* COMMITTEES */
+        .committee-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        
+        .committee-list {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .committee-list::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .committee-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .committee-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+        
+        .committee-list h3 {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--primary);
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            z-index: 10;
+        }
+
+        .committee-list ul li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #eee;
+            padding: 10px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .committee-list ul li:hover {
+            background: linear-gradient(90deg, rgba(46, 125, 50, 0.05), transparent);
+            transform: translateX(8px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1a1a1a);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h2 { font-size: 1.3rem; }
+            .section-title h2 { font-size: 2rem; }
+            
+            .dates-container, 
+            .committee-container, 
+            .venue-section,
+            .images-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FoodXplore'25</div>
+            <ul class="nav-links">
+                 <li><a href="index.html">Home</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="themes.html">Themes</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="committee.html">Committees</a></li>
+                <li><a href="venue.html">Venue</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="committees" style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9);">
+        <div class="section-title">
+            <h2>Advisory Committees</h2>
+            <div class="line"></div>
+        </div>
+        <div class="committee-container">
+            <div class="committee-list">
+                <h3>🌍 International Advisory Committee</h3>
+                <ul>
+                    <li>Dr. Venkatesh Meda, University of Saskatchewan, Canada</li>
+                    <li>Dr. R. P. Kingsly Ambrose, Purdue University, USA</li>
+                    <li>Dr. Jong-Whan Rhim, Kyung Hee University, South Korea</li>
+                    <li>Dr. Jun Tae Kim, Kyung Hee University, South Korea</li>
+                    <li>Dr. Anand Mohan, University of Georgia, USA</li>
+                    <li>Dr. Chandrasekar Venkitasamy, Dept of Food and Agriculture, USA</li>
+                    <li>Dr. Satyanarayan D, Florida A&M University, USA</li>
+                    <li>Shri Dhanavel Gokulrajan, Nestle, Switzerland</li>
+                    <li>Er. Sujala Balaji, Climax Food, USA</li>
+                    <li>Dr. Digvir S. Jayas, University of Lethbridge, Canada</li>
+                    <li>Dr. V. M. Balasubramaniam, Ohio State University, USA</li>
+                    <li>Dr. P. K. Mallikarjunan, University of Minnesota, USA</li>
+                    <li>Dr. K. Muthukumarappan, South Dakota State University, USA</li>
+                    <li>Dr. Buddhi P. Lamsal, Iowa State University, USA</li>
+                    <li>Dr. Sundaram Gunasekaran, University of Wisconsin-Madison, USA</li>
+                    <li>Dr. Manickavasagan Annamalai, University of Guelph, Canada</li>
+                    <li>Dr. Johnselvakumar Lawrence, AGI SureTrack, USA</li>
+                    <li>Dr. Sundar Bala, Reckitt, USA</li>
+                    <li>Er. S. T. Srinivasan, Tekion, USA</li>
+                    <li>Dr. Kathiravan Krishnamurthy, Illinois Institute of Technology, USA</li>
+                    <li>Er. Sridhar Kameswaran, Abbott Nutrition R&D, Singapore</li>
+                    <li>Dr. Jeyamkondan Subbiah, University of Arkansas, USA</li>
+                    <li>Dr. Mohan Raj, Coles Group, Australia</li>
+                </ul>
+            </div>
+            <div class="committee-list">
+                <h3>🇮🇳 National Advisory Committee</h3>
+                <ul>
+                    <li>Dr. Shyam Narayan Jha, President, ISAE & DDG (Agrl. Engg.)</li>
+                    <li>Dr. K. Alagusundaram, TN APEX</li>
+                    <li>Dr. D. C. Joshi, Former VC, AU, Kota</li>
+                    <li>Prof. V. K. Tewari, Director, IIT Kharagpur</li>
+                    <li>Dr. K.K. Singh, VC, SVBP University</li>
+                    <li>Dr. Nachiket Kotwaliwale, Director, ICAR-CIPHET</li>
+                    <li>Dr. Manoj P. Samuel, CWRDM, Kozhikode</li>
+                    <li>Prof. V. Palanimuthu, Director, NIFTEM-T</li>
+                    <li>Dr. Sanjay K. Daash, Dean, CAET, OUAT</li>
+                    <li>Prof. K.P Sudheer, KSCSTE, Kerala</li>
+                    <li>Dr. Sandeep Mann, ICAR-CIPHET</li>
+                    <li>Dr. Heartwin Amaladhas, ICAR-NDRI</li>
+                    <li>Dr. Udaykumar Nidoni, UAS, Raichur</li>
+                    <li>Dr. M.S. Sajeev, ICAR-CTCRI</li>
+                    <li>Dr. M.R. Manikantan, ICAR-CPCRI</li>
+                    <li>Prof. N.Venkatachalapathy, NIFTEM-T</li>
+                    <li>Dr. Harinder Singh Oberoi, Director, NIFTEM-K</li>
+                    <li>Dr. S. Patel, Former Dean, IGKV</li>
+                    <li>Dr. Sridevi Annapurna Singh, Director, CFTRI</li>
+                    <li>Dr. Devinder Dhingra, ICAR</li>
+                    <li>Dr. R. Narendra Babu, TANUVAS</li>
+                    <li>Dr. C. Anandharamakrishnan, CSIR-NIIST</li>
+                    <li>Dr. M.S. Alam, PAU, Ludhiana</li>
+                    <li>Dr. R. Viswanathan, Retired, TNAU</li>
+                    <li>Dr. V.V. Sreenarayanan, Former Dean, TNAU</li>
+                    <li>Dr. K. Thangavel, TNAU</li>
+                    <li>Dr. Ravindra Naik, ICAR-CIAE</li>
+                    <li>Dr. N. Varadharaju, Retired, TNAU</li>
+                    <li>Dr. P. Srinivasan Rao, IIT Kharagpur</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">&copy; 2026 FoodXplore '25 - International Symposium</p>
+        <p>Safe, Standard, Sustainable Food Processing</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Department of Food Process Engineering, TNAU, Coimbatore</p>
+    </footer>
+    
+</body>
+</html>
