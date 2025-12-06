@@ -1,684 +1,776 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodXplore '25 - International Symposium</title>
     <style>
-        :root {
-            --primary: #2E7D32;
-            --secondary: #1A237E;
-            --accent: #FFC107;
-            --light: #F5F7FA;
-            --dark: #333;
-            --white: #ffffff;
+      :root {
+        --primary: #2e7d32;
+        --secondary: #1a237e;
+        --accent: #ffc107;
+        --light: #f5f7fa;
+        --dark: #333;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--light);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* NAVIGATION */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+      }
+
+      nav {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 2.5rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo::before {
+        content: "🌾";
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        color: var(--dark);
+        transition: all 0.3s;
+        position: relative;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:not(.cta-btn):hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .nav-links a:not(.cta-btn)::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 0.3s;
+        border-radius: 2px;
+      }
+
+      .nav-links a:not(.cta-btn):hover::after {
+        width: 100%;
+      }
+
+      .cta-btn {
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: var(--white) !important;
+        padding: 0.7rem 1.8rem;
+        border-radius: 30px;
+        transition: all 0.3s;
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+      }
+
+      /* HERO */
+      .hero {
+        background: linear-gradient(
+            135deg,
+            rgba(46, 125, 50, 0.9),
+            rgba(26, 35, 126, 0.85)
+          ),
+          url("https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 30% 50%,
+          rgba(255, 193, 7, 0.2),
+          transparent 60%
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1000px;
+        animation: fadeInUp 1s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        html { scroll-behavior: smooth; }
+      .hero-badge {
+        background: linear-gradient(135deg, var(--accent), #ff9800);
+        color: var(--dark);
+        padding: 0.7rem 1.5rem;
+        font-weight: bold;
+        border-radius: 50px;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 6px 25px rgba(255, 193, 7, 0.5);
+        animation: pulse 2.5s infinite;
+      }
 
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
         }
+        50% {
+          transform: scale(1.05);
+        }
+      }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+      .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
+      }
 
-        /* NAVIGATION */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+      .hero-content h2 {
+        font-size: 1.7rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        color: #e8f5e9;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 2rem 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+
+      .section-title .line {
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        margin: 0 auto;
+        border-radius: 3px;
+      }
+
+      /* ABOUT */
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .card {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid var(--primary);
+        transition: all 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(
+          circle,
+          rgba(46, 125, 50, 0.1),
+          transparent
+        );
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+        position: relative;
+        z-index: 1;
+      }
+
+      .card h3 {
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .card p {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* IMAGES SECTION */
+      .images-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .image-card {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: all 0.4s;
+        height: 250px;
+      }
+
+      .image-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+
+      .image-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .image-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: white;
+        padding: 1.5rem;
+        transform: translateY(100%);
+        transition: transform 0.4s;
+      }
+
+      .image-card:hover .image-overlay {
+        transform: translateY(0);
+      }
+
+      /* IMPORTANT DATES */
+      .dates-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .dates-card
+      {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid var(--primary);
+        transition: all 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+      .guidelines-card {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid var(--primary);
+        transition: all 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-title {
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* TABLE */
+      .dates-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .dates-table td {
+        padding: 1rem 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      .dates-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .dates-table tr:hover {
+        background: rgba(46, 125, 50, 0.05);
+        transition: 0.3s ease;
+      }
+
+      /* GUIDELINES LIST */
+      .guidelines-list {
+        margin-top: 1rem;
+        padding-left: 1.3rem;
+      }
+
+      .guidelines-list li {
+        margin-bottom: 0.7rem;
+        line-height: 1.6;
+      }
+
+      .text-muted {
+        color: #555;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+
+      .award-note {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #f8fff8;
+        border-left: 6px solid var(--primary);
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .dates-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* CONTACT */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2.5rem;
+      }
+
+      .contact-person {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s;
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-person:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-8px);
+        border-color: var(--accent);
+      }
+
+      .contact-icon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, var(--accent), #ff9800);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        box-shadow: 0 8px 30px rgba(255, 193, 7, 0.5);
+      }
+
+      .contact-person h4 {
+        color: var(--accent);
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .contact-person p {
+        margin: 0.4rem 0;
+      }
+
+      /* FOOTER */
+      footer {
+        background: linear-gradient(135deg, var(--dark), #1a1a1a);
+        color: var(--white);
+        text-align: center;
+        padding: 3rem;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
         }
 
         nav {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2.5rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo::before {
-            content: '🌾';
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            color: var(--dark);
-            transition: all 0.3s;
-            position: relative;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:not(.cta-btn):hover { 
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .nav-links a:not(.cta-btn)::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s;
-            border-radius: 2px;
-        }
-
-        .nav-links a:not(.cta-btn):hover::after { width: 100%; }
-
-        .cta-btn {
-            background: linear-gradient(135deg, var(--primary), #1B5E20);
-            color: var(--white) !important;
-            padding: 0.7rem 1.8rem;
-            border-radius: 30px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
-        }
-
-        .cta-btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
-        }
-
-        /* HERO */
-        .hero {
-            background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(26, 35, 126, 0.85)), 
-                        url('https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255, 193, 7, 0.2), transparent 60%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-badge {
-            background: linear-gradient(135deg, var(--accent), #FF9800);
-            color: var(--dark);
-            padding: 0.7rem 1.5rem;
-            font-weight: bold;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 6px 25px rgba(255, 193, 7, 0.5);
-            animation: pulse 2.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+          flex-direction: column;
+          gap: 1rem;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
-            line-height: 1.2;
+          font-size: 2.2rem;
         }
-
         .hero-content h2 {
-            font-size: 1.7rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            color: #e8f5e9;
+          font-size: 1.3rem;
         }
-
-        /* SECTIONS */
-        section {
-            padding: 6rem 2.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
         .section-title h2 {
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            font-weight: 800;
+          font-size: 2rem;
         }
 
-        .section-title .line {
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 0 auto;
-            border-radius: 3px;
-        }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(46, 125, 50, 0.1), transparent);
-            border-radius: 50%;
-            transform: translate(50%, -50%);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-        }
-
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), #1B5E20);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-
-        .card h3 { 
-            color: var(--secondary); 
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card p {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* IMAGES SECTION */
+        .dates-container,
+        .committee-container,
+        .venue-section,
         .images-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
+          grid-template-columns: 1fr;
         }
-
-        .image-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: all 0.4s;
-            height: 250px;
-        }
-
-        .image-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-        }
-
-        .image-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
-
-        .image-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.4s;
-        }
-
-        .image-card:hover .image-overlay {
-            transform: translateY(0);
-        }
-
-        /* IMPORTANT DATES */
-.dates-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.dates-card,
-.guidelines-card {
-    background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-}
-
-.card-title {
-    color: var(--secondary); 
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            position: relative;
-            z-index: 1;
-}
-
-/* TABLE */
-.dates-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.dates-table td {
-    padding: 1rem 0.5rem;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-.dates-table tr:last-child td {
-    border-bottom: none;
-}
-
-.dates-table tr:hover {
-    background: rgba(46, 125, 50, 0.05);
-    transition: 0.3s ease;
-}
-
-/* GUIDELINES LIST */
-.guidelines-list {
-    margin-top: 1rem;
-    padding-left: 1.3rem;
-}
-
-.guidelines-list li {
-    margin-bottom: 0.7rem;
-    line-height: 1.6;
-}
-
-.text-muted {
-    color: #555;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-.award-note {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: #f8fff8;
-    border-left: 6px solid var(--primary);
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .dates-wrapper {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-        
-
-
-        /* CONTACT */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .contact-person {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-person:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-8px);
-            border-color: var(--accent);
-        }
-
-        .contact-icon {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--accent), #FF9800);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 8px 30px rgba(255, 193, 7, 0.5);
-        }
-
-        .contact-person h4 {
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .contact-person p {
-            margin: 0.4rem 0;
-        }
-
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, var(--dark), #1a1a1a);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-links { 
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-content h2 { font-size: 1.3rem; }
-            .section-title h2 { font-size: 2rem; }
-            
-            .dates-container, 
-            .committee-container, 
-            .venue-section,
-            .images-grid { 
-                grid-template-columns: 1fr; 
-            }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">FoodXplore'25</div>
-            <ul class="nav-links">
-                 <li><a href="index.html">Home</a></li>
-                <li><a href="speakers.html">Speakers</a></li>
-                <li><a href="themes.html">Themes</a></li>
-                <li><a href="registration.html">Registration</a></li>
-                <li><a href="committee.html">Committees</a></li>
-                <li><a href="venue.html">Venue</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="logo">FoodXplore'25</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="themes.html">Themes</a></li>
+          <li><a href="registration.html">Registration</a></li>
+          <li><a href="committee.html">Committees</a></li>
+          <li><a href="venue.html">Venue</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">🌍 International Symposium 2026</span>
-            <h1>Safe, Standard, Sustainable</h1>
-            <h2>Transforming Food Processing for a Healthier Tomorrow</h2>
-            <p style="font-size: 1.3rem; margin: 2.5rem 0;">
-                📅 <strong>January 29 & 30, 2026</strong><br>
-                📍 Tamil Nadu Agricultural University (TNAU), Coimbatore, India
-            </p>
-            <a href="https://forms.gle/giCMUTttj3yvaAQx7" class="cta-btn" style="font-size: 1.15rem; padding: 0.9rem 2.5rem;">Register Now →</a>
-        </div>
+      <div class="hero-content">
+        <span class="hero-badge">🌍 International Symposium 2026</span>
+        <h1>Safe, Standard, Sustainable</h1>
+        <h2>Transforming Food Processing for a Healthier Tomorrow</h2>
+        <p style="font-size: 1.3rem; margin: 2.5rem 0">
+          📅 <strong>January 29 & 30, 2026</strong><br />
+          📍 Tamil Nadu Agricultural University (TNAU), Coimbatore, India
+        </p>
+        <a
+          href="https://forms.gle/giCMUTttj3yvaAQx7"
+          class="cta-btn"
+          style="font-size: 1.15rem; padding: 0.9rem 2.5rem"
+          >Register Now →</a
+        >
+      </div>
     </section>
 
     <section id="about">
-        <div class="section-title">
-            <h2>About The Organizers</h2>
-            <div class="line"></div>
+      <div class="section-title">
+        <h2>About The Organizers</h2>
+        <div class="line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h3>About TNAU</h3>
+          <p>
+            Established in 1971, Tamil Nadu Agricultural University is a
+            globally recognized center of excellence. It offers 14 UG, 34 PG,
+            and 29 doctoral degrees, serving as a hub for agricultural
+            innovation with 19 constituent colleges and 40 research stations.
+          </p>
         </div>
-        <div class="about-grid">
-            <div class="card">
-                <div class="card-icon">🎓</div>
-                <h3>About TNAU</h3>
-                <p>Established in 1971, Tamil Nadu Agricultural University is a globally recognized center of excellence. It offers 14 UG, 34 PG, and 29 doctoral degrees, serving as a hub for agricultural innovation with 19 constituent colleges and 40 research stations.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🔬</div>
-                <h3>About AEC & RI</h3>
-                <p>Agricultural Engineering College and Research Institute is a leading institution in India. It conducts advanced research in farm machinery, food processing, renewable energy, and environmental engineering to enhance sustainability.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🏆</div>
-                <h3>Dept of Food Process Engineering</h3>
-                <p>Established in 1974, the department received the "Best Centre Award - First Position" in Nov 2024. It has commercialized over 50 post-harvest technologies and collaborates with institutions like ICAR-CIPHET and Amrita Vishwa Vidyapeetham.</p>
-            </div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <h3>About AEC & RI</h3>
+          <p>
+            Agricultural Engineering College and Research Institute is a leading
+            institution in India. It conducts advanced research in farm
+            machinery, food processing, renewable energy, and environmental
+            engineering to enhance sustainability.
+          </p>
         </div>
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3>Dept of Food Process Engineering</h3>
+          <p>
+            Established in 1974, the department received the "Best Centre Award
+            - First Position" in Nov 2024. It has commercialized over 50
+            post-harvest technologies and collaborates with institutions like
+            ICAR-CIPHET and Amrita Vishwa Vidyapeetham.
+          </p>
+        </div>
+      </div>
 
-        <div class="images-grid">
-            <div class="image-card">
-                <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=1000" alt="Research Laboratory">
-                <div class="image-overlay">
-                    <h4>State-of-the-art Research Facilities</h4>
-                </div>
-            </div>
-            <div class="image-card">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1000" alt="Food Technology">
-                <div class="image-overlay">
-                    <h4>Advanced Food Processing Tech</h4>
-                </div>
-            </div>
-            <div class="image-card">
-                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=1000" alt="Sustainable Agriculture">
-                <div class="image-overlay">
-                    <h4>Sustainable Innovation</h4>
-                </div>
-            </div>
+      <div class="images-grid">
+        <div class="image-card">
+          <img
+            src="https://www.tnauonline.com/wp-content/uploads/2024/05/Agricultural-Engineering-College-and-Research-Institute-Coimbatore.jpg"
+            alt="Research Laboratory"
+          />
+          <div class="image-overlay">
+            <h4>State-of-the-art Research Facilities</h4>
+          </div>
         </div>
+        <div class="image-card">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Tnau_logo.png"
+            alt="Sustainable Agriculture"
+          />
+          <div class="image-overlay">
+            <h4>Advanced Food Processing Tech</h4>
+          </div>
+        </div>
+        <div class="image-card">
+          <img
+            src="https://images.shiksha.com/mediadata/images/1551287628phphMj3jV.jpeg"
+            alt="Food Technology"
+          />
+          <div class="image-overlay">
+            <h4>Sustainable Innovation</h4>
+          </div>
+        </div>
+      </div>
     </section>
 
-   
-
     <section id="dates">
-    <div class="section-title">
+      <div class="section-title">
         <h2>Important Dates & Guidelines</h2>
         <div class="divider"></div>
-    </div>
+      </div>
 
-    <div class="dates-wrapper">
-        
+      <div class="dates-wrapper">
         <!-- Event Dates Card -->
         <div class="dates-card">
-            <h3 class="card-title">📅 Event Schedule</h3>
-            <table class="dates-table">
-                <tbody>
-                    <tr>
-                        <td><strong>Abstract Submission Deadline</strong></td>
-                        <td>January 10, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Notification of Acceptance</strong></td>
-                        <td>January 15, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Early Bird Registration Deadline</strong></td>
-                        <td>January 10, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Full Paper Submission</strong></td>
-                        <td>January 20, 2026</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Conference Dates</strong></td>
-                        <td>January 29 & 30, 2026</td>
-                    </tr>
-                </tbody>
-            </table>
+          <h3 class="card-title"> Event Schedule</h3>
+          <table class="dates-table">
+            <tbody>
+              <tr>
+                <td><strong>Abstract Submission Deadline</strong></td>
+                <td>January 10, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Notification of Acceptance</strong></td>
+                <td>January 15, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Early Bird Registration Deadline</strong></td>
+                <td>January 10, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Full Paper Submission</strong></td>
+                <td>January 20, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Conference Dates</strong></td>
+                <td>January 29 & 30, 2026</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <!-- Guidelines Card -->
         <div class="guidelines-card">
-            <h3 class="card-title">📝 Call for Abstracts & Author Guidelines</h3>
-            <p class="text-muted">Original research papers, reviews, and case studies aligned with conference themes are invited.</p>
+          <h3 class="card-title">Call for Abstracts & Author Guidelines</h3>
+          <p class="text-muted">
+            Original research papers, reviews, and case studies aligned with
+            conference themes are invited.
+          </p>
 
-            <ul class="guidelines-list">
-                <li><strong>Title:</strong> Times New Roman, 12, Bold.</li>
-                <li><strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding author with *.</li>
-                <li><strong>Abstract:</strong> Times New Roman, 12, single-spaced, max 300 words.</li>
-                <li><strong>Format:</strong> .doc or .docx only.</li>
-                <li><strong>Poster:</strong> Single PPTX converted to PDF for e-poster (Virtual Mode Only).</li>
-            </ul>
+          <ul class="guidelines-list">
+            <li><strong>Title:</strong> Times New Roman, 12, Bold.</li>
+            <li>
+              <strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding
+              author with *.
+            </li>
+            <li>
+              <strong>Abstract:</strong> Times New Roman, 12, single-spaced, max
+              300 words.
+            </li>
+            <li><strong>Format:</strong> .doc or .docx only.</li>
+            <li>
+              <strong>Poster:</strong> Single PPTX converted to PDF for e-poster
+              (Virtual Mode Only).
+            </li>
+          </ul>
 
-            <p class="award-note">
-                🏅 Awards for outstanding Oral and Poster presentations will be given separately for students and scientists.
-            </p>
+          <p class="award-note">
+            🏅 Awards for outstanding Oral and Poster presentations will be
+            given separately for students and scientists.
+          </p>
         </div>
+      </div>
+    </section>
 
-    </div>
-</section>
+    <section
+      id="contact"
+      style="
+        background: linear-gradient(135deg, var(--secondary), #0d1642);
+        color: var(--white);
+        padding: 5rem 2.5rem;
+      "
+    >
+      <div class="section-title">
+        <h2 style="color: var(--white)">Contact Us</h2>
+        <div
+          class="line"
+          style="background: linear-gradient(90deg, var(--accent), #ff9800)"
+        ></div>
+      </div>
 
-
-    
-    <section id="contact" style="background: linear-gradient(135deg, var(--secondary), #0d1642); color: var(--white); padding: 5rem 2.5rem;">
-        <div class="section-title">
-            <h2 style="color: var(--white);">Contact Us</h2>
-            <div class="line" style="background: linear-gradient(90deg, var(--accent), #FF9800);"></div>
+      <div class="contact-grid">
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Organizing Secretary</h4>
+          <p><strong>Dr. M. Balakrishnan</strong></p>
+          <p>Professor and Head (FPE)</p>
+          <p>📧 bala_tnau@tnau.ac.in</p>
+          <p>📱 +91 98420 10693</p>
         </div>
-        
-        <div class="contact-grid">
-            <div class="contact-person">
-                <div class="contact-icon">👤</div>
-                <h4>Organizing Secretary</h4>
-                <p><strong>Dr. M. Balakrishnan</strong></p>
-                <p>Professor and Head (FPE)</p>
-                <p>📧 bala_tnau@tnau.ac.in</p>
-                <p>📱 +91 98420 10693</p>
-            </div>
-            <div class="contact-person">
-                <div class="contact-icon">👤</div>
-                <h4>Joint Organizing Secretary</h4>
-                <p><strong>Dr. A. Ramalakshmi</strong></p>
-                <p>Professor, Dept of FPE</p>
-                <p>📧 ramalakshmi.a@tnau.ac.in</p>
-                <p>📱 +91 99940 60865</p>
-            </div>
-            <div class="contact-person">
-                <div class="contact-icon">👤</div>
-                <h4>Joint Organizing Secretary</h4>
-                <p><strong>Dr. M. Anand</strong></p>
-                <p>Assoc. Professor, Dept of FPE</p>
-                <p>📧 anandhort@gmail.com</p>
-                <p>📱 +91 88702 22090</p>
-            </div>
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Joint Organizing Secretary</h4>
+          <p><strong>Dr. A. Ramalakshmi</strong></p>
+          <p>Professor, Dept of FPE</p>
+          <p>📧 ramalakshmi.a@tnau.ac.in</p>
+          <p>📱 +91 99940 60865</p>
         </div>
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Joint Organizing Secretary</h4>
+          <p><strong>Dr. M. Anand</strong></p>
+          <p>Assoc. Professor, Dept of FPE</p>
+          <p>📧 anandhort@gmail.com</p>
+          <p>📱 +91 88702 22090</p>
+        </div>
+      </div>
     </section>
 
     <footer>
-        <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">&copy; 2026 FoodXplore '25 - International Symposium</p>
-        <p>Safe, Standard, Sustainable Food Processing</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">Department of Food Process Engineering, TNAU, Coimbatore</p>
+      <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
+        &copy; 2026 FoodXplore '25 - International Symposium
+      </p>
+      <p>Safe, Standard, Sustainable Food Processing</p>
+      <p style="margin-top: 1rem; opacity: 0.8">
+        Department of Food Process Engineering, TNAU, Coimbatore
+      </p>
     </footer>
-
-</body>
+  </body>
 </html>
