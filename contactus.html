@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodXplore '25 - International Symposium</title>
@@ -155,147 +155,51 @@
         border-radius: 3px;
       }
 
-      /* THEMES - UPDATED */
-      .themes-list {
+      /* CONTACT */
+      .contact-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2.5rem;
-        perspective: 1000px;
+        margin-top: 2.5rem;
       }
 
-      .theme-item {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fdf9 100%);
-        padding: 2.5rem 2rem;
-        border-radius: 20px;
+      .contact-person {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 16px;
         text-align: center;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: default;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid transparent;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s;
+        backdrop-filter: blur(10px);
       }
 
-      .theme-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: linear-gradient(
-          90deg,
-          var(--primary),
-          var(--accent),
-          var(--secondary)
-        );
-        background-size: 200% 100%;
-        animation: gradientShift 3s ease infinite;
-        opacity: 0;
-        transition: opacity 0.4s;
+      .contact-person:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-8px);
+        border-color: var(--accent);
       }
 
-      @keyframes gradientShift {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+      .contact-icon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, var(--accent), #ff9800);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        box-shadow: 0 8px 30px rgba(255, 193, 7, 0.5);
       }
 
-      .theme-item:hover::before {
-        opacity: 1;
+      .contact-person h4 {
+        color: var(--accent);
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
       }
 
-      .theme-item::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 20px;
-        padding: 2px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-
-      .theme-item:hover {
-        transform: translateY(-15px) rotateX(5deg) scale(1.03);
-        box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
-      }
-
-      .theme-item:hover::after {
-        opacity: 1;
-      }
-
-      .theme-icon {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-        transition: all 0.5s;
-        display: inline-block;
-      }
-
-      .theme-item:hover .theme-icon {
-        transform: scale(1.15) rotateY(360deg);
-      }
-
-      .theme-item h4 {
-        color: var(--dark);
-        font-size: 1.1rem;
-        line-height: 1.7;
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
-        transition: color 0.3s;
-      }
-
-      .theme-item:hover h4 {
-        color: var(--primary);
-      }
-
-      /* Staggered animation on page load */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .theme-item {
-        animation: fadeInUp 0.6s ease-out backwards;
-      }
-
-      .theme-item:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .theme-item:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .theme-item:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .theme-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .theme-item:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      .theme-item:nth-child(6) {
-        animation-delay: 0.6s;
-      }
-      .theme-item:nth-child(7) {
-        animation-delay: 0.7s;
+      .contact-person p {
+        margin: 0.4rem 0;
       }
 
       /* FOOTER */
@@ -311,6 +215,21 @@
       }
 
       /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .hero-logos {
+          gap: 2rem;
+        }
+
+        .logo-item {
+          min-width: 130px;
+          padding: 1rem;
+        }
+
+        .logo-item img {
+          max-width: 100px;
+        }
+      }
+
       @media (max-width: 768px) {
         .nav-links {
           display: flex;
@@ -334,18 +253,51 @@
           font-size: 2rem;
         }
 
-        .themes-list {
+        .dates-container,
+        .committee-container,
+        .venue-section,
+        .images-grid {
           grid-template-columns: 1fr;
-          gap: 2rem;
         }
 
-        .theme-item:hover {
-          transform: translateY(-10px) scale(1.02);
+        .hero-logos {
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .logo-item {
+          min-width: 100px;
+          min-height: 80px;
+          padding: 0.8rem;
+        }
+
+        .logo-item img {
+          max-width: 80px;
+          max-height: 60px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-logos {
+          gap: 0.8rem;
+          display: flex;
+          flex-direction: row;
+        }
+
+        .logo-item {
+          min-width: 80px;
+          min-height: 60px;
+          padding: 0.6rem;
+        }
+
+        .logo-item img {
+          max-width: 100px;
+          max-height: 80px;
         }
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header>
       <nav>
         <div class="logo">FoodXplore'25</div>
@@ -362,41 +314,76 @@
     </header>
 
     <section
-      id="themes"
-      style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)"
+      id="contact"
+      style="
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        color: var(--white);
+        padding: 5rem 2.5rem;
+      "
     >
       <div class="section-title">
-        <h2>Conference Themes</h2>
-        <div class="line"></div>
+        <h2
+          style="
+            background: linear-gradient(135deg, var(--accent), #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          "
+        >
+          Contact Us
+        </h2>
+        <div
+          class="line"
+          style="background: linear-gradient(90deg, var(--accent), #ff9800)"
+        ></div>
       </div>
-      <div class="themes-list">
-        <div class="theme-item">
-          <div class="theme-icon">⚙️</div>
-          <h4>Advances in Food Processing and Post-Harvest Machinery</h4>
+
+      <div class="contact-grid">
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Organizing Secretary</h4>
+          <p><strong>Dr. M. Balakrishnan</strong></p>
+          <p>Professor and Head (FPE)</p>
+          <p>bala_tnau@tnau.ac.in</p>
+          <p>+91 98420 10693</p>
         </div>
-        <div class="theme-item">
-          <div class="theme-icon">💡</div>
-          <h4>Innovative Technologies in Food Processing and Packaging</h4>
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Joint Organizing Secretary</h4>
+          <p><strong>Dr. A. Ramalakshmi</strong></p>
+          <p>Professor, Dept of FPE</p>
+          <p>ramalakshmi.a@tnau.ac.in</p>
+          <p>+91 99940 60865</p>
+        </div>
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Joint Organizing Secretary</h4>
+          <p><strong>Dr. M. Anand</strong></p>
+          <p>Assoc. Professor, Dept of FPE</p>
+          <p>anandhort@gmail.com</p>
+          <p>+91 88702 22090</p>
         </div>
 
-        <div class="theme-item">
-          <div class="theme-icon">🥗</div>
-          <h4>Functional Foods for Nutritional Security</h4>
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Student Secretary</h4>
+          <p><strong>Mr. P. Vijayakumar</strong></p>
+          <p>Final Year, B.Tech - Food Technology</p>
+          <p>vijayakumar.fot2022@tnau.ac.in</p>
+          <p>+91 8220263254</p>
         </div>
-        <div class="theme-item">
-          <div class="theme-icon">♻️</div>
-          <h4>Valorisation of Agro Residues for Circular Economy</h4>
-        </div>
-        <div class="theme-item">
-          <div class="theme-icon">🌤️</div>
-          <h4>Climate Smart Agriculture for Food Production and Processing</h4>
-        </div>
-        <div class="theme-item">
-          <div class="theme-icon">🧬</div>
-          <h4>Advances in Food Safety and Quality Standards</h4>
+
+        <div class="contact-person">
+          <div class="contact-icon">👤</div>
+          <h4>Student Secretary</h4>
+          <p><strong>Ms. K. S. Harshinie </strong></p>
+          <p>Final Year, B.Tech - Food Technology</p>
+          <p>harshinie.fot2022@tnau.ac.in</p>
+          <p>+91 98940 39100</p>
         </div>
       </div>
     </section>
+
     <footer>
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
         &copy; 2026 FoodXplore '25 - International Conference
@@ -406,5 +393,6 @@
         Department of Food Process Engineering, TNAU, Coimbatore
       </p>
     </footer>
-  </body>
+    
+</body>
 </html>
