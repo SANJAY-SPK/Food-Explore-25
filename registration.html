@@ -1,135 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodXplore '25 - International Symposium</title>
-
     <style>
-        :root {
-            --primary: #2E7D32;
-            --secondary: #1A237E;
-            --accent: #FFC107;
-            --light: #F5F7FA;
-            --dark: #333;
-            --white: #ffffff;
-        }
+      :root {
+        --primary: #2e7d32;
+        --secondary: #1a237e;
+        --accent: #ffc107;
+        --light: #f5f7fa;
+        --dark: #333;
+        --white: #ffffff;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
+      body {
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--light);
+      }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
 
-        /* NAVIGATION */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(46, 125, 50, 0.1);
-        }
+      /* NAVIGATION */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+      }
 
-        nav {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2.5rem;
-        }
+      nav {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 2.5rem;
+      }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        .logo::before {
-            content: '🌾';
-            font-size: 1.5rem;
-        }
+      .logo::before {
+        content: "🌾";
+        font-size: 1.5rem;
+      }
 
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
 
-        .nav-links a {
-            font-weight: 600;
-            color: var(--dark);
-            transition: all 0.3s;
-            position: relative;
-            font-size: 0.95rem;
-        }
+      .nav-links a {
+        font-weight: 600;
+        color: var(--dark);
+        transition: all 0.3s;
+        position: relative;
+        font-size: 0.95rem;
+      }
 
-        .nav-links a:not(.cta-btn):hover {
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
+      .nav-links a:not(.cta-btn):hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
 
-        .nav-links a:not(.cta-btn)::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s;
-            border-radius: 2px;
-        }
+      .nav-links a:not(.cta-btn)::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 0.3s;
+        border-radius: 2px;
+      }
 
-        .nav-links a:not(.cta-btn):hover::after { width: 100%; }
+      .nav-links a:not(.cta-btn):hover::after {
+        width: 100%;
+      }
 
-        /* SECTIONS */
-        section {
-            padding: 2rem 2.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+      .cta-btn {
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: var(--white) !important;
+        padding: 0.7rem 1.8rem;
+        border-radius: 30px;
+        transition: all 0.3s;
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+      }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+      }
 
-        .section-title h2 {
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
+      /* SECTIONS */
+      section {
+        padding: 2rem 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
 
-        .section-title .line {
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 0.5rem auto;
-            border-radius: 3px;
-        }
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+
+      .section-title .line {
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        margin: 0 auto;
+        border-radius: 3px;
+      }
 
         /* -------- NEW POLISHED TABLE -------- */
         .fees-table {
@@ -234,6 +258,76 @@
             text-align: center;
             padding: 3rem;
         }
+ /* =============================
+   📱 CLEAN RESPONSIVE TABLE FIX
+   ============================= */
+
+/* CLEAN RESPONSIVE TABLE FIX */
+@media(max-width: 768px) {
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .fees-table {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: none;
+        overflow: hidden;
+    }
+
+    .fees-table thead {
+        display: none;
+    }
+
+    .fees-table tr {
+        display:grid;
+        background: var(--white);
+        border-radius: 12px;
+        margin-bottom: 1.2rem;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .fees-table td {
+        display: block;
+        width: 100%;
+        border: none;
+        padding: 0.8rem 0;
+        text-align: center;
+    }
+
+    .category-title {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--secondary);
+    }
+
+    .price-box {
+        width: 100%;
+        margin: 0.3rem 0;
+        padding: 0.7rem 0.8rem;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+}
+
+
     </style>
 
 </head>
@@ -245,6 +339,7 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
           <li><a href="themes.html">Themes</a></li>
+            <li><a href="abstract.html">Abstract</a></li>
           <li><a href="registration.html">Registration</a></li>
           <li><a href="committee.html">Committees</a></li>
           <li><a href="venue.html">Venue</a></li>
@@ -273,10 +368,12 @@
             <tr>
                 <td><span class="category-title">Students</span></td>
                 <td>
+                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
                     <div class="price-box">Online: ₹750</div>
                     <div class="price-box offline">Offline: ₹1000</div>
                 </td>
                 <td>
+                    <div class="mobile-label">Regular</div>
                     <div class="price-box">Online: ₹1000</div>
                     <div class="price-box offline">Offline: ₹1500</div>
                 </td>
@@ -285,10 +382,12 @@
             <tr>
                 <td><span class="category-title">Research Scholars</span></td>
                 <td>
+                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
                     <div class="price-box">Online: ₹1500</div>
                     <div class="price-box offline">Offline: ₹2000</div>
                 </td>
                 <td>
+                    <div class="mobile-label">Regular</div>
                     <div class="price-box">Online: ₹2000</div>
                     <div class="price-box offline">Offline: ₹3000</div>
                 </td>
@@ -297,10 +396,12 @@
             <tr>
                 <td><span class="category-title">Faculty / Scientist</span></td>
                 <td>
+                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
                     <div class="price-box">Online: ₹4000</div>
                     <div class="price-box offline">Offline: ₹5000</div>
                 </td>
                 <td>
+                    <div class="mobile-label">Regular</div>
                     <div class="price-box">Online: ₹5000</div>
                     <div class="price-box offline">Offline: ₹6000</div>
                 </td>
@@ -309,10 +410,12 @@
             <tr>
                 <td><span class="category-title">Corporate & Entrepreneurs</span></td>
                 <td>
+                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
                     <div class="price-box">Online: ₹7000</div>
                     <div class="price-box offline">Offline: ₹8000</div>
                 </td>
                 <td>
+                    <div class="mobile-label">Regular</div>
                     <div class="price-box">Online: ₹8000</div>
                     <div class="price-box offline">Offline: ₹10000</div>
                 </td>
@@ -321,10 +424,12 @@
             <tr>
                 <td><span class="category-title">International Delegates</span></td>
                 <td>
+                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
                     <div class="price-box">Online: $100</div>
                     <div class="price-box offline">Offline: $150</div>
                 </td>
                 <td>
+                    <div class="mobile-label">Regular</div>
                     <div class="price-box">Online: $150</div>
                     <div class="price-box offline">Offline: $200</div>
                 </td>
