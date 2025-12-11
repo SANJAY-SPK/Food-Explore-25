@@ -125,6 +125,30 @@
         box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
       }
 
+      /* LOGOS SECTION - Simple version */
+      .hero-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+      }
+
+      .logo-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        width: 150px;
+      }
+
+      .logo-item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
       /* HERO */
       .hero {
         background: linear-gradient(
@@ -211,10 +235,11 @@
       }
 
       .hero-content h2 {
-        font-size: 1.7rem;
-        font-weight: 400;
-        margin-bottom: 2rem;
-        color: #e8f5e9;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        letter-spacing: 3px;
+        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
       }
 
       /* SECTIONS */
@@ -373,8 +398,7 @@
         gap: 2rem;
       }
 
-      .dates-card
-      {
+      .dates-card {
         background: var(--white);
         padding: 2.5rem;
         border-radius: 20px;
@@ -421,40 +445,6 @@
       .dates-table tr:hover {
         background: rgba(46, 125, 50, 0.05);
         transition: 0.3s ease;
-      }
-
-      /* GUIDELINES LIST */
-      .guidelines-list {
-        margin-top: 1rem;
-        padding-left: 1.3rem;
-      }
-
-      .guidelines-list li {
-        margin-bottom: 0.7rem;
-        line-height: 1.6;
-      }
-
-      .text-muted {
-        color: #555;
-        margin-bottom: 1rem;
-        line-height: 1.5;
-      }
-
-      .award-note {
-        margin-top: 1.5rem;
-        padding: 1rem;
-        background: #f8fff8;
-        border-left: 6px solid var(--primary);
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 0.95rem;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 900px) {
-        .dates-wrapper {
-          grid-template-columns: 1fr;
-        }
       }
 
       /* CONTACT */
@@ -517,6 +507,21 @@
       }
 
       /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .hero-logos {
+          gap: 2rem;
+        }
+
+        .logo-item {
+          min-width: 130px;
+          padding: 1rem;
+        }
+
+        .logo-item img {
+          max-width: 100px;
+        }
+      }
+
       @media (max-width: 768px) {
         .nav-links {
           display: flex;
@@ -546,6 +551,41 @@
         .images-grid {
           grid-template-columns: 1fr;
         }
+
+        .hero-logos {
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .logo-item {
+          min-width: 100px;
+          min-height: 80px;
+          padding: 0.8rem;
+        }
+
+        .logo-item img {
+          max-width: 80px;
+          max-height: 60px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-logos {
+          gap: 0.8rem;
+          display: flex;
+          flex-direction: row;
+        }
+
+        .logo-item {
+          min-width: 80px;
+          min-height: 60px;
+          padding: 0.6rem;
+        }
+
+        .logo-item img {
+          max-width: 100px;
+          max-height: 80px;
+        }
       }
     </style>
   </head>
@@ -556,6 +596,7 @@
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="themes.html">Themes</a></li>
+          <li><a href="abstract.html">Abstract</a></li>
           <li><a href="registration.html">Registration</a></li>
           <li><a href="committee.html">Committees</a></li>
           <li><a href="venue.html">Venue</a></li>
@@ -565,9 +606,25 @@
 
     <section id="home" class="hero">
       <div class="hero-content">
-        <span class="hero-badge">🌍 International Symposium 2026</span>
+        <!-- Logos Section -->
+        <div class="hero-logos">
+          <div class="logo-item">
+            <img src="assets/logos/log2.png" alt="AICTE Logo" />
+          </div>
+          <div class="logo-item">
+            <img src="assets/logos/log3.png" alt="ICAR Logo" />
+          </div>
+          <div class="logo-item">
+            <img src="assets/logos/log1.png" alt="TNAU Logo" />
+          </div>
+          <div class="logo-item">
+            <img src="assets/logos/log4.png" alt="Agricultural Research Logo" />
+          </div>
+        </div>
+
+        <span class="hero-badge">🌍 International Conference 2026</span>
         <h1>Safe, Standard, Sustainable</h1>
-        <h2>Transforming Food Processing for a Healthier Tomorrow</h2>
+        <h2>Food Processing for a Healthier Tomorrow</h2>
         <p style="font-size: 1.3rem; margin: 2.5rem 0">
           📅 <strong>January 29 & 30, 2026</strong><br />
           📍 Tamil Nadu Agricultural University (TNAU), Coimbatore, India
@@ -639,17 +696,13 @@
             <h4>State-of-the-art Research Facilities</h4>
           </div>
         </div>
-        
+
         <div class="image-card">
-          <img
-            src="assets/tnauri[1].jpg"
-            alt="Sustainable Agriculture"
-          />
+          <img src="assets/tnauri[1].jpg" alt="Sustainable Agriculture" />
           <div class="image-overlay">
             <h4>Advanced Food Processing Tech</h4>
           </div>
         </div>
-        
       </div>
     </section>
 
@@ -662,7 +715,7 @@
       <div class="dates-wrapper">
         <!-- Event Dates Card -->
         <div class="dates-card">
-          <h3 class="card-title"> Event Schedule</h3>
+          <h3 class="card-title">Event Schedule</h3>
           <table class="dates-table">
             <tbody>
               <tr>
@@ -688,50 +741,28 @@
             </tbody>
           </table>
         </div>
-
-        <!-- Guidelines Card -->
-        <div class="guidelines-card">
-          <h3 class="card-title">Call for Abstracts & Author Guidelines</h3>
-          <p class="text-muted">
-            Original research papers, reviews, and case studies aligned with
-            conference themes are invited.
-          </p>
-
-          <ul class="guidelines-list">
-            <li><strong>Title:</strong> Times New Roman, 12, Bold.</li>
-            <li>
-              <strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding
-              author with *.
-            </li>
-            <li>
-              <strong>Abstract:</strong> Times New Roman, 12, single-spaced, max
-              300 words.
-            </li>
-            <li><strong>Format:</strong> .doc or .docx only.</li>
-            <li>
-              <strong>Poster:</strong> Single PPTX converted to PDF for e-poster
-              (Virtual Mode Only).
-            </li>
-          </ul>
-
-          <p class="award-note">
-            🏅 Awards for outstanding Oral and Poster presentations will be
-            given separately for students and scientists.
-          </p>
-        </div>
       </div>
     </section>
 
     <section
       id="contact"
       style="
-        background: linear-gradient(135deg, var(--secondary), #0d1642);
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
         color: var(--white);
         padding: 5rem 2.5rem;
       "
     >
       <div class="section-title">
-        <h2 style="color: var(--white)">Contact Us</h2>
+        <h2
+          style="
+            background: linear-gradient(135deg, var(--accent), #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          "
+        >
+          Contact Us
+        </h2>
         <div
           class="line"
           style="background: linear-gradient(90deg, var(--accent), #ff9800)"
@@ -786,7 +817,7 @@
 
     <footer>
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
-        &copy; 2026 FoodXplore '25 - International Symposium
+        &copy; 2026 FoodXplore '25 - International Conference
       </p>
       <p>Safe, Standard, Sustainable Food Processing</p>
       <p style="margin-top: 1rem; opacity: 0.8">

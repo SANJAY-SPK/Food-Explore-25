@@ -1,872 +1,1000 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodXplore '25 - International Symposium</title>
     <style>
-        :root {
-            --primary: #2E7D32;
-            --secondary: #1A237E;
-            --accent: #FFC107;
-            --light: #F5F7FA;
-            --dark: #333;
-            --white: #ffffff;
+      :root {
+        --primary: #2e7d32;
+        --secondary: #1a237e;
+        --accent: #ffc107;
+        --light: #f5f7fa;
+        --dark: #333;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--light);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* NAVIGATION */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+      }
+
+      nav {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 2.5rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo::before {
+        content: "🌾";
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        color: var(--dark);
+        transition: all 0.3s;
+        position: relative;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:not(.cta-btn):hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .nav-links a:not(.cta-btn)::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 0.3s;
+        border-radius: 2px;
+      }
+
+      .nav-links a:not(.cta-btn):hover::after {
+        width: 100%;
+      }
+
+      .cta-btn {
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: var(--white) !important;
+        padding: 0.7rem 1.8rem;
+        border-radius: 30px;
+        transition: all 0.3s;
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 4rem 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+
+      .section-title .line {
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        margin: 0 auto;
+        border-radius: 3px;
+      }
+
+      /* STEERING COMMITTEE */
+      .steering-section {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        margin-bottom: 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .steering-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--accent),
+          var(--secondary)
+        );
+        background-size: 200% 100%;
+        animation: gradientMove 3s ease infinite;
+      }
+
+      @keyframes gradientMove {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .steering-title {
+        text-align: center;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* TOP LEADERSHIP - 4 Main Roles */
+      .leadership-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 3.5rem;
+      }
+
+      /* CARD */
+      .leadership-card {
+        background: linear-gradient(135deg, #f8fdf9 0%, #ffffff 100%);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+
+        /* Hover shadow applied permanently */
+        box-shadow: 0 15px 50px rgba(46, 125, 50, 0.25);
+      }
+
+      /* Gradient border always ON */
+      .leadership-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 3px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 1; /* Always visible */
+      }
+
+      /* Badge */
+      .role-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: var(--white);
+        padding: 0.6rem 1.8rem;
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.35);
+      }
+
+      /* Name */
+      .leadership-name {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 0.8rem;
+      }
+
+      /* Title */
+      .leadership-title {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+
+      /* DIVIDER */
+      .section-divider {
+        margin: 3rem 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--primary),
+          transparent
+        );
+        position: relative;
+      }
+
+      .section-divider::after {
+        content: "◆";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--white);
+        color: var(--primary);
+        padding: 0 1rem;
+        font-size: 1.2rem;
+      }
+
+      /* SUBSECTION TITLE */
+      .subsection-header {
+        text-align: center;
+        margin: 3rem 0 2rem;
+      }
+
+      .subsection-title {
+        font-size: 1.6rem;
+        color: var(--secondary);
+        font-weight: 800;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .subsection-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        border-radius: 2px;
+      }
+
+      /* JOINT ORGANIZING SECRETARIES */
+      .joint-secretaries-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .secretary-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f8f1 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .secretary-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 35px rgba(46, 125, 50, 0.2);
+        border-left-width: 8px;
+      }
+
+      .secretary-icon {
+        font-size: 2.5rem;
+        filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+      }
+
+      .secretary-info {
+        flex: 1;
+      }
+
+      .secretary-name {
+        font-weight: 700;
+        color: var(--dark);
+        font-size: 1.15rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .secretary-role {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+      }
+
+      /* COORDINATORS */
+      .coordinator-category {
+        margin-bottom: 3rem;
+      }
+
+      .category-label {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        color: var(--white);
+        padding: 0.6rem 1.5rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+      }
+
+      .coordinators-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .coordinator-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f8f1 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .coordinator-card:hover {
+        transform: translateX(8px);
+        box-shadow: 0 8px 30px rgba(255, 193, 7, 0.2);
+        border-left-width: 6px;
+      }
+
+      .coordinator-icon {
+        font-size: 2rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+
+      .coordinator-info {
+        flex: 1;
+      }
+
+      .coordinator-name {
+        font-weight: 700;
+        color: var(--dark);
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .coordinator-role {
+        font-size: 0.85rem;
+        color: #666;
+      }
+
+      /* STUDENT SECRETARIES */
+      .student-secretaries-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .student-card {
+        background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        border: 3px solid var(--accent);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transition: all 0.4s;
+        text-align: center;
+      }
+
+      .student-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(255, 193, 7, 0.25);
+      }
+
+      .student-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+      }
+
+      .student-name {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .student-role {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 600;
+      }
+
+      .student-program {
+        font-size: 0.85rem;
+        color: #888;
+        margin-top: 0.3rem;
+      }
+
+      /* ADVISORY COMMITTEES */
+      .committee-container {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+
+      /* COMMITTEE CARD */
+      .committee-list {
+        background: var(--white);
+        padding: 2rem 2.2rem;
+        border-radius: 22px;
+        box-shadow: 0 8px 35px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: visible; /* 🔥 No scrolling */
+        max-height: unset; /* 🔥 Auto height */
+      }
+
+      /* TOP GRADIENT BAR */
+      .committee-list::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        border-radius: 22px 22px 0 0;
+      }
+
+      /* TITLE */
+      .committee-list h3 {
+        position: relative;
+        background: transparent;
+        padding-bottom: 12px;
+        border-bottom: 3px solid var(--primary);
+        margin-bottom: 22px;
+        color: var(--secondary);
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: 0.3px;
+      }
+
+      /* LIST ITEMS */
+      .committee-list ul li {
+        margin-bottom: 14px;
+        font-size: 1rem;
+        line-height: 1.45rem;
+        background: #fafafa;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 14px 14px 14px 2.2rem;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      /* ARROW ICON */
+      .committee-list ul li::before {
+        content: "➤";
+        position: absolute;
+        left: 0.8rem;
+        color: var(--primary);
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: transform 0.3s ease;
+      }
+
+      /* HOVER EFFECT */
+      .committee-list ul li:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(46, 125, 50, 0.12),
+          rgba(46, 125, 50, 0.05)
+        );
+        transform: translateY(-2px);
+        border-color: var(--primary);
+      }
+
+      .committee-list ul li:hover::before {
+        transform: translateX(3px);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .committee-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* FOOTER */
+      footer {
+        background: linear-gradient(135deg, var(--dark), #1a1a1a);
+        color: var(--white);
+        text-align: center;
+        padding: 3rem;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 968px) {
+        .committee-container {
+          grid-template-columns: 1fr;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* NAVIGATION */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(46, 125, 50, 0.1);
-        }
-
-        nav {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2.5rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo::before {
-            content: '🌾';
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            color: var(--dark);
-            transition: all 0.3s;
-            position: relative;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:not(.cta-btn):hover { 
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .nav-links a:not(.cta-btn)::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s;
-            border-radius: 2px;
-        }
-
-        .nav-links a:not(.cta-btn):hover::after { width: 100%; }
-
-        .cta-btn {
-            background: linear-gradient(135deg, var(--primary), #1B5E20);
-            color: var(--white) !important;
-            padding: 0.7rem 1.8rem;
-            border-radius: 30px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
-        }
-
-        .cta-btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 4rem 2.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .section-title .line {
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 0 auto;
-            border-radius: 3px;
-        }
-
-        /* STEERING COMMITTEE */
-        .steering-section {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-            margin-bottom: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .steering-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
-            background-size: 200% 100%;
-            animation: gradientMove 3s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .steering-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* TOP LEADERSHIP - 4 Main Roles */
-.leadership-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3.5rem;
-}
-
-/* CARD */
-.leadership-card {
-    background: linear-gradient(135deg, #f8fdf9 0%, #ffffff 100%);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-
-    /* Hover shadow applied permanently */
-    box-shadow: 0 15px 50px rgba(46, 125, 50, 0.25);
-}
-
-/* Gradient border always ON */
-.leadership-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    padding: 3px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 1; /* Always visible */
-}
-
-/* Badge */
-.role-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), #1B5E20);
-    color: var(--white);
-    padding: 0.6rem 1.8rem;
-    border-radius: 25px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.35);
-}
-
-/* Name */
-.leadership-name {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--dark);
-    margin-bottom: 0.8rem;
-}
-
-/* Title */
-.leadership-title {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-    font-weight: 500;
-}
-
-        /* DIVIDER */
-        .section-divider {
-            margin: 3rem 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            position: relative;
-        }
-
-        .section-divider::after {
-            content: '◆';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--white);
-            color: var(--primary);
-            padding: 0 1rem;
-            font-size: 1.2rem;
-        }
-
-        /* SUBSECTION TITLE */
-        .subsection-header {
-            text-align: center;
-            margin: 3rem 0 2rem;
-        }
-
-        .subsection-title {
-            font-size: 1.6rem;
-            color: var(--secondary);
-            font-weight: 800;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .subsection-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-
-        /* JOINT ORGANIZING SECRETARIES */
-        .joint-secretaries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .secretary-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8f1 100%);
-            border-radius: 16px;
-            padding: 2rem;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .secretary-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 35px rgba(46, 125, 50, 0.2);
-            border-left-width: 8px;
-        }
-
-        .secretary-icon {
-            font-size: 2.5rem;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-        }
-
-        .secretary-info {
-            flex: 1;
-        }
-
-        .secretary-name {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1.15rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .secretary-role {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 500;
-        }
-
-        /* COORDINATORS */
-        .coordinator-category {
-            margin-bottom: 3rem;
-        }
-
-        .category-label {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: var(--white);
-            padding: 0.6rem 1.5rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+        .leadership-grid {
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         }
 
         .coordinators-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
         }
 
-        .coordinator-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8f1 100%);
-            border-radius: 16px;
-            padding: 2rem;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        nav {
+          flex-direction: column;
+          gap: 1rem;
         }
 
-        .coordinator-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 8px 30px rgba(255, 193, 7, 0.2);
-            border-left-width: 6px;
+        .section-title h2 {
+          font-size: 2rem;
+        }
+        .steering-title {
+          font-size: 1.5rem;
         }
 
-        .coordinator-icon {
-            font-size: 2rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        .steering-section {
+          padding: 2rem 1.5rem;
         }
 
-        .coordinator-info {
-            flex: 1;
+        section {
+          padding: 2rem 1.5rem;
         }
 
-        .coordinator-name {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
+        .leadership-grid {
+          grid-template-columns: 1fr;
         }
-
-        .coordinator-role {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        /* STUDENT SECRETARIES */
-        .student-secretaries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .student-card {
-            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 3px solid var(--accent);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            transition: all 0.4s;
-            text-align: center;
-        }
-
-        .student-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(255, 193, 7, 0.25);
-        }
-
-        .student-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-        }
-
-        .student-name {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .student-role {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .student-program {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 0.3rem;
-        }
-
-        /* ADVISORY COMMITTEES */
-        .committee-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
-        
-        .committee-list {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            max-height: 600px;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .committee-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .committee-list::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        .committee-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .committee-list::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-        }
-        
-        .committee-list h3 {
-            position: sticky;
-            top: 0;
-            background: var(--white);
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--primary);
-            margin-bottom: 20px;
-            color: var(--secondary);
-            font-size: 1.4rem;
-            z-index: 10;
-            font-weight: 800;
-        }
-
-        .committee-list ul li {
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            border-bottom: 1px dashed #eee;
-            padding: 12px;
-            border-radius: 8px;
-            transition: all 0.3s;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .committee-list ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0.5rem;
-            color: var(--primary);
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .committee-list ul li:hover::before {
-            opacity: 1;
-        }
-
-        .committee-list ul li:hover {
-            background: linear-gradient(90deg, rgba(46, 125, 50, 0.08), transparent);
-            transform: translateX(8px);
-            border-left: 3px solid var(--primary);
-        }
-
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, var(--dark), #1a1a1a);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 968px) {
-            .committee-container {
-                grid-template-columns: 1fr;
-            }
-
-            .leadership-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            }
-
-            .coordinators-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { 
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .section-title h2 { font-size: 2rem; }
-            .steering-title { font-size: 1.5rem; }
-            
-            .steering-section {
-                padding: 2rem 1.5rem;
-            }
-
-            section {
-                padding: 2rem 1.5rem;
-            }
-
-            .leadership-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">FoodXplore'25</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="themes.html">Themes</a></li>
-                <li><a href="registration.html">Registration</a></li>
-                <li><a href="committee.html">Committees</a></li>
-                <li><a href="venue.html">Venue</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="logo">FoodXplore'25</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="themes.html">Themes</a></li>
+          <li><a href="abstract.html">Abstract</a></li>
+          <li><a href="registration.html">Registration</a></li>
+          <li><a href="committee.html">Committees</a></li>
+          <li><a href="venue.html">Venue</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <section style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9);">
-        <div class="section-title">
-            <h2>Conference Committees</h2>
-            <div class="line"></div>
+    <section style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)">
+      <div class="section-title">
+        <h2>Conference Committees</h2>
+        <div class="line"></div>
+      </div>
+
+      <!-- STEERING COMMITTEE -->
+      <div class="steering-section">
+        <h2 class="steering-title">🌾 Conference Steering Committee</h2>
+
+        <!-- TOP 4 LEADERSHIP ROLES -->
+        <div class="leadership-grid">
+          <div class="leadership-card">
+            <div class="role-badge">Chief Patron</div>
+            <div class="leadership-name">Dr. R. Thamizh Vendan</div>
+            <div class="leadership-title">
+              Acting Vice-Chancellor & Registrar
+            </div>
+          </div>
+          <div class="leadership-card">
+            <div class="role-badge">Co-Patron</div>
+            <div class="leadership-name">Dr. M. Raveendran</div>
+            <div class="leadership-title">Director of Research</div>
+          </div>
+          <div class="leadership-card">
+            <div class="role-badge">Convener</div>
+            <div class="leadership-name">Dr. A. Raviraj</div>
+            <div class="leadership-title">Dean, AEC & RI</div>
+          </div>
+          <div class="leadership-card">
+            <div class="role-badge">Organizing Secretary</div>
+            <div class="leadership-name">Dr. M. Balakrishnan</div>
+            <div class="leadership-title">Professor and Head (FPE)</div>
+          </div>
         </div>
 
-        <!-- STEERING COMMITTEE -->
-        <div class="steering-section">
-            <h2 class="steering-title">🌾 Conference Steering Committee</h2>
-            
-            <!-- TOP 4 LEADERSHIP ROLES -->
-            <div class="leadership-grid">
-                <div class="leadership-card">
-                    <div class="role-badge">Chief Patron</div>
-                    <div class="leadership-name">Dr. R. Thamizh Vendan</div>
-                    <div class="leadership-title">Acting Vice-Chancellor & Registrar</div>
-                </div>
-                <div class="leadership-card">
-                    <div class="role-badge">Co-Patron</div>
-                    <div class="leadership-name">Dr. M. Raveendran</div>
-                    <div class="leadership-title">Director of Research</div>
-                </div>
-                <div class="leadership-card">
-                    <div class="role-badge">Convener</div>
-                    <div class="leadership-name">Dr. A. Raviraj</div>
-                    <div class="leadership-title">Dean, AEC & RI</div>
-                </div>
-                <div class="leadership-card">
-                    <div class="role-badge">Organizing Secretary</div>
-                    <div class="leadership-name">Dr. M. Balakrishnan</div>
-                    <div class="leadership-title">Professor and Head (FPE)</div>
-                </div>
-            </div>
+        <div class="section-divider"></div>
 
-            <div class="section-divider"></div>
-
-            <!-- JOINT ORGANIZING SECRETARIES -->
-            <div class="subsection-header">
-                <h3 class="subsection-title">Joint Organizing Secretaries</h3>
+        <!-- JOINT ORGANIZING SECRETARIES -->
+        <div class="subsection-header">
+          <h3 class="subsection-title">Joint Organizing Secretaries</h3>
+        </div>
+        <div class="joint-secretaries-grid">
+          <div class="secretary-card">
+            <div class="secretary-icon"></div>
+            <div class="secretary-info">
+              <div class="secretary-name">Dr. A. Ramalakshmi</div>
+              <div class="secretary-role">Professor</div>
             </div>
-            <div class="joint-secretaries-grid">
-                <div class="secretary-card">
-                    <div class="secretary-icon"></div>
-                    <div class="secretary-info">
-                        <div class="secretary-name">Dr. A. Ramalakshmi</div>
-                        <div class="secretary-role">Professor</div>
-                    </div>
-                </div>
-                <div class="secretary-card">
-                    <div class="secretary-icon"></div>
-                    <div class="secretary-info">
-                        <div class="secretary-name">Dr. M. Anand</div>
-                        <div class="secretary-role">Associate Professor</div>
-                    </div>
-                </div>
+          </div>
+          <div class="secretary-card">
+            <div class="secretary-icon"></div>
+            <div class="secretary-info">
+              <div class="secretary-name">Dr. M. Anand</div>
+              <div class="secretary-role">Associate Professor</div>
             </div>
-
-            <div class="section-divider"></div>
-
-            <!-- COORDINATORS -->
-            <div class="subsection-header">
-                <h3 class="subsection-title">Co-ordinators</h3>
-            </div>
-
-            <!-- Professors and Heads -->
-            <div class="coordinator-category">
-               
-                <div class="coordinators-grid">
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. R. Kavitha</div>
-                            <div class="coordinator-role">Professor and Head (FMPE)</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. Balaji Kannan</div>
-                            <div class="coordinator-role">Professor and Head (SWCE)</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. D. Ramesh</div>
-                            <div class="coordinator-role">Professor and Head (REE)</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. S. Karthikeyan</div>
-                            <div class="coordinator-role">Professor and Head (CPHT)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Professors and Assistant Professors -->
-            <div class="coordinator-category">
-                <div ></div>
-                <div class="coordinators-grid">
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. V. Thirupathi</div>
-                            <div class="coordinator-role">Professor</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. T. Pandiarajan</div>
-                            <div class="coordinator-role">Professor</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. P. Sudha</div>
-                            <div class="coordinator-role">Assistant Professor</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. G. Amuthaselvi</div>
-                            <div class="coordinator-role">Assistant Professor</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. S. Parveen</div>
-                            <div class="coordinator-role">Assistant Professor</div>
-                        </div>
-                    </div>
-                    <div class="coordinator-card">
-                        <div class="coordinator-icon"></div>
-                        <div class="coordinator-info">
-                            <div class="coordinator-name">Dr. K. Gurusamy</div>
-                            <div class="coordinator-role">Assistant Professor</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider"></div>
-
-            <!-- STUDENT SECRETARIES -->
-            <div class="subsection-header">
-                <h3 class="subsection-title">Student Secretaries</h3>
-            </div>
-            <div class="student-secretaries-grid">
-                <div class="student-card">
-                    <div class="student-icon"></div>
-                    <div class="student-name">Mr. P. Vijayakumar</div>
-                    <div class="student-role">Student Secretary</div>
-                    <div class="student-program">Final Year B.Tech (Food Technology)</div>
-                </div>
-                <div class="student-card">
-                    <div class="student-icon"></div>
-                    <div class="student-name">Ms. K. S. Harshinie</div>
-                    <div class="student-role">Student Secretary</div>
-                    <div class="student-program">Final Year B.Tech (Food Technology)</div>
-                </div>
-            </div>
+          </div>
         </div>
 
-        <!-- ADVISORY COMMITTEES -->
-        <div class="section-title" style="margin-top: 3rem;">
-            <h2>Conference Advisory Committees</h2>
-            <div class="line"></div>
+        <div class="section-divider"></div>
+
+        <!-- COORDINATORS -->
+        <div class="subsection-header">
+          <h3 class="subsection-title">Co-ordinators</h3>
         </div>
 
-        <div class="committee-container">
-            <!-- INTERNATIONAL ADVISORY COMMITTEE -->
-            <div class="committee-list">
-                <h3>International Advisory Committee</h3>
-                <ul>
-            <li>Dr. Venkatesh Meda, Professor and Graduate Chair (BLE), Chemical & Biological Engineering, The University of Saskatchewan, Canada</li>
-            <li>Dr. R. P. Kingsly Ambrose, Professor, Department of Agricultural and Biological Engineering, Purdue University, West Lafayette, US</li>
-            <li>Dr. Jong-Whan Rhim, Professor, Department of Food and Nutrition, Kyung Hee University, Seoul, South Korea</li>
-            <li>Dr. V. M. Balasubramaniam, Professor, The University of Georgia, US</li>
+        <!-- Professors and Heads -->
+        <div class="coordinator-category">
+          <div class="coordinators-grid">
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. R. Kavitha</div>
+                <div class="coordinator-role">Professor and Head (FMPE)</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. Balaji Kannan</div>
+                <div class="coordinator-role">Professor and Head (SWCE)</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. D. Ramesh</div>
+                <div class="coordinator-role">Professor and Head (REE)</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. S. Karthikeyan</div>
+                <div class="coordinator-role">Professor and Head (CPHT)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professors and Assistant Professors -->
+        <div class="coordinator-category">
+          <div></div>
+          <div class="coordinators-grid">
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. V. Thirupathi</div>
+                <div class="coordinator-role">Professor</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. T. Pandiarajan</div>
+                <div class="coordinator-role">Professor</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. P. Sudha</div>
+                <div class="coordinator-role">Assistant Professor</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. G. Amuthaselvi</div>
+                <div class="coordinator-role">Assistant Professor</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. S. Parveen</div>
+                <div class="coordinator-role">Assistant Professor</div>
+              </div>
+            </div>
+            <div class="coordinator-card">
+              <div class="coordinator-icon"></div>
+              <div class="coordinator-info">
+                <div class="coordinator-name">Dr. K. Gurusamy</div>
+                <div class="coordinator-role">Assistant Professor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- STUDENT SECRETARIES -->
+        <div class="subsection-header">
+          <h3 class="subsection-title">Student Secretaries</h3>
+        </div>
+        <div class="student-secretaries-grid">
+          <div class="student-card">
+            <div class="student-icon"></div>
+            <div class="student-name">Mr. P. Vijayakumar</div>
+            <div class="student-role">Student Secretary</div>
+            <div class="student-program">
+              Final Year B.Tech (Food Technology)
+            </div>
+          </div>
+          <div class="student-card">
+            <div class="student-icon"></div>
+            <div class="student-name">Ms. K. S. Harshinie</div>
+            <div class="student-role">Student Secretary</div>
+            <div class="student-program">
+              Final Year B.Tech (Food Technology)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVISORY COMMITTEES -->
+      <div class="section-title" style="margin-top: 3rem">
+        <h2>Conference Advisory Committees</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="committee-container">
+        <!-- INTERNATIONAL ADVISORY COMMITTEE -->
+        <div class="committee-list">
+          <h3>International Advisory Committee</h3>
+          <ul>
+            <li>
+              Dr. Digvir S. Jayas, President and Vice Chancellor, University of
+              Lethbridge, Alberta, Canada
+            </li>
+            <li>
+              Dr. Venkatesh Meda, Professor and Graduate Chair, Chemical &
+              Biological Engineering, The University of Saskatchewan, Canada
+            </li>
+            <li>
+              Dr. R. P. Kingsly Ambrose, Professor, Department of Agricultural
+              and Biological Engineering, Purdue University, West Lafayette, USA
+            </li>
+            <li>
+              Dr. Jong-Whan Rhim, Professor, Department of Food and Nutrition,
+              Kyung Hee University, Seoul, South Korea
+            </li>
+            <li>
+              Dr. Sundaram Gunasekaran, Professor, University of
+              Wisconsin-Madison, USA
+            </li>
+            <li>
+              Dr. V. M. Balasubramaniam, Professor, The University of Georgia,
+              USA
+            </li>
+            <li>
+              Dr. Kumar Mallikarjunan, Director, Graduate Studies, University of
+              Minnesota, USA
+            </li>
+            <li>
+              Dr. Kasiviswanathan Muthukumarappan, Professor, South Dakota State
+              University, USA
+            </li>
+            <li>
+              Dr. Igathinathane Cannayen, Professor, North Dakota State
+              University, USA
+            </li>
+            <li>
+              Dr. Buddhi P. Lamsal, Professor, Department of Food and
+              Bioprocessing, Iowa State University, USA
+            </li>
+            <li>
+              Dr. Jun Tae Kim, Professor, Kyung Hee University, Seoul, South
+              Korea
+            </li>
+            <li>
+              Dr. Chandrasekar Venkitasamy, Senior Environmental Scientist,
+              Department of Food and Agriculture, Davis, California, USA
+            </li>
+            <li>
+              Dr. Manickavasagan Annamalai, Professor, University of Guelph,
+              Canada
+            </li>
             <li>Dr. Ashutosh Singh, Professor, University of Guelph, Canada</li>
-            <li>Dr. Parameswaran Kumar Mallikarjunan, Director of Graduate Studies, University of Minnesota, US</li>
-            <li>Dr. Kasiviswanathan Muthukumarappan, Professor and Head, South Dakota State University, USA</li>
-            <li>Dr. Buddhi P. Lamsal, Professor, Department of Food and Bioprocessing, Iowa State University, USA</li>
-            <li>Dr. Sundaram Gunasekaran, Professor, University of Wisconsin-Madison, USA</li>
-            <li>Dr. Jun Tae Kim, Professor, Kyung Hee University, Seoul, South Korea</li>
-            <li>Dr. Chandrasekar Venkitasamy, Senior Environmental Scientist, Department of Food and Agriculture, Davis, California, US</li>
-            <li>Dr. Satyanarayan D, Associate Professor & Chair, Florida A&M University, US</li>
-            <li>Shri Dhanavel Gokulrajan, Senior Specialist, Nestle, Switzerland</li>
-            <li>Er. Sujala Balaji, COO, Climax Food, San Francisco, US</li>
-            <li>Dr. Digvir S. Jayas, President and Vice Chancellor, University of Lethbridge, Alberta, Canada</li>
-            <li>Dr. Manickavasagan Annamalai, Professor, University of Guelph, Canada</li>
-            <li>Dr. Johnselvakumar Lawrence, Lead Researcher, AGI SureTrack, USA</li>
-            <li>Dr. Sundar Bala, R&D Principal Engineer, Reckitt, Indiana, USA</li>
-            <li>Dr. Kathiravan Krishnamurthy, Associate Professor, Department of Food Science & Nutrition, Illinois Institute of Technology, USA</li>
-            <li>Dr. Mohan Raj, Head of Operations, Coles Group, Melbourne, Australia</li>
-        </ul>
-            </div>
-
-            <!-- NATIONAL ADVISORY COMMITTEE -->
-            <div class="committee-list">
-                <h3>National Advisory Committee</h3>
-                <ul>
-                    <li>Dr. Shyam Narayan Jha, DDG (Agrl. Engg.), ICAR, New Delhi</li>
-                    <li>Dr. K. Alagusundaram, Former DDG (Agrl. Engg.) & MD&CEO, TNAPEx, Chennai</li>
-                    <li>Dr. Nachiket Kotwaliwale, Director, ICAR-CIPHET, Ludhiana</li>
-                    <li>Dr. K. Narasiah, ADG(PE), ICAR, New Delhi</li>
-                    <li>Prof. V. Palanimuthu, Director, NIFTEM-T</li>
-                    <li>Dr. Abhijit Kar, Director, ICAR-NISA, Ranchi, Jharkhand</li>
-                    <li>Dr. R. Narendra Babu, Acting Vice-Chancellor, TANUVAS, Chennai</li>
-                    <li>Dr. C. Anandharamakrishnan, Director, CSIR-NIIST, Trivandrum</li>
-                    <li>Dr. N. C. Patel, Former Vice–Chancellor, AAU, Anand, Gujarat</li>
-                    <li>Dr. Harinder Singh Oberoi, Director, NIFTEM-K</li>
-                    <li>Dr. S. Patel, Former Dean, Agril. Engg., IGKV, Raipur</li>
-                    <li>Dr. V. V. Sreenarayanan, Former Dean, TNAU, Coimbatore</li>
-                    <li>Dr. N. Varadharaju, Former Dean, TNAU, Coimbatore</li>
-                    <li>Dr. K. Thangavel, Director, Center for Food Science and Technology</li>
-                    <li>Dr. R. Viswanathan, Professor (FPE) - Retired, TNAU, Coimbatore</li>
-                    <li>Dr. P. Rajkumar, Dean, AEC & RI, Kumulur</li>
-                    <li>Dr. S. Ganapathy, Professor (FPE) - Retired, TNAU, Coimbatore</li>
-                    <li>Prof. N. Venkatachalapathy, Dean, NIFTEM-T, Tanjore</li>
-                    <li>Dr. S. Shanmugasundaram, Registrar, NIFTEM-T, Tanjore</li>
-                    <li>Dr. Devinder Dhingra, Principal Scientist, ICAR</li>
-                    <li>Dr. Sanjay K. Daash, Dean, CAET, OUAT, Bhubaneshwar</li>
-                    <li>Dr. D. C. Joshi, Former Vice Chancellor, Kota & Founder Dean, Gujarat</li>
-                    <li>Dr. Rajesh Kumar Vishwakarma, Acting PC, AICRP (PHET) & Pr. Scientist, ICAR-CIPHET, Ludhiana</li>
-                    <li>Dr. Sandeep Mann, Head of the Department, ICAR-CIPHET, Ludhiana</li>
-                    <li>Dr. Udaykumar Nidoni, Professor and Head, DPFE, UAS, Raichur, Karnataka</li>
-                    <li>Dr. M. R. Manikantan, Principal Scientist, ICAR-CPCRI, Kasaragod, Kerala</li>
-                    <li>Dr. Abhijith Borah, Principal Scientist, AAU, Jorhat</li>
-                    <li>Dr. M. V. Prince, Professor and Head, DPFE, KCAET, Tavanur</li>
-                    <li>Dr. K. P. Sudheer, Professor and Head, College of Agriculture, Vellayani</li>
-                    <li>Dr. M. S. Sajeev, Principal Scientist, ICAR-CTCRI, Thiruvananthapuram, Kerala</li>
-                    <li>Dr. Heartwin Amaladhas, Principal Scientist, ICAR-NDRI, Bengaluru</li>
-                    <li>Dr. Ravindra Naik, Principal Scientist, ICAR-CIAE, Coimbatore</li>
-                    <li>Dr. M. S. Alam, Principal Scientist, PAU, Ludhiana</li>
-                    <li>Dr. Manoj P. Samuel, Executive Director, CWRDM, Kozhikode</li>
-                    <li>Dr. Pankaj Singh Chauhan, Scientist, SHRI Cell, DST, New Delhi</li>
-                </ul>
-            </div>
+            <li>
+              Dr. Satyanaraya Dev, Professor & Chair, Florida A&M University,
+              USA
+            </li>
+            <li>
+              Dr. Karunanidhi Chinnadurai, Senior Manager - R&D Engg, HP Hood
+              LLC, USA
+            </li>
+            <li>
+              Dr. Johnselvakumar Lawrence, KS Lead Grain Researcher, Kansas, USA
+            </li>
+            <li>
+              Dr. Mohan Raj, Head of Operations, Coles Group, Melbourne,
+              Australia
+            </li>
+          </ul>
         </div>
+
+        <!-- NATIONAL ADVISORY COMMITTEE -->
+        <div class="committee-list">
+          <h3>National Advisory Committee</h3>
+          <ul>
+            <li>Dr. Shyam Narayan Jha, DDG (Agrl. Engg.), ICAR, New Delhi</li>
+            <li>Shri. R. Anand, Chief General Manager, NABARD, Chennai</li>
+            <li>Dr. K. Alagusundaram, MD & CEO, TNAPEx, Chennai</li>
+            <li>Dr. Nachiket Kotwaliwale, Director, ICAR-CIPHET, Ludhiana</li>
+            <li>Dr. K. Narasiah, ADG (PE), ICAR, New Delhi</li>
+            <li>Prof. V. Palanimuthu, Director, NIFTEM-Thanjavur</li>
+            <li>Dr. Abhijit Kar, Director, ICAR-NISA, Ranchi, Jharkhand</li>
+            <li>Dr. R. Narendra Babu, Vice Chancellor i/c, TANUVAS, Chennai</li>
+            <li>
+              Dr. N. C. Patel, Former Vice Chancellor, AAU, Anand, Gujarat
+            </li>
+            <li>
+              Dr. D. C. Joshi, Former Vice Chancellor, Kota Agriculture
+              University, Rajasthan
+            </li>
+            <li>
+              Dr. R. K. Vishwakarma, Project Coordinator, AICRP - PHET,
+              ICAR-CIPHET, Ludhiana
+            </li>
+            <li>
+              Mrs. G. Bhavani, Head, BIS, Coimbatore Branch Office, Coimbatore
+            </li>
+            <li>
+              Dr. V. V. Sreenarayanan, Former Dean, AEC & RI, TNAU, Coimbatore
+            </li>
+            <li>
+              Dr. Devinder Dhingra, Principal Scientist, Agrl. Engg. Division,
+              ICAR, New Delhi
+            </li>
+            <li>Dr. Sanjay K. Daash, Dean, CAET, OUAT, Bhubaneshwar</li>
+            <li>Dr. Prakash M Halami, Chief Scientist, CSIR-CFTRI, Mysore</li>
+            <li>
+              Dr. D. Balasubramanian, PS, ICAR–Directorate of Cashew Research,
+              Puttur
+            </li>
+            <li>Dr. N. Varadharaju, Former Dean, AEC & RI, TNAU, Coimbatore</li>
+            <li>
+              Dr. K. Thangavel, Director, Centre for Food Science and Tech.,
+              KITS, Coimbatore
+            </li>
+            <li>
+              Dr. R. Viswanathan, Former Professor and Head, TNAU, Coimbatore
+            </li>
+            <li>Dr. Sandeep Mann, Head, ICAR-CIPHET, Ludhiana</li>
+            <li>Dr. Ravindra Naik, Head, ICAR-CIAE, Coimbatore</li>
+            <li>
+              Dr. M. S. Baig, Associate Dean, Dr. NTR CFST, ANGRAU, Bapatla
+            </li>
+            <li>
+              Dr. Udaykumar Nidoni, Professor and University Head, DPFE, UAS,
+              Raichur
+            </li>
+            <li>
+              Dr. M. R. Manikantan, Principal Scientist, ICAR-CPCRI, Kasaragod
+            </li>
+            <li>
+              Dr. M. S. Sajeev, Principal Scientist, ICAR-CTCRI,
+              Thiruvananthapuram, Kerala
+            </li>
+            <li>Dr. M. V. Prince, Professor and Head, DPFE, KCAET, Tavanur</li>
+            <li>
+              Dr. K. P. Sudheer, Professor and Head, College of Agriculture,
+              KAU, Thrissur
+            </li>
+            <li>
+              Dr. Heartwin Amaladhas, Principal Scientist, ICAR-NDRI, Bengaluru
+            </li>
+            <li>
+              Dr. S. Haripriya, Professor, Pondicherry University, Puducherry
+            </li>
+            <li>
+              Dr. Pankaj Singh Chauhan, Scientist - C, SHRI Cell, DST, New Delhi
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <footer>
-        <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">&copy; 2026 FoodXplore '25 - International Symposium</p>
-        <p>Safe, Standard, Sustainable Food Processing</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">Department of Food Process Engineering, TNAU, Coimbatore</p>
+      <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
+        &copy; 2026 FoodXplore '25 - International Conference
+      </p>
+      <p>Safe, Standard, Sustainable Food Processing</p>
+      <p style="margin-top: 1rem; opacity: 0.8">
+        Department of Food Process Engineering, TNAU, Coimbatore
+      </p>
     </footer>
-    
-</body>
+  </body>
 </html>
