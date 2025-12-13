@@ -127,32 +127,30 @@
 
       /* LOGOS SECTION - Simple version */
       .hero-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+      }
 
-.logo-item {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
-}
+      .logo-item {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
 
-.logo-item img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-}
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      .logo-item img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+      }
 
       /* HERO */
       .hero {
@@ -211,7 +209,7 @@
       .hero-badge {
         background: linear-gradient(135deg, var(--accent), #ff9800);
         color: var(--dark);
-        padding: 0.7rem 1.5rem;
+        padding: 1.2rem 2.4rem;
         font-weight: bold;
         border-radius: 50px;
         display: inline-block;
@@ -226,13 +224,14 @@
           transform: scale(1);
         }
         50% {
-          transform: scale(1.05);
+          transform: scale(1.15);
         }
       }
 
       .hero-content h1 {
         font-size: 4rem;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         margin-bottom: 1rem;
         letter-spacing: 3px;
         text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
@@ -283,7 +282,6 @@
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2.5rem;
       }
-
       .card {
         background: var(--white);
         padding: 2.5rem;
@@ -294,7 +292,6 @@
         position: relative;
         overflow: hidden;
       }
-
       .card::before {
         content: "";
         position: absolute;
@@ -310,12 +307,10 @@
         border-radius: 50%;
         transform: translate(50%, -50%);
       }
-
       .card:hover {
         transform: translateY(-10px);
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
       }
-
       .card-icon {
         width: 80px;
         height: 80px;
@@ -330,7 +325,6 @@
         position: relative;
         z-index: 1;
       }
-
       .card h3 {
         color: var(--secondary);
         margin-bottom: 1rem;
@@ -339,9 +333,44 @@
         z-index: 1;
       }
 
+      /* READ MORE FEATURE */
       .card p {
-        position: relative;
-        z-index: 1;
+        max-height: 180px; /* visible height */
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .card:not(.expanded)::after {
+        content: "";
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          var(--white)
+        );
+      }
+
+      .card.expanded p {
+        max-height: 2000px; /* enough to show full text */
+      }
+
+      .read-more-btn {
+        margin-top: 1.2rem;
+        display: inline-block;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--primary);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      .read-more-btn:hover {
+        text-decoration: underline;
       }
 
       /* IMAGES SECTION */
@@ -511,6 +540,39 @@
         margin: 0.5rem 0;
       }
 
+      @media (max-width: 1024px) {
+        .about-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card {
+          padding: 2rem;
+        }
+      }
+      @media (max-width: 600px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          padding: 1.8rem 1.6rem;
+        }
+
+        .card-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 2rem;
+        }
+
+        .card h3 {
+          font-size: 1.25rem;
+        }
+
+        .card p {
+          font-size: 0.92rem;
+        }
+      }
+
       /* RESPONSIVE */
       @media (max-width: 1024px) {
         .hero-logos {
@@ -594,6 +656,7 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <nav>
@@ -617,24 +680,38 @@
           <div class="logo-item">
             <img src="assets/logos/TNAU-Logo.png" alt="AICTE Logo" />
           </div>
-          <div class="logo-item" style="padding: 0.5em;">
+          <div class="logo-item" style="padding: 0.5em">
             <img src="assets/logos/FINAL-FOOD-CLUB.png" alt="ICAR Logo" />
           </div>
           <div class="logo-item">
             <img src="assets/logos/aecri-logow.png" alt="TNAU Logo" />
           </div>
-          <div class="logo-item" style=" padding: 0.5rem">
-            <img src="assets/logos/images (2) (5).png" alt="Agricultural Research Logo" />
+          <div class="logo-item" style="padding: 0.5rem">
+            <img
+              src="assets/logos/images (2) (5).png"
+              alt="Agricultural Research Logo"
+            />
           </div>
         </div>
 
-        <span class="hero-badge">🌍 International Conference 2026</span>
-        <h2>Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow</h2>
-        <hr style="width: 60px; border: 2px solid var(--accent); margin: 1.5rem auto" />    
+        <span class="hero-badge" style="font-size: 2rem"
+          >🌍 International Conference 2026</span
+        >
+        <h2>
+          Safe, Standard and Sustainable Food Processing for a Healthier
+          Tomorrow
+        </h2>
+        <hr
+          style="
+            width: 60px;
+            border: 2px solid var(--accent);
+            margin: 1.5rem auto;
+          "
+        />
         <h1>FoodXplore '25</h1>
         <p style="font-size: 1.7rem; margin: 2.5rem 0">
-           <strong>January 29 & 30, 2026</strong><br />
-           Tamil Nadu Agricultural University (TNAU), Coimbatore, India
+          <strong>January 29 & 30, 2026</strong><br />
+          Tamil Nadu Agricultural University (TNAU), Coimbatore, India
         </p>
         <a
           href="https://forms.gle/giCMUTttj3yvaAQx7"
@@ -655,31 +732,88 @@
           <div class="card-icon">🎓</div>
           <h3>About TNAU</h3>
           <p>
-            Established in 1971, Tamil Nadu Agricultural University is a
-            globally recognized center of excellence. It offers 14 UG, 34 PG,
-            and 29 doctoral degrees, serving as a hub for agricultural
-            innovation with 19 constituent colleges and 40 research stations.
+            Tamil Nadu Agricultural University (TNAU), established in 1971 and
+            headquartered in Coimbatore, is a globally recognized center of
+            excellence in agricultural education, research, and extension. The
+            university offers a comprehensive portfolio of academic programs,
+            including 14 undergraduate, 34 postgraduate, and 29 doctoral
+            degrees, encompassing disciplines such as agriculture, horticulture,
+            forestry, agricultural engineering, and allied sciences, thereby
+            serving as a pivotal hub for agricultural innovation in Tamil Nadu.
+            Tamil Nadu Agricultural University (TNAU) operates through a robust
+            network of 19 constituent colleges, 40 research stations, and 15
+            Krishi Vigyan Kendras (KVKs), addressing contemporary agricultural
+            challenges and advancing sustainable farming practices. Emphasizing
+            technology-driven agriculture, TNAU collaborates with global
+            institutions and industries to develop innovative solutions aimed at
+            enhancing agricultural productivity and societal benets. Renowned
+            for its farmer-centric approach and pioneering research, the
+            university serves as a critical center for knowledge dissemination
+            and technological advancements, driving progress in the agricultural
+            sector.
           </p>
+          <button class="read-more-btn">Read more</button>
         </div>
         <div class="card">
           <div class="card-icon">🔬</div>
           <h3>About AEC & RI</h3>
           <p>
             Agricultural Engineering College and Research Institute is a leading
-            institution in India. It conducts advanced research in farm
-            machinery, food processing, renewable energy, and environmental
-            engineering to enhance sustainability.
+            institution for agricultural engineering in India, recognized for
+            its academic excellence and research contributions. Offers
+            undergraduate, postgraduate, and doctoral programs in Agricultural
+            Engineering and allied elds. Focuses on equipping students with
+            knowledge and skills in modern agricultural practices, engineering
+            techniques, and automation. AEC & RI conducts advanced research in
+            soil and water conservation, farm machinery, post-harvest
+            technology, food processing, renewable energy, and environmental
+            engineering to enhance agricultural sustainability and productivity.
+            Department of Food Process Engineering, established in 1974 as the
+            Department of Agricultural Processing, is a distinguished division
+            of the College of Agricultural Engineering, TNAU, Coimbatore.
+            Renowned for its pioneering advancements, the department specializes
+            in the development of advanced post-harvest equipment and innovative
+            food processing technologies designed to benet the farming
+            community, the food industry, and allied sectors. Supported by a
+            research-driven faculty, the department has been recognized by the
+            Indian Council of Agricultural Research (ICAR) as a premier centre
+            under the All India Coordinated Research Project (AICRP) on Post
+            Harvest Engineering and Technology and received “Best Centre Award”
+            for the past two years. To date, the department has successfully
+            commercialized and disseminated over 50 post-harvest technologies
+            and equipment, signicantly beneting the agricultural and
+            industrial sectors. Enhancing its global presence, the department
+            has established academic collaboration with premier national and
+            international institutions viz., University of California, Purdue
+            University, McGill University, University of Saskatchewan, Kyung Hee
+            University, Amrita Vishwa Vidyapeetham, ICAR-CIPHET, BIS and KVIC
+            etc., enabling advanced collaborative research in food processing
+            and technology
           </p>
+          <button class="read-more-btn">Read more</button>
         </div>
         <div class="card">
           <div class="card-icon">🏆</div>
-          <h3>Dept of Food Process Engineering</h3>
+          <h3>About Conference</h3>
           <p>
-            Established in 1974, the department received the "Best Centre Award
-            - First Position" in Nov 2024. It has commercialized over 50
-            post-harvest technologies and collaborates with institutions like
-            ICAR-CIPHET and Amrita Vishwa Vidyapeetham.
+            The International Conference on “Safe, Standard and Sustainable Food
+            Processing for a Healthier Tomorrow” FoodXplore'25 serves as a
+            vibrant platform uniting researchers, academicians, industry
+            leaders, policymakers, students, and stakeholders from across the
+            globe. This two-day event is dedicated to fostering
+            interdisciplinary collaboration and catalyzing transformative
+            innovations in food processing that align with global goals for
+            health, safety, and sustainability. The conference addresses
+            critical challenges in the food sector, including the reduction of
+            post-harvest losses, the adoption of standardized and safe
+            processing protocols, and the integration of sustainable
+            technologies to ensure long-term nutritional security. With a strong
+            emphasis on safe and standardized practices, the event will explore
+            the latest advancements in food safety systems, regulatory
+            frameworks, and quality assurance mechanisms that are essential for
+            consumer trust and public health.
           </p>
+          <button class="read-more-btn">Read more</button>
         </div>
       </div>
 
@@ -689,8 +823,7 @@
             src="https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg"
             alt="Food Technology"
           />
-          <div class="image-overlay">
-          </div>
+          <div class="image-overlay"></div>
         </div>
 
         <div class="image-card">
@@ -698,14 +831,12 @@
             src="assets/WhatsApp Image 2025-12-06 at 11.30.36_7a287c18.jpg"
             alt="Research Laboratory"
           />
-          <div class="image-overlay">
-          </div>
+          <div class="image-overlay"></div>
         </div>
 
         <div class="image-card">
           <img src="assets/tnauri[1].jpg" alt="Sustainable Agriculture" />
-          <div class="image-overlay">
-          </div>
+          <div class="image-overlay"></div>
         </div>
       </div>
     </section>
@@ -823,10 +954,25 @@
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
         &copy; 2026 FoodXplore '25 - International Conference
       </p>
-      <p>Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow</p>
+      <p>
+        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+      </p>
       <p style="margin-top: 1rem; opacity: 0.8">
         Department of Food Process Engineering, TNAU, Coimbatore
       </p>
     </footer>
+
+    <script>
+      document.querySelectorAll(".read-more-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".card");
+          card.classList.toggle("expanded");
+
+          btn.textContent = card.classList.contains("expanded")
+            ? "Read less"
+            : "Read more";
+        });
+      });
+    </script>
   </body>
 </html>

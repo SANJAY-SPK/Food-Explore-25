@@ -204,9 +204,10 @@
       }
 
       /* TOP LEADERSHIP - 4 Main Roles */
+      /* TOP LEADERSHIP - 4 Main Roles */
       .leadership-grid {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 4 cards in one row */
         gap: 2rem;
         margin-bottom: 3.5rem;
       }
@@ -373,67 +374,66 @@
       }
 
       /* WRAPPER FOR TWO COLUMNS */
-.coordinator-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: start;
-}
+      .coordinator-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
 
-/* Ensure each category fills its column */
-.coordinator-category {
-  margin-bottom: 2rem;
-}
+      /* Ensure each category fills its column */
+      .coordinator-category {
+        margin-bottom: 2rem;
+      }
 
-/* Grid for cards inside each category */
-.coordinators-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
+      /* Grid for cards inside each category */
+      .coordinators-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
 
-/* Coordinator card styling (unchanged) */
-.coordinator-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f8f1 100%);
-  border-radius: 16px;
-  padding: 1.5rem;
-  border-left: 5px solid var(--primary);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-  display: flex;
-  gap: 1rem;
-  transition: 0.3s;
-}
+      /* Coordinator card styling (unchanged) */
+      .coordinator-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f8f1 100%);
+        border-radius: 16px;
+        padding: 1.5rem;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 1rem;
+        transition: 0.3s;
+      }
 
-/* HOVER EFFECT */
-.coordinator-card:hover {
-  transform: translateX(8px);
-}
+      /* HOVER EFFECT */
+      .coordinator-card:hover {
+        transform: translateX(8px);
+      }
 
-/* Icon */
-.coordinator-icon {
-  font-size: 2rem;
-}
+      /* Icon */
+      .coordinator-icon {
+        font-size: 2rem;
+      }
 
-.coordinator-name{
-  font-weight: 700;
+      .coordinator-name {
+        font-weight: 700;
         color: var(--dark);
         font-size: 1.15rem;
         margin-bottom: 0.4rem;
-}
+      }
 
-.coordinator-role {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 600;
-}
+      .coordinator-role {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 600;
+      }
 
-/* RESPONSIVENESS */
-@media (max-width: 768px) {
-  .coordinator-section {
-    grid-template-columns: 1fr;
-  }
-}
-
+      /* RESPONSIVENESS */
+      @media (max-width: 768px) {
+        .coordinator-section {
+          grid-template-columns: 1fr;
+        }
+      }
 
       /* STUDENT SECRETARIES */
       .student-secretaries-grid {
@@ -573,6 +573,29 @@
         }
       }
 
+      /* IMAGE WRAPPER */
+      .leadership-img {
+        width: 120px;
+        height: 120px;
+        margin: 1rem auto;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--primary);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* IMAGE ITSELF */
+      .leadership-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ALIGN TEXT CENTER */
+      .leadership-card {
+        text-align: center;
+      }
+
       /* FOOTER */
       footer {
         background: linear-gradient(135deg, var(--dark), #1a1a1a);
@@ -597,6 +620,25 @@
 
         .coordinators-grid {
           grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 768px) {
+        .leadership-img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+      /* Tablets */
+      @media (max-width: 1024px) {
+        .leadership-grid {
+          grid-template-columns: repeat(2, 1fr); /* 2 x 2 */
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        .leadership-grid {
+          grid-template-columns: 1fr; /* Stack */
         }
       }
 
@@ -664,23 +706,46 @@
         <div class="leadership-grid">
           <div class="leadership-card">
             <div class="role-badge">Chief Patron</div>
+
+            <div class="leadership-img">
+              <img src="assets/leaders/01.jpg" alt="Dr. R. Thamizh Vendan" />
+            </div>
+
             <div class="leadership-name">Dr. R. Thamizh Vendan</div>
             <div class="leadership-title">
               Acting Vice-Chancellor & Registrar
             </div>
           </div>
+
           <div class="leadership-card">
             <div class="role-badge">Co-Patron</div>
+
+            <div class="leadership-img">
+              <img src="assets/leaders/04.jpg" alt="Dr. M. Raveendran" />
+            </div>
+
             <div class="leadership-name">Dr. M. Raveendran</div>
             <div class="leadership-title">Director of Research</div>
           </div>
+
           <div class="leadership-card">
             <div class="role-badge">Convener</div>
+
+            <div class="leadership-img">
+              <img src="assets/leaders/03.jpg" alt="Dr. A. Raviraj" />
+            </div>
+
             <div class="leadership-name">Dr. A. Raviraj</div>
             <div class="leadership-title">Dean, AEC & RI</div>
           </div>
+
           <div class="leadership-card">
             <div class="role-badge">Organizing Secretary</div>
+
+            <div class="leadership-img">
+              <img src="assets/leaders/02.jpg" alt="Dr. M. Balakrishnan" />
+            </div>
+
             <div class="leadership-name">Dr. M. Balakrishnan</div>
             <div class="leadership-title">Professor and Head (FPE)</div>
           </div>
@@ -712,109 +777,101 @@
         <div class="section-divider"></div>
 
         <!-- COORDINATORS -->
-<div class="subsection-header">
-  <h3 class="subsection-title">Co-ordinators</h3>
-</div>
-
-<div class="coordinator-section">
-
-  <!-- LEFT COLUMN – Professors & Heads -->
-  <div class="coordinator-category">
-
-    <div class="coordinators-grid">
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. R. Kavitha</div>
-          <div class="coordinator-role">Professor and Head (FMPE)</div>
+        <div class="subsection-header">
+          <h3 class="subsection-title">Co-ordinators</h3>
         </div>
-      </div>
 
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. Balaji Kannan</div>
-          <div class="coordinator-role">Professor and Head (SWCE)</div>
+        <div class="coordinator-section">
+          <!-- LEFT COLUMN – Professors & Heads -->
+          <div class="coordinator-category">
+            <div class="coordinators-grid">
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. R. Kavitha</div>
+                  <div class="coordinator-role">Professor and Head (FMPE)</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. Balaji Kannan</div>
+                  <div class="coordinator-role">Professor and Head (SWCE)</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. D. Ramesh</div>
+                  <div class="coordinator-role">Professor and Head (REE)</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. S. Karthikeyan</div>
+                  <div class="coordinator-role">Professor and Head (CPHT)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN – Professors & Assistant Professors -->
+          <div class="coordinator-category">
+            <div class="coordinators-grid">
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. V. Thirupathi</div>
+                  <div class="coordinator-role">Professor</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. T. Pandiarajan</div>
+                  <div class="coordinator-role">Professor</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. P. Sudha</div>
+                  <div class="coordinator-role">Assistant Professor</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. G. Amuthaselvi</div>
+                  <div class="coordinator-role">Assistant Professor</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. S. Parveen</div>
+                  <div class="coordinator-role">Assistant Professor</div>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-icon"></div>
+                <div class="coordinator-info">
+                  <div class="coordinator-name">Dr. K. Gurusamy</div>
+                  <div class="coordinator-role">Assistant Professor</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. D. Ramesh</div>
-          <div class="coordinator-role">Professor and Head (REE)</div>
-        </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. S. Karthikeyan</div>
-          <div class="coordinator-role">Professor and Head (CPHT)</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- RIGHT COLUMN – Professors & Assistant Professors -->
-  <div class="coordinator-category">
-    <div class="coordinators-grid">
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. V. Thirupathi</div>
-          <div class="coordinator-role">Professor</div>
-        </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. T. Pandiarajan</div>
-          <div class="coordinator-role">Professor</div>
-        </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. P. Sudha</div>
-          <div class="coordinator-role">Assistant Professor</div>
-        </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. G. Amuthaselvi</div>
-          <div class="coordinator-role">Assistant Professor</div>
-        </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. S. Parveen</div>
-          <div class="coordinator-role">Assistant Professor</div>
-        </div>
-      </div>
-
-      <div class="coordinator-card">
-        <div class="coordinator-icon"></div>
-        <div class="coordinator-info">
-          <div class="coordinator-name">Dr. K. Gurusamy</div>
-          <div class="coordinator-role">Assistant Professor</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
 
         <div class="section-divider"></div>
 
@@ -1010,7 +1067,9 @@
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
         &copy; 2026 FoodXplore '25 - International Conference
       </p>
-      <p>Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow</p>
+      <p>
+        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+      </p>
       <p style="margin-top: 1rem; opacity: 0.8">
         Department of Food Process Engineering, TNAU, Coimbatore
       </p>
