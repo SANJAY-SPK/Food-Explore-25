@@ -121,8 +121,8 @@
       }
 
       .cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
       }
 
       /* LOGOS SECTION - Simple version */
@@ -226,6 +226,37 @@
         50% {
           transform: scale(1.15);
         }
+      }
+      .hero-badge-text {
+        font-size: 2rem;
+      }
+
+      .hero-cta-group {
+        position: relative;
+      }
+
+      .hero-side-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: var(--white) !important;
+        padding: 0.7rem 1.8rem;
+        border-radius: 30px;
+        transition: all 0.3s;
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+      }
+
+      .hero-side-btn:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      .hero-side-btn:first-child {
+        left: 5px;
+      }
+
+      .hero-side-btn:last-child {
+        right: 5px;
       }
 
       .hero-content h1 {
@@ -539,7 +570,6 @@
       footer p {
         margin: 0.5rem 0;
       }
-
       @media (max-width: 1024px) {
         .about-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -547,6 +577,96 @@
 
         .card {
           padding: 2rem;
+        }
+
+        .hero-logos {
+          gap: 2rem;
+        }
+
+        .logo-item {
+          min-width: 130px;
+          padding: 1rem;
+        }
+
+        .logo-item img {
+          max-width: 100px;
+        }
+      }
+      @media (max-width: 768px) {
+        /* HERO */
+        .hero {
+          flex-direction: column;
+          padding: 2.5rem 1.5rem;
+        }
+
+        .hero-cta-group {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.2rem;
+        }
+
+        .hero-downloads {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .hero-side-btn {
+          position: static; /* 🔥 VERY IMPORTANT */
+          transform: none;
+          width: auto;
+          padding: 0.8rem 1.8rem;
+          font-size: 1rem;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .hero-content h2 {
+          font-size: 2.2rem;
+        }
+
+        .hero-badge-text {
+          font-size: 1rem;
+        }
+
+        /* NAV */
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        /* GRIDS */
+        .dates-container,
+        .committee-container,
+        .venue-section,
+        .images-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* LOGOS */
+        .hero-logos {
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .logo-item {
+          min-width: 100px;
+          min-height: 80px;
+          padding: 0.8rem;
+        }
+
+        .logo-item img {
+          max-width: 80px;
+          max-height: 60px;
         }
       }
       @media (max-width: 600px) {
@@ -572,75 +692,10 @@
           font-size: 0.92rem;
         }
       }
-
-      /* RESPONSIVE */
-      @media (max-width: 1024px) {
-        .hero-logos {
-          gap: 2rem;
-        }
-
-        .logo-item {
-          min-width: 130px;
-          padding: 1rem;
-        }
-
-        .logo-item img {
-          max-width: 100px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .hero-content h1 {
-          font-size: 2.2rem;
-        }
-        .hero-content h2 {
-          font-size: 1.3rem;
-        }
-        .section-title h2 {
-          font-size: 2rem;
-        }
-
-        .dates-container,
-        .committee-container,
-        .venue-section,
-        .images-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-logos {
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .logo-item {
-          min-width: 100px;
-          min-height: 80px;
-          padding: 0.8rem;
-        }
-
-        .logo-item img {
-          max-width: 80px;
-          max-height: 60px;
-        }
-      }
-
       @media (max-width: 480px) {
         .hero-logos {
           gap: 0.8rem;
-          display: flex;
-          flex-direction: row;
+          flex-wrap: wrap;
         }
 
         .logo-item {
@@ -650,8 +705,8 @@
         }
 
         .logo-item img {
-          max-width: 100px;
-          max-height: 80px;
+          max-width: 70px;
+          max-height: 50px;
         }
       }
     </style>
@@ -694,13 +749,15 @@
           </div>
         </div>
 
-        <span class="hero-badge" style="font-size: 2rem"
-          >🌍 International Conference 2026</span
-        >
+        <span class="hero-badge">
+          <p class="hero-badge-text">🌍 International Conference 2026</p>
+        </span>
+
         <h2>
           Safe, Standard and Sustainable Food Processing for a Healthier
           Tomorrow
         </h2>
+
         <hr
           style="
             width: 60px;
@@ -708,17 +765,36 @@
             margin: 1.5rem auto;
           "
         />
+
         <h1>FoodXplore '25</h1>
+
         <p style="font-size: 1.7rem; margin: 2.5rem 0">
           <strong>January 29 & 30, 2026</strong><br />
           Tamil Nadu Agricultural University (TNAU), Coimbatore, India
         </p>
-        <a
-          href="https://forms.gle/giCMUTttj3yvaAQx7"
-          class="cta-btn"
-          style="font-size: 1.15rem; padding: 0.9rem 2.5rem"
-          >Register Now →</a
-        >
+        <div class="hero-cta-group">
+          <a href="https://forms.gle/giCMUTttj3yvaAQx7" class="cta-btn">
+            Register Now →
+          </a>
+
+          <div class="hero-downloads">
+            <a
+              href="assets/docs/Foodxplore'25 Brochure.pdf"
+              download
+              class="hero-side-btn"
+            >
+              ⬇ Brochure
+            </a>
+
+            <a
+              href="assets/docs/Foodxplore'25 Flyer.pdf"
+              download
+              class="hero-side-btn"
+            >
+              ⬇ Flyer
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
