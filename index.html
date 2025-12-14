@@ -310,7 +310,7 @@
       /* ABOUT */
       .about-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem;
       }
       .card {
@@ -570,6 +570,28 @@
       footer p {
         margin: 0.5rem 0;
       }
+
+      .download-toast {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: #fff;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        z-index: 3000;
+      }
+
+      .download-toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       @media (max-width: 1024px) {
         .about-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -777,12 +799,12 @@
           <a href="https://forms.gle/giCMUTttj3yvaAQx7" class="cta-btn">
             Register Now →
           </a>
-
           <div class="hero-downloads">
             <a
               href="assets/docs/Foodxplore_Brochure.pdf"
               download
               class="hero-side-btn"
+              onclick="showToast('Brochure')"
             >
               ⬇ Brochure
             </a>
@@ -791,6 +813,7 @@
               href="assets/docs/Foodxplore_Flyer.pdf"
               download
               class="hero-side-btn"
+              onclick="showToast('Flyer')"
             >
               ⬇ Flyer
             </a>
@@ -913,10 +936,7 @@
         </div>
 
         <div class="image-card">
-          <img
-            src="assets/Images/tnau2.jpg"
-            alt="Research Laboratory"
-          />
+          <img src="assets/Images/tnau2.jpg" alt="Research Laboratory" />
           <div class="image-overlay"></div>
         </div>
 
@@ -1048,6 +1068,8 @@
       </p>
     </footer>
 
+    <div id="download-toast" class="download-toast">📥 Download started</div>
+
     <script>
       document.querySelectorAll(".read-more-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -1059,6 +1081,17 @@
             : "Read more";
         });
       });
+    </script>
+    <script>
+      function showToast(type) {
+        const toast = document.getElementById("download-toast");
+        toast.textContent = `📥 ${type} download started`;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
     </script>
   </body>
 </html>
