@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoodXplore '25 - International Symposium</title>
+    <title>Gallery | FoodXplore '25</title>
+
     <style>
       :root {
         --primary: #2e7d32;
@@ -111,6 +112,20 @@
         width: 100%;
       }
 
+      .cta-btn {
+        background: linear-gradient(135deg, var(--primary), #1b5e20);
+        color: var(--white) !important;
+        padding: 0.7rem 1.8rem;
+        border-radius: 30px;
+        transition: all 0.3s;
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+      }
+
       /* SECTIONS */
       section {
         padding: 2rem 2.5rem;
@@ -141,33 +156,74 @@
         border-radius: 3px;
       }
 
-      /* VENUE */
-      .venue-section {
-        display: flex;
-        flex-direction: column;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 2.5rem;
+      /* GALLERY GRID */
+      .gallery-section {
+        max-width: 1300px;
+        margin: auto;
+        padding: 2rem 2.5rem 4rem;
       }
 
-      .venue-card {
-        background: var(--white);
-        padding: 2.5rem;
-        border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Always 2 per row */
+        gap: 1.5rem;
       }
 
-      .venue-card h3 {
-        color: var(--secondary);
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
       }
 
-      .map-container iframe {
+      .gallery-item img {
         width: 100%;
-        height: 350px;
-        border: 0;
-        border-radius: 14px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        opacity: 0;
+        transition: opacity 0.4s;
+        display: flex;
+        align-items: flex-end;
+        padding: 1.2rem;
+        color: white;
+        font-weight: 600;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 85%;
+        border-radius: 10px;
+      }
+
+      .lightbox.active {
+        display: flex;
       }
 
       /* FOOTER */
@@ -184,18 +240,20 @@
 
       /* RESPONSIVE */
       @media (max-width: 768px) {
+        .page-title h1 {
+          font-size: 2.2rem;
+        }
+
         nav {
           flex-direction: column;
           gap: 1rem;
         }
+
         .nav-links {
+          display: flex;
           flex-wrap: wrap;
           justify-content: center;
           gap: 1rem;
-        }
-
-        .section-title h2 {
-          font-size: 2rem;
         }
       }
     </style>
@@ -218,60 +276,77 @@
       </nav>
     </header>
 
-    <section id="venue">
+    <!-- PAGE TITLE -->
+    <section
+      id="gallery"
+      style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)"
+    >
       <div class="section-title">
-        <h2>Venue & Location</h2>
+        <h2>Website Launching Event</h2>
         <div class="line"></div>
       </div>
 
-      <div class="venue-section">
-        <!-- Address Card -->
-        <div class="venue-section">
-          <!-- Google Map FIRST -->
-          <div class="venue-card map-container">
-            <h3>📌 Location on Google Maps</h3>
-
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3916.352381441351!2d76.935435!3d11.012166!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8592754d00001%3A0x58af4a04bdda7a1f!2sTamil%20Nadu%20Agricultural%20University!5e0!3m2!1sen!2sus!4v1765011036363!5m2!1sen!2sus"
-              width="600"
-              height="450"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            >
-            </iframe>
+      <div class="gallery-section">
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="assets/Images/img02.jpg" alt="Website Launch Event 1" />
+            <div class="gallery-overlay">Website Launch Event</div>
           </div>
 
-          <!-- Address SECOND -->
-          <div class="venue-card">
-            <h3>📍 College Venue Address</h3>
-            <p>
-              <strong
-                >AGRICULTURAL ENGINEERING COLLEGE & RESEARCH INSTITUTE</strong
-              >
-            </p>
-            <p>Agricultural Engineering College & Research Institute</p>
-            <p>Tamil Nadu Agricultural University</p>
-            <p>Lawley Road, Coimbatore - 641 003</p>
-            <p style="margin-top: 1rem">
-              For queries:
-              <strong style="color: var(--primary)"
-                >foodxplore2025@gmail.com</strong
-              >
-            </p>
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="assets/Images/img06.jpg" alt="Website Launch Event 2" />
+            <div class="gallery-overlay">Website Launch Event</div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="assets/Images/img01.jpg" alt="Website Launch Event 3" />
+            <div class="gallery-overlay">Website Launch Event</div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="assets/Images/img05.jpg" alt="Website Launch Event 4" />
+            <div class="gallery-overlay">Website Launch Event</div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="assets/Images/img03.jpg" alt="Website Launch Event 5" />
+            <div class="gallery-overlay">Website Launch Event</div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="assets/Images/img04.jpg" alt="Website Launch Event 6" />
+            <div class="gallery-overlay">Website Launch Event</div>
           </div>
         </div>
       </div>
     </section>
+
     <footer>
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
         &copy; 2026 FoodXplore '25 - International Conference
       </p>
-      <p>Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow</p>
+      <p>
+        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+      </p>
       <p style="margin-top: 1rem; opacity: 0.8">
         Department of Food Process Engineering, TNAU, Coimbatore
       </p>
     </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="Preview" />
+    </div>
+
+    <script>
+      function openLightbox(el) {
+        const imgSrc = el.querySelector("img").src;
+        document.getElementById("lightbox-img").src = imgSrc;
+        document.getElementById("lightbox").classList.add("active");
+      }
+
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+    </script>
   </body>
 </html>
