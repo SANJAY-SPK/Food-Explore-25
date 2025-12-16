@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodXplore '25 - International Symposium</title>
@@ -60,20 +60,22 @@
       }
 
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
         font-size: 1.8rem;
         font-weight: 800;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
       }
 
-      .logo::before {
-        content: "🌾";
-        font-size: 1.5rem;
+      .logo img {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        border-radius: 8px;
       }
 
       .nav-links {
@@ -243,6 +245,15 @@
           gap: 1rem;
         }
 
+        .logo {
+          font-size: 1.4rem;
+        }
+
+        .logo img {
+          width: 38px;
+          height: 38px;
+        }
+
         .hero-content h1 {
           font-size: 2.2rem;
         }
@@ -296,11 +307,14 @@
         }
       }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
       <nav>
-        <div class="logo">FoodXplore'25</div>
+        <div class="logo">
+          <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
+          <span>FoodXplore'25</span>
+        </div>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="themes.html">Themes</a></li>
@@ -389,11 +403,12 @@
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
         &copy; 2026 FoodXplore '25 - International Conference
       </p>
-      <p>Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow</p>
+      <p>
+        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+      </p>
       <p style="margin-top: 1rem; opacity: 0.8">
         Department of Food Process Engineering, TNAU, Coimbatore
       </p>
     </footer>
-    
-</body>
+  </body>
 </html>

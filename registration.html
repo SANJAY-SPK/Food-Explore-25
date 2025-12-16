@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodXplore '25 - International Symposium</title>
@@ -60,20 +60,22 @@
       }
 
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
         font-size: 1.8rem;
         font-weight: 800;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
       }
 
-      .logo::before {
-        content: "🌾";
-        font-size: 1.5rem;
+      .logo img {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        border-radius: 8px;
       }
 
       .nav-links {
@@ -155,187 +157,199 @@
         border-radius: 3px;
       }
 
-        /* -------- NEW POLISHED TABLE -------- */
-        .fees-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--white);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
-            margin-bottom: 3rem;
+      /* -------- NEW POLISHED TABLE -------- */
+      .fees-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--white);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+        margin-bottom: 3rem;
+      }
+
+      .fees-table thead th {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+        padding: 1.4rem;
+        font-size: 1.15rem;
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+
+      .fees-table td {
+        padding: 1.4rem;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #f1f1f1;
+        font-size: 1.06rem;
+      }
+
+      .fees-table tbody tr:hover {
+        background: rgba(46, 125, 50, 0.06);
+        transition: 0.3s ease;
+      }
+
+      .category-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--secondary);
+      }
+
+      .price-box {
+        background: #eef7ee;
+        padding: 0.7rem 1rem;
+        border-radius: 10px;
+        border: 1px solid #d6ead6;
+        display: inline-block;
+        font-weight: 600;
+        color: var(--primary);
+        min-width: 130px;
+        margin: 0.2rem;
+      }
+
+      .offline {
+        background: #fff7e0;
+        border: 1px solid #ffe9b3;
+        color: #b36b00;
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 1.4rem;
         }
 
-        .fees-table thead th {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1.4rem;
-            font-size: 1.15rem;
-            letter-spacing: 0.5px;
-            text-align: center;
+        .logo img {
+          width: 38px;
+          height: 38px;
+        }
+        .fees-table thead {
+          display: none;
+        }
+
+        .fees-table tr {
+          display: block;
+          margin-bottom: 1.5rem;
+          background: var(--white);
+          border-radius: 15px;
+          padding: 1rem;
+          box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
         }
 
         .fees-table td {
-            padding: 1.4rem;
-            text-align: center;
-            vertical-align: middle;
-            border-bottom: 1px solid #f1f1f1;
-            font-size: 1.06rem;
-        }
-
-        .fees-table tbody tr:hover {
-            background: rgba(46,125,50,0.06);
-            transition: 0.3s ease;
+          display: block;
+          border: none;
+          text-align: center;
         }
 
         .category-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--secondary);
+          margin-bottom: 0.5rem;
         }
-
         .price-box {
-            background: #eef7ee;
-            padding: 0.7rem 1rem;
-            border-radius: 10px;
-            border: 1px solid #d6ead6;
-            display: inline-block;
-            font-weight: 600;
-            color: var(--primary);
-            min-width: 130px;
-            margin: 0.2rem;
+          width: 100%;
         }
+      }
 
-        .offline {
-            background: #fff7e0;
-            border: 1px solid #ffe9b3;
-            color: #b36b00;
-        }
+      /* BANK DETAILS */
+      .bank-details {
+        background: linear-gradient(135deg, var(--secondary), #283593);
+        color: var(--white);
+        padding: 3rem;
+        border-radius: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2.5rem;
+        box-shadow: 0 15px 50px rgba(26, 35, 126, 0.4);
+      }
 
-        /* MOBILE */
-        @media(max-width: 768px) {
-            .fees-table thead { display: none; }
+      .detail-item h4 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
 
-            .fees-table tr {
-                display: block;
-                margin-bottom: 1.5rem;
-                background: var(--white);
-                border-radius: 15px;
-                padding: 1rem;
-                box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-            }
-
-            .fees-table td {
-                display: block;
-                border: none;
-                text-align: center;
-            }
-
-            .category-title { margin-bottom: 0.5rem; }
-            .price-box { width: 100%; }
-        }
-
-        /* BANK DETAILS */
-        .bank-details {
-            background: linear-gradient(135deg, var(--secondary), #283593);
-            color: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2.5rem;
-            box-shadow: 0 15px 50px rgba(26, 35, 126, 0.4);
-        }
-
-        .detail-item h4 {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background: linear-gradient(135deg, var(--dark), #1a1a1a);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem;
-        }
- /* =============================
+      footer {
+        background: linear-gradient(135deg, var(--dark), #1a1a1a);
+        color: var(--white);
+        text-align: center;
+        padding: 3rem;
+      }
+      /* =============================
    📱 CLEAN RESPONSIVE TABLE FIX
    ============================= */
 
-/* CLEAN RESPONSIVE TABLE FIX */
-@media(max-width: 768px) {
+      /* CLEAN RESPONSIVE TABLE FIX */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
 
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+        }
 
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
+        .section-title h2 {
+          font-size: 2rem;
+        }
 
-    .section-title h2 {
-        font-size: 2rem;
-    }
+        .fees-table {
+          width: 100%;
+          border-radius: 12px;
+          box-shadow: none;
+          overflow: hidden;
+        }
 
-    .fees-table {
-        width: 100%;
-        border-radius: 12px;
-        box-shadow: none;
-        overflow: hidden;
-    }
+        .fees-table thead {
+          display: none;
+        }
 
-    .fees-table thead {
-        display: none;
-    }
+        .fees-table tr {
+          display: grid;
+          background: var(--white);
+          border-radius: 12px;
+          margin-bottom: 1.2rem;
+          padding: 1rem;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
 
-    .fees-table tr {
-        display:grid;
-        background: var(--white);
-        border-radius: 12px;
-        margin-bottom: 1.2rem;
-        padding: 1rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
+        .fees-table td {
+          display: block;
+          width: 100%;
+          border: none;
+          padding: 0.8rem 0;
+          text-align: center;
+        }
 
-    .fees-table td {
-        display: block;
-        width: 100%;
-        border: none;
-        padding: 0.8rem 0;
-        text-align: center;
-    }
+        .category-title {
+          display: block;
+          width: 100%;
+          margin-bottom: 0.8rem;
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: var(--secondary);
+        }
 
-    .category-title {
-        display: block;
-        width: 100%;
-        margin-bottom: 0.8rem;
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--secondary);
-    }
-
-    .price-box {
-        width: 100%;
-        margin: 0.3rem 0;
-        padding: 0.7rem 0.8rem;
-        font-size: 1rem;
-        border-radius: 8px;
-    }
-}
-
-
+        .price-box {
+          width: 100%;
+          margin: 0.3rem 0;
+          padding: 0.7rem 0.8rem;
+          font-size: 1rem;
+          border-radius: 8px;
+        }
+      }
     </style>
-
-</head>
-<body>
-
-<header>
+  </head>
+  <body>
+    <header>
       <nav>
-        <div class="logo">FoodXplore'25</div>
+        <div class="logo">
+          <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
+          <span>FoodXplore'25</span>
+        </div>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="themes.html">Themes</a></li>
@@ -349,132 +363,157 @@
       </nav>
     </header>
 
-<section id="registration" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9);">
-
-    <div class="section-title">
+    <section
+      id="registration"
+      style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9)"
+    >
+      <div class="section-title">
         <h2>Registration</h2>
         <div class="line"></div>
-    </div>
+      </div>
 
-    <!-- ====== UPDATED TABLE START ====== -->
-    <table class="fees-table">
+      <!-- ====== UPDATED TABLE START ====== -->
+      <table class="fees-table">
         <thead>
-            <tr>
-                <th>Category</th>
-                <th>Early Bird (Before 10.01.2026)</th>
-                <th>Regular</th>
-            </tr>
+          <tr>
+            <th>Category</th>
+            <th>Early Bird (Before 10.01.2026)</th>
+            <th>Regular</th>
+          </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><span class="category-title">Students</span></td>
+            <td>
+              <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
+              <div class="price-box">Online: ₹750</div>
+              <div class="price-box offline">Offline: ₹1000</div>
+            </td>
+            <td>
+              <div class="mobile-label">Regular</div>
+              <div class="price-box">Online: ₹1000</div>
+              <div class="price-box offline">Offline: ₹1500</div>
+            </td>
+          </tr>
 
-            <tr>
-                <td><span class="category-title">Students</span></td>
-                <td>
-                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
-                    <div class="price-box">Online: ₹750</div>
-                    <div class="price-box offline">Offline: ₹1000</div>
-                </td>
-                <td>
-                    <div class="mobile-label">Regular</div>
-                    <div class="price-box">Online: ₹1000</div>
-                    <div class="price-box offline">Offline: ₹1500</div>
-                </td>
-            </tr>
+          <tr>
+            <td><span class="category-title">Research Scholars</span></td>
+            <td>
+              <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
+              <div class="price-box">Online: ₹1500</div>
+              <div class="price-box offline">Offline: ₹2000</div>
+            </td>
+            <td>
+              <div class="mobile-label">Regular</div>
+              <div class="price-box">Online: ₹2000</div>
+              <div class="price-box offline">Offline: ₹3000</div>
+            </td>
+          </tr>
 
-            <tr>
-                <td><span class="category-title">Research Scholars</span></td>
-                <td>
-                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
-                    <div class="price-box">Online: ₹1500</div>
-                    <div class="price-box offline">Offline: ₹2000</div>
-                </td>
-                <td>
-                    <div class="mobile-label">Regular</div>
-                    <div class="price-box">Online: ₹2000</div>
-                    <div class="price-box offline">Offline: ₹3000</div>
-                </td>
-            </tr>
+          <tr>
+            <td><span class="category-title">Faculty / Scientist</span></td>
+            <td>
+              <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
+              <div class="price-box">Online: ₹3000</div>
+              <div class="price-box offline">Offline: ₹4000</div>
+            </td>
+            <td>
+              <div class="mobile-label">Regular</div>
+              <div class="price-box">Online: ₹4000</div>
+              <div class="price-box offline">Offline: ₹5000</div>
+            </td>
+          </tr>
 
-            <tr>
-                <td><span class="category-title">Faculty / Scientist</span></td>
-                <td>
-                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
-                    <div class="price-box">Online: ₹3000</div>
-                    <div class="price-box offline">Offline: ₹4000</div>
-                </td>
-                <td>
-                    <div class="mobile-label">Regular</div>
-                    <div class="price-box">Online: ₹4000</div>
-                    <div class="price-box offline">Offline: ₹5000</div>
-                </td>
-            </tr>
+          <tr>
+            <td>
+              <span class="category-title">Corporate & Entrepreneurs</span>
+            </td>
+            <td>
+              <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
+              <div class="price-box">Online: ₹7000</div>
+              <div class="price-box offline">Offline: ₹8000</div>
+            </td>
+            <td>
+              <div class="mobile-label">Regular</div>
+              <div class="price-box">Online: ₹8000</div>
+              <div class="price-box offline">Offline: ₹10000</div>
+            </td>
+          </tr>
 
-            <tr>
-                <td><span class="category-title">Corporate & Entrepreneurs</span></td>
-                <td>
-                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
-                    <div class="price-box">Online: ₹7000</div>
-                    <div class="price-box offline">Offline: ₹8000</div>
-                </td>
-                <td>
-                    <div class="mobile-label">Regular</div>
-                    <div class="price-box">Online: ₹8000</div>
-                    <div class="price-box offline">Offline: ₹10000</div>
-                </td>
-            </tr>
-
-            <tr>
-                <td><span class="category-title">International Delegates</span></td>
-                <td>
-                    <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
-                    <div class="price-box">Online: $100</div>
-                    <div class="price-box offline">Offline: $150</div>
-                </td>
-                <td>
-                    <div class="mobile-label">Regular</div>
-                    <div class="price-box">Online: $150</div>
-                    <div class="price-box offline">Offline: $200</div>
-                </td>
-            </tr>
-
+          <tr>
+            <td><span class="category-title">International Delegates</span></td>
+            <td>
+              <div class="mobile-label">Early Bird (Before 10.01.2026)</div>
+              <div class="price-box">Online: $100</div>
+              <div class="price-box offline">Offline: $150</div>
+            </td>
+            <td>
+              <div class="mobile-label">Regular</div>
+              <div class="price-box">Online: $150</div>
+              <div class="price-box offline">Offline: $200</div>
+            </td>
+          </tr>
         </tbody>
-    </table>
-    <!-- ====== UPDATED TABLE END ====== -->
+      </table>
+      <!-- ====== UPDATED TABLE END ====== -->
 
-    <p style="text-align: center; font-style: italic; margin-bottom: 2.5rem;">
-        For group registration of more than 10, contact the organizing secretary.
-    </p>
+      <p style="text-align: center; font-style: italic; margin-bottom: 2.5rem">
+        For group registration of more than 10, contact the organizing
+        secretary.
+      </p>
 
-    <div class="bank-details">
-        <div class="detail-item"><h4>Payment Method</h4><p>NEFT / IMPS / UPI</p></div>
-        <div class="detail-item"><h4>Account Name</h4><p>FOODXPLORE</p></div>
-        <div class="detail-item"><h4>Account Number</h4><p style="font-family: monospace;font-size:1.3rem;">31412300553</p></div>
-        <div class="detail-item"><h4>Bank / Branch</h4><p>SBI, TNAU Coimbatore</p></div>
-        <div class="detail-item"><h4>IFSC Code</h4><p style="font-family: monospace;font-size:1.2rem;">SBIN0002274</p></div>
-    </div>
+      <div class="bank-details">
+        <div class="detail-item">
+          <h4>Payment Method</h4>
+          <p>NEFT / IMPS / UPI</p>
+        </div>
+        <div class="detail-item">
+          <h4>Account Name</h4>
+          <p>FOODXPLORE</p>
+        </div>
+        <div class="detail-item">
+          <h4>Account Number</h4>
+          <p style="font-family: monospace; font-size: 1.3rem">31412300553</p>
+        </div>
+        <div class="detail-item">
+          <h4>Bank / Branch</h4>
+          <p>SBI, TNAU Coimbatore</p>
+        </div>
+        <div class="detail-item">
+          <h4>IFSC Code</h4>
+          <p style="font-family: monospace; font-size: 1.2rem">SBIN0002274</p>
+        </div>
+      </div>
 
-    <div style="text-align:center; margin-top:2rem;">
-        <a href="https://forms.gle/giCMUTttj3yvaAQx7" target="_blank" style="
-            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+      <div style="text-align: center; margin-top: 2rem">
+        <a
+          href="https://forms.gle/giCMUTttj3yvaAQx7"
+          target="_blank"
+          style="
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
             color: white;
             padding: 1rem 2rem;
             border-radius: 40px;
             font-weight: 700;
             font-size: 1.2rem;
-            box-shadow: 0 10px 25px rgba(46,125,50,0.4);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
             display: inline-block;
-            transition: 0.3s;">
-            Register Here →
+            transition: 0.3s;
+          "
+        >
+          Register Here →
         </a>
-    </div>
+      </div>
+    </section>
 
-</section>
-
-<footer>
-    <p>&copy; 2026 FoodXplore '25 - International Conference</p>
-    <p>Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow</p>
-    <p style="opacity: 0.8;margin-top:0.7rem;">Department of Food Process Engineering, TNAU, Coimbatore</p>
-</footer>
-
-</body>
+    <footer>
+      <p>&copy; 2026 FoodXplore '25 - International Conference</p>
+      <p>
+        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+      </p>
+      <p style="opacity: 0.8; margin-top: 0.7rem">
+        Department of Food Process Engineering, TNAU, Coimbatore
+      </p>
+    </footer>
+  </body>
 </html>
