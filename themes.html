@@ -300,6 +300,147 @@
       .theme-item:nth-child(7) {
         animation-delay: 0.7s;
       }
+      /* ABSTRACT SECTION */
+      .dates-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: var(--white);
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--secondary);
+        margin-bottom: 20px;
+      }
+
+      .dates-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+
+      .dates-table td {
+        padding: 12px 6px;
+        border-bottom: 1px solid #e6e6e6;
+      }
+
+      .guidelines-list li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+      /* ABSTRACT TEMPLATE DOWNLOAD */
+      .template-download {
+        margin-top: 1.5rem;
+        text-align: center;
+      }
+
+      .template-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        color: var(--white);
+        padding: 0.8rem 1.8rem;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        box-shadow: 0 6px 20px rgba(26, 35, 126, 0.35);
+        transition: all 0.3s ease;
+      }
+
+      .template-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(26, 35, 126, 0.5);
+      }
+
+      .award-note {
+        margin-top: 15px;
+        background: #eaf4ff;
+        padding: 12px;
+        border-radius: 10px;
+        border-left: 4px solid var(--secondary);
+        color: var(--secondary);
+        font-weight: 600;
+      }
+
+      footer {
+        background: linear-gradient(135deg, var(--dark), #1a1a1a);
+        color: var(--white);
+        text-align: center;
+        padding: 3rem;
+        margin-top: 3rem;
+      }
+      /* -------------------------------------- */
+      /* 🌐 MOBILE RESPONSIVENESS (ALL PAGES)   */
+      /* -------------------------------------- */
+
+      @media (max-width: 1024px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+      }
+
+      /* ---------- TABLETS ---------- */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .logo {
+          font-size: 1.4rem;
+        }
+
+        .logo img {
+          width: 38px;
+          height: 38px;
+        }
+
+        .hero-content h1 {
+          font-size: 2.2rem;
+        }
+        .hero-content h2 {
+          font-size: 1.3rem;
+        }
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        /* Cards become full width */
+        .dates-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          padding: 24px;
+        }
+
+        /* Text scaling */
+        .card-title {
+          font-size: 1.3rem;
+        }
+      }
 
       /* FOOTER */
       footer {
@@ -365,8 +506,7 @@
         </div>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="themes.html">Themes</a></li>
-          <li><a href="abstract.html">Abstract</a></li>
+          <li><a href="themes.html">Themes & Guidelines</a></li>
           <li><a href="registration.html">Registration</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="committee.html">Committees</a></li>
@@ -413,9 +553,95 @@
         </div>
       </div>
     </section>
+
+    <!-- 🌟 ABSTRACT CONTENT SECTION -->
+    <section id="abstract">
+      <div class="section-title">
+        <h2>Important Dates & Guidelines</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="dates-wrapper">
+        <!-- Event Dates Card -->
+        <div class="card">
+          <h3 class="card-title">Event Schedule</h3>
+
+          <table class="dates-table">
+            <tbody>
+              <tr>
+                <td><strong>Abstract Submission Deadline</strong></td>
+                <td>January 10, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Notification of Acceptance</strong></td>
+                <td>January 15, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Early Bird Registration Deadline</strong></td>
+                <td>January 10, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Full Paper Submission</strong></td>
+                <td>January 20, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Conference Dates</strong></td>
+                <td>January 29 & 30, 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Guidelines Card -->
+        <div class="card">
+          <h3 class="card-title">Call for Abstracts & Author Guidelines</h3>
+
+          <p class="text-muted">
+            Original research papers, reviews, and case studies aligned with
+            conference themes are invited.
+          </p>
+
+          <ul class="guidelines-list">
+            <li><strong>Title:</strong> Times New Roman, 12, Bold</li>
+            <li>
+              <strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding
+              author with *
+            </li>
+            <li>
+              <strong>Abstract:</strong> Times New Roman, 12, max 300 words
+            </li>
+            <li><strong>Format:</strong> .doc or .docx only</li>
+            <li>
+              <strong>Poster:</strong> Single PPTX converted to PDF for E-poster
+              (Virtual Mode)
+            </li>
+          </ul>
+
+          <p style="margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.8">
+            Please use this template strictly for abstract submission.
+          </p>
+
+          <div class="template-download">
+            <a
+              href="assets/docs/ICSSS-FoodXplore'25-Abstract_Template.docx"
+              download
+              class="template-btn"
+            >
+              ⬇ Download Abstract Template 
+            </a>
+          </div>
+
+          <p class="award-note">
+            🏅 Awards will be given separately for students & scientists.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
     <footer>
       <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
-        &copy; 2026 FoodXplore '25 - International Conference
+        &copy; 2026 ICSSS-FoodXplore'25 - International Conference
       </p>
       <p>
         Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
