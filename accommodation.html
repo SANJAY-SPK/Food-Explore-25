@@ -1,732 +1,848 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accommodation - ICSSS-FoodXplore'25</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
-    <style>
-      :root {
-        --primary: #2e7d32;
-        --secondary: #1a237e;
-        --accent: #ffc107;
-        --light: #f5f7fa;
-        --dark: #333;
-        --white: #ffffff;
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accommodation - ICSSS-FoodXplore'25</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1a237e;
+      --accent: #ffc107;
+      --light: #f5f7fa;
+      --dark: #333;
+      --white: #ffffff;
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-      body {
-        line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--light);
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      ul {
-        list-style: none;
-      }
+    body {
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
 
-      /* NAVIGATION */
-      header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
-      }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
+    ul {
+      list-style: none;
+    }
+
+    /* NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+    }
+
+    nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--dark);
+      transition: all 0.3s;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:not(.cta-btn):hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:not(.cta-btn)::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:not(.cta-btn):hover::after {
+      width: 100%;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 3rem 2.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .section-title .line {
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+
+    /* ACCOMMODATION */
+    .accommodation-wrapper {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-left: 6px solid var(--primary);
+    }
+
+    .info-box p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--dark);
+    }
+
+    .note-box {
+      background: linear-gradient(135deg, #fff8e1, #fff9c4);
+      padding: 2rem;
+      border-radius: 14px;
+      border-left: 6px solid var(--accent);
+      box-shadow: 0 6px 25px rgba(255, 193, 7, 0.15);
+    }
+
+    .note-box h3 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .note-box ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    .note-box li {
+      margin-bottom: 0.7rem;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .hotel-card {
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(46, 125, 50, 0.1);
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(46, 125, 50, 0.2);
+      border-color: var(--primary);
+    }
+
+    .hotel-card h3 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .hotel-meta {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .hotel-meta p {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .hotel-meta strong {
+      color: var(--secondary);
+      font-weight: 600;
+      min-width: fit-content;
+    }
+
+    .tariff-section {
+      margin-top: 1.5rem;
+    }
+
+    .tariff-section h4 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .tariff-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .tariff-table th,
+    .tariff-table td {
+      border: 1px solid #e0e0e0;
+      padding: 0.9rem;
+      text-align: left;
+    }
+
+    .tariff-table th {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .tariff-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .tariff-table tbody tr:hover {
+      background-color: #f1f8f4;
+    }
+
+    .amenities {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f1f8f4, #e8f5e9);
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .amenities strong {
+      color: var(--primary);
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+
+    .amenities p {
+      color: var(--dark);
+      line-height: 1.7;
+      margin: 0.5rem 0;
+    }
+
+    .rate-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem;
+      background: #ffffff;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      border: 1px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    .rate-item:hover {
+      background: #f8f9fa;
+      border-color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .rate-label {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .rate-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1a1a1a);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
       nav {
-        max-width: 1300px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.2rem 2.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
       }
 
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-size: 1.4rem;
       }
 
       .logo img {
-        width: 45px;
-        height: 45px;
-        object-fit: contain;
-        border-radius: 8px;
+        width: 38px;
+        height: 38px;
       }
 
       .nav-links {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 0.85rem;
       }
 
-      .nav-links a {
-        font-weight: 600;
-        color: var(--dark);
-        transition: all 0.3s;
-        position: relative;
-        font-size: 0.95rem;
-      }
-
-      .nav-links a:not(.cta-btn):hover {
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
-
-      .nav-links a:not(.cta-btn)::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        transition: width 0.3s;
-        border-radius: 2px;
-      }
-
-      .nav-links a:not(.cta-btn):hover::after {
-        width: 100%;
-      }
-
-      /* SECTIONS */
       section {
-        padding: 3rem 2.5rem;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
+        padding: 2rem 1.5rem;
       }
 
       .section-title h2 {
-        font-size: 2.8rem;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        font-weight: 800;
-      }
-
-      .section-title .line {
-        width: 100px;
-        height: 5px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        margin: 0 auto;
-        border-radius: 3px;
-      }
-
-      /* ACCOMMODATION */
-      .accommodation-wrapper {
-        display: grid;
-        gap: 2.5rem;
-      }
-
-      .info-box {
-        background: linear-gradient(135deg, #ffffff, #f8f9fa);
-        padding: 2.5rem;
-        border-radius: 16px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        border-left: 6px solid var(--primary);
-      }
-
-      .info-box p {
-        font-size: 1.05rem;
-        line-height: 1.8;
-        color: var(--dark);
-      }
-
-      .note-box {
-        background: linear-gradient(135deg, #fff8e1, #fff9c4);
-        padding: 2rem;
-        border-radius: 14px;
-        border-left: 6px solid var(--accent);
-        box-shadow: 0 6px 25px rgba(255, 193, 7, 0.15);
-      }
-
-      .note-box h3 {
-        color: var(--dark);
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-      }
-
-      .note-box ul {
-        list-style: disc;
-        padding-left: 1.5rem;
-      }
-
-      .note-box li {
-        margin-bottom: 0.7rem;
-        color: var(--dark);
-        line-height: 1.7;
+        font-size: 2rem;
       }
 
       .hotel-card {
-        background: #ffffff;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s ease;
-        border: 1px solid rgba(46, 125, 50, 0.1);
-      }
-
-      .hotel-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(46, 125, 50, 0.2);
-        border-color: var(--primary);
+        padding: 1.5rem;
       }
 
       .hotel-card h3 {
-        color: var(--primary);
-        margin-bottom: 1.2rem;
-        font-size: 1.7rem;
-        font-weight: 700;
-      }
-
-      .hotel-meta {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
-        color: #555;
-      }
-
-      .hotel-meta p {
-        margin-bottom: 0.6rem;
-        display: flex;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-
-      .hotel-meta strong {
-        color: var(--secondary);
-        font-weight: 600;
-        min-width: fit-content;
-      }
-
-      .tariff-section {
-        margin-top: 1.5rem;
-      }
-
-      .tariff-section h4 {
-        color: var(--secondary);
-        margin-bottom: 1rem;
-        font-size: 1.15rem;
-        font-weight: 600;
+        font-size: 1.4rem;
       }
 
       .tariff-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
-        font-size: 0.95rem;
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        font-size: 0.85rem;
       }
 
       .tariff-table th,
       .tariff-table td {
-        border: 1px solid #e0e0e0;
-        padding: 0.9rem;
-        text-align: left;
+        padding: 0.6rem;
       }
 
-      .tariff-table th {
-        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-        font-weight: 700;
-        color: var(--dark);
-      }
-
-      .tariff-table tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-
-      .tariff-table tbody tr:hover {
-        background-color: #f1f8f4;
-      }
-
-      .amenities {
-        margin-top: 1.5rem;
+      .info-box,
+      .note-box {
         padding: 1.5rem;
-        background: linear-gradient(135deg, #f1f8f4, #e8f5e9);
-        border-radius: 12px;
-        border-left: 4px solid var(--primary);
       }
+    }
+  </style>
+</head>
 
-      .amenities strong {
-        color: var(--primary);
-        font-size: 1.05rem;
-        display: block;
-        margin-bottom: 0.7rem;
-      }
-
-      .amenities p {
-        color: var(--dark);
-        line-height: 1.7;
-        margin: 0.5rem 0;
-      }
-
-      .rate-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.8rem;
-        background: #ffffff;
-        border-radius: 8px;
-        margin-bottom: 0.6rem;
-        border: 1px solid #e0e0e0;
-        transition: all 0.3s ease;
-      }
-
-      .rate-item:hover {
-        background: #f8f9fa;
-        border-color: var(--primary);
-        transform: translateX(5px);
-      }
-
-      .rate-label {
-        font-weight: 600;
-        color: var(--dark);
-      }
-
-      .rate-price {
-        color: var(--primary);
-        font-weight: 700;
-        font-size: 1.05rem;
-      }
-
-      /* FOOTER */
-      footer {
-        background: linear-gradient(135deg, var(--dark), #1a1a1a);
-        color: var(--white);
-        text-align: center;
-        padding: 3rem;
-        margin-top: 4rem;
-      }
-
-      footer p {
-        margin: 0.5rem 0;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 768px) {
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-          padding: 1rem 1.5rem;
-        }
-        
-        .logo {
-          font-size: 1.4rem;
-        }
-
-        .logo img {
-          width: 38px;
-          height: 38px;
-        }
-        
-        .nav-links {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-          font-size: 0.85rem;
-        }
-
-        section {
-          padding: 2rem 1.5rem;
-        }
-
-        .section-title h2 {
-          font-size: 2rem;
-        }
-
-        .hotel-card {
-          padding: 1.5rem;
-        }
-
-        .hotel-card h3 {
-          font-size: 1.4rem;
-        }
-
-        .tariff-table {
-          font-size: 0.85rem;
-        }
-
-        .tariff-table th,
-        .tariff-table td {
-          padding: 0.6rem;
-        }
-
-        .info-box,
-        .note-box {
-          padding: 1.5rem;
-        }
-      }
-    </style>
-  </head>
 <body>
 
-    <header>
-      <nav>
-        <div class="logo">
-          <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
-          <span>ICSSS-FoodXplore'25</span>
-        </div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="themes.html">Abstract</a></li>
-          <li><a href="registration.html">Registration</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="committee.html">Committees</a></li>
-          <li><a href="venue.html">Venue</a></li>
-          <li><a href="accommodation.html">Accommodation</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
+        <span>ICSSS-FoodXplore'25</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="themes.html">Abstract</a></li>
+        <li><a href="registration.html">Registration</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committees</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section id="accommodation">
-      <div class="section-title">
-        <h2>Accommodation Information</h2>
-        <div class="line"></div>
+  <section id="accommodation">
+    <div class="section-title">
+      <h2>Accommodation Information</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="accommodation-wrapper">
+      <!-- Introduction Box -->
+      <div class="info-box">
+        <p>
+          To facilitate a comfortable stay for participants, a list of nearby hotels is shared below for reference.
+          The organisers have coordinated with these hotels to provide special or corporate tariff details.
+        </p>
       </div>
 
-      <div class="accommodation-wrapper">
-        <!-- Introduction Box -->
-        <div class="info-box">
-          <p>
-            To facilitate a comfortable stay for participants, a list of nearby hotels is shared below for reference. 
-            The organisers have coordinated with these hotels to provide special or corporate tariff details.
+      <!-- Important Notes -->
+      <div class="note-box">
+        <h3>📌 Please Note:</h3>
+        <ul>
+          <li>Accommodation booking is optional.</li>
+          <li>Foreign delegates and outside participants are free to stay at any hotel of their choice.</li>
+          <li>All accommodation expenses must be paid directly by the participant to the hotel.</li>
+          <li>The organising committee does not collect or process accommodation payments.</li>
+        </ul>
+      </div>
+
+      <!-- Hotel 1: Ananya's Nest -->
+      <div class="hotel-card">
+        <h3>1. Ananya's Nest</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>No. 42, Bharathi Park Road, Saibaba Colony, Coimbatore – 641011, Tamil
+              Nadu</span></p>
+          <p><strong>📞 Contact Person:</strong> <span>Mr Thangaraj</span></p>
+          <p><strong>📱 Phone:</strong> <span>+91 94861 34000</span></p>
+          <p><strong>☎️ Hotel Phone:</strong> <span>+91 422 244 4040</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>Special Corporate Tariff – 2025 (Inclusive of 5% GST)</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Occupancy</th>
+                <th>Standard Rate</th>
+                <th>Corporate Discount (10% on CP Plan)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2"><strong>Compact Rooms</strong></td>
+                <td>Single</td>
+                <td>₹2,309/-</td>
+                <td>₹2,078/-</td>
+              </tr>
+              <tr>
+                <td>Double</td>
+                <td>₹3,359/-</td>
+                <td>₹3,023/-</td>
+              </tr>
+              <tr>
+                <td rowspan="3"><strong>Comfort Rooms</strong></td>
+                <td>Single</td>
+                <td>₹3,149/-</td>
+                <td>₹2,834/-</td>
+              </tr>
+              <tr>
+                <td>Double</td>
+                <td>₹3,779/-</td>
+                <td>₹3,401/-</td>
+              </tr>
+              <tr>
+                <td>Extra Bed</td>
+                <td>₹735/-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="amenities">
+          <strong>✨ Amenities</strong>
+          <p>Complimentary breakfast • Welcome drink • Wi-Fi access • Tea/Coffee maker • 24/7 housekeeping & hot water •
+            Laundry facilities • RO drinking water</p>
+        </div>
+      </div>
+
+      <!-- Hotel 2: J Hotels -->
+      <div class="hotel-card">
+        <h3>2. JK Hotels</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>No. 451, NSR Road, Saibaba Colony, Coimbatore – 641011, Tamil
+              Nadu</span></p>
+          <p><strong>📱 Phone:</strong> <span>+91 96558 10000</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>Room Tariff (Exclusive of Taxes) - 10% discount applicable for participants</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Rate</th>
+                <th>Amenities</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Deluxe Room</strong></td>
+                <td>₹3,250 + Taxes</td>
+                <td>Safety Locker, Intercom, Wi-Fi, Complimentary Breakfast</td>
+              </tr>
+              <tr>
+                <td><strong>Super Deluxe Room</strong></td>
+                <td>₹3,750 + Taxes</td>
+                <td>Mini Refrigerator, Intercom, Wi-Fi, Complimentary Breakfast, Safety Locker</td>
+              </tr>
+              <tr>
+                <td><strong>Executive Room</strong></td>
+                <td>₹4,250 + Taxes</td>
+                <td>Mini Refrigerator, Intercom, Wi-Fi, Complimentary Breakfast, Safety Locker</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Hotel 3: Rathna Residency -->
+      <div class="hotel-card">
+        <h3>3. Rathna Residency</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>No. 355, Variety Hall Road, Behind Coimbatore Railway Junction,
+              Coimbatore – 641001, Tamil Nadu</span></p>
+          <p><strong>📞 Front Desk:</strong> <span>0422-4225666</span></p>
+          <p><strong>📱 Mobile:</strong> <span>+91 97509 64441</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>Room Tariff</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Occupancy</th>
+                <th>Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2"><strong>Studio Room</strong></td>
+                <td>Single</td>
+                <td>₹3,000/-</td>
+              </tr>
+              <tr>
+                <td>Double</td>
+                <td>₹3,750/-</td>
+              </tr>
+
+              <tr>
+                <td rowspan="2"><strong>Superior Room</strong></td>
+                <td>Single</td>
+                <td>₹3,500/-</td>
+              </tr>
+              <tr>
+                <td>Double</td>
+                <td>₹4,250/-</td>
+              </tr>
+
+              <tr>
+                <td colspan="3"><strong>Extra Person:</strong> ₹1,000/-</td>
+              </tr>
+              <tr>
+                <td colspan="3"><strong>Taxes:</strong> As applicable</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin-top: 1.5rem;">After Discount – Final Rates</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Occupancy</th>
+                <th>Final Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Single</td>
+                <td>₹2,835/-</td>
+              </tr>
+              <tr>
+                <td>Double</td>
+                <td>₹3,544/-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="amenities">
+          <strong>✨ Features</strong>
+          <p>Studio & Superior Rooms • Complimentary buffet breakfast • Wi-Fi • Safe lockers • Hot water kettle •
+            24-hour check-in & check-out • Rooftop restaurant & banquet facilities</p>
+        </div>
+      </div>
+
+      <!-- Hotel 4: Hotel Vijai Paradise -->
+      <div class="hotel-card">
+        <h3>4. Hotel Vijai Paradise</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>No. 173/C, NSR Road, Saibaba Colony, Coimbatore – 641011, Tamil
+              Nadu</span></p>
+          <p><strong>📞 Phone:</strong> <span>0422-2452222</span></p>
+          <p><strong>📱 Mobile:</strong> <span>+91 98432 40302</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>SPECIAL TARIFF</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Deluxe Single</strong></td>
+                <td>₹2,500/-</td>
+              </tr>
+              <tr>
+                <td><strong>Deluxe Double</strong></td>
+                <td>₹3,000/-</td>
+              </tr>
+              <tr>
+                <td><strong>Family 3 Bed Suite</strong></td>
+                <td>₹3,500/-</td>
+              </tr>
+              <tr>
+                <td><strong>Family 5 Bed Suite</strong></td>
+                <td>₹4,000/-</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top: 1rem; font-weight: 600; color: var(--primary);">
+            Tariff inclusive of Elaborated Buffet Breakfast
           </p>
         </div>
 
-        <!-- Important Notes -->
-        <div class="note-box">
-          <h3>📌 Please Note:</h3>
-          <ul>
-            <li>Accommodation booking is optional.</li>
-            <li>Foreign delegates and outside participants are free to stay at any hotel of their choice.</li>
-            <li>All accommodation expenses must be paid directly by the participant to the hotel.</li>
-            <li>The organising committee does not collect or process accommodation payments.</li>
-          </ul>
-        </div>
 
-        <!-- Hotel 1: Ananya's Nest -->
-        <div class="hotel-card">
-          <h3>1. Ananya's Nest</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>No. 42, Bharathi Park Road, Saibaba Colony, Coimbatore – 641011, Tamil Nadu</span></p>
-            <p><strong>📞 Contact Person:</strong> <span>Mr Thangaraj</span></p>
-            <p><strong>📱 Phone:</strong> <span>+91 94861 34000</span></p>
-            <p><strong>☎️ Hotel Phone:</strong> <span>+91 422 244 4040</span></p>
-          </div>
-
-          <div class="tariff-section">
-            <h4>Special Corporate Tariff – 2025 (Inclusive of 5% GST)</h4>
-            
-            <table class="tariff-table">
-              <thead>
-                <tr>
-                  <th>Room Type</th>
-                  <th>Occupancy</th>
-                  <th>Standard Rate</th>
-                  <th>Corporate Discount (10% on CP Plan)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td rowspan="2"><strong>Compact Rooms</strong></td>
-                  <td>Single</td>
-                  <td>₹2,309/-</td>
-                  <td>₹2,078/-</td>
-                </tr>
-                <tr>
-                  <td>Double</td>
-                  <td>₹3,359/-</td>
-                  <td>₹3,023/-</td>
-                </tr>
-                <tr>
-                  <td rowspan="3"><strong>Comfort Rooms</strong></td>
-                  <td>Single</td>
-                  <td>₹3,149/-</td>
-                  <td>₹2,834/-</td>
-                </tr>
-                <tr>
-                  <td>Double</td>
-                  <td>₹3,779/-</td>
-                  <td>₹3,401/-</td>
-                </tr>
-                <tr>
-                  <td>Extra Bed</td>
-                  <td>₹735/-</td>
-                  <td>-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="amenities">
-            <strong>✨ Amenities</strong>
-            <p>Complimentary breakfast • Welcome drink • Wi-Fi access • Tea/Coffee maker • 24/7 housekeeping & hot water • Laundry facilities • RO drinking water</p>
-          </div>
-        </div>
-
-        <!-- Hotel 2: J Hotels -->
-        <div class="hotel-card">
-          <h3>2. JK Hotels</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>No. 451, NSR Road, Saibaba Colony, Coimbatore – 641011, Tamil Nadu</span></p>
-            <p><strong>📱 Phone:</strong> <span>+91 96558 10000</span></p>
-          </div>
-
-          <div class="tariff-section">
-            <h4>Room Tariff (Exclusive of Taxes)</h4>
-            
-            <table class="tariff-table">
-              <thead>
-                <tr>
-                  <th>Room Type</th>
-                  <th>Rate</th>
-                  <th>Amenities</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Deluxe Room</strong></td>
-                  <td>₹3,250 + Taxes</td>
-                  <td>Safety Locker, Intercom, Wi-Fi, Complimentary Breakfast</td>
-                </tr>
-                <tr>
-                  <td><strong>Super Deluxe Room</strong></td>
-                  <td>₹3,750 + Taxes</td>
-                  <td>Mini Refrigerator, Intercom, Wi-Fi, Complimentary Breakfast, Safety Locker</td>
-                </tr>
-                <tr>
-                  <td><strong>Executive Room</strong></td>
-                  <td>₹4,250 + Taxes</td>
-                  <td>Mini Refrigerator, Intercom, Wi-Fi, Complimentary Breakfast, Safety Locker</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Hotel 3: Rathna Residency -->
-        <div class="hotel-card">
-          <h3>3. Rathna Residency</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>No. 355, Variety Hall Road, Behind Coimbatore Railway Junction, Coimbatore – 641001, Tamil Nadu</span></p>
-            <p><strong>📞 Front Desk:</strong> <span>0422-4225666</span></p>
-            <p><strong>📱 Mobile:</strong> <span>+91 97509 64441</span></p>
-          </div>
-
-          <div class="amenities">
-            <strong>✨ Features</strong>
-            <p>Studio & Superior Rooms • Complimentary buffet breakfast • Wi-Fi • Safe lockers • Hot water kettle • 24-hour check-in & check-out • Rooftop restaurant & banquet facilities</p>
-          </div>
-        </div>
-
-        <!-- Hotel 4: Hotel Vijai Paradise -->
-        <div class="hotel-card">
-          <h3>4. Hotel Vijai Paradise</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>No. 173/C, NSR Road, Saibaba Colony, Coimbatore – 641011, Tamil Nadu</span></p>
-            <p><strong>📞 Phone:</strong> <span>0422-2452222</span></p>
-            <p><strong>📱 Mobile:</strong> <span>+91 98432 40302</span></p>
-          </div>
-
-          <div class="amenities">
-            <strong>✨ Features</strong>
-            <p>Business-class hotel • Deluxe Single, Deluxe Double & Family Suites • Complimentary buffet breakfast • Centrally located with easy transport access</p>
-          </div>
-        </div>
-
-        <!-- Hotel 5: Hotel STM Palace -->
-        <div class="hotel-card">
-          <h3>5. Hotel STM Palace</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>Thadagam Road, Near Paal Company, R.S. Puram, Coimbatore – 641002, Tamil Nadu</span></p>
-            <p><strong>📞 Hotel Phone:</strong> <span>0422 495901</span></p>
-            <p><strong>📱 Mobile:</strong> <span>+91 99433 22003, +91 83500 06000</span></p>
-            <p><strong>📧 Email:</strong> <span>stmhotels@gmail.com</span></p>
-          </div>
-
-          <div class="tariff-section">
-            <h4>Room Tariff (Indicative)</h4>
-            
-            <table class="tariff-table">
-              <thead>
-                <tr>
-                  <th>Room Type</th>
-                  <th>Rate</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Single Room</strong></td>
-                  <td>₹1,800/-</td>
-                </tr>
-                <tr>
-                  <td><strong>Double Room</strong></td>
-                  <td>₹2,700/-</td>
-                </tr>
-                <tr>
-                  <td><strong>Triple Room</strong></td>
-                  <td>₹3,700/-</td>
-                </tr>
-                <tr>
-                  <td><strong>Suite Room</strong></td>
-                  <td>₹6,500/-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="amenities">
-            <strong>✨ Facilities</strong>
-            <p>24-hour check-in/check-out • Complimentary breakfast • Wi-Fi • Power backup • Car parking • Travel desk • Laundry service</p>
-          </div>
-        </div>
-
-        <!-- Hotel 6: SVARGA Residency -->
-        <div class="hotel-card">
-          <h3>6. SVARGA Residency</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>85C, Arun Nagar, Maruthamalai Main Road, Vadavalli, Coimbatore – 641041, Tamil Nadu</span></p>
-            <p><strong>📞 Contact Person:</strong> <span>Front Office</span></p>
-            <p><strong>📱 Phone:</strong> <span>+91 82200 51782</span></p>
-            <p><strong>☎️ Hotel Phone:</strong> <span>+91 422 242 7677</span></p>
-          </div>
-
-          <div class="tariff-section">
-            <h4>Special / Corporate Tariff – 2025</h4>
-            
-            <table class="tariff-table">
-              <thead>
-                <tr>
-                  <th>Room Type</th>
-                  <th>Single Occupancy</th>
-                  <th>Double Occupancy</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Superior Rooms</strong></td>
-                  <td>₹2,499/-</td>
-                  <td>₹2,999/-</td>
-                </tr>
-                <tr>
-                  <td><strong>Deluxe Rooms</strong></td>
-                  <td>₹2,999/-</td>
-                  <td>₹3,499/-</td>
-                </tr>
-                <tr>
-                  <td><strong>Executive Rooms</strong></td>
-                  <td>₹3,499/-</td>
-                  <td>₹3,999/-</td>
-                </tr>
-                <tr>
-                  <td colspan="3"><strong>Extra Person:</strong> ₹900/-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="amenities">
-            <strong>✨ Amenities</strong>
-            <p>Complimentary breakfast • Wi-Fi access • Air-conditioned rooms • 24/7 hot water • Housekeeping services • Television • Room service • Parking facility</p>
-          </div>
-        </div>
-
-        <!-- Hotel 7: IKON by Annapoorna -->
-        <div class="hotel-card">
-          <h3>7. IKON by Annapoorna</h3>
-          <div class="hotel-meta">
-            <p><strong>📍 Address:</strong> <span>Second floor, 75, E Arokiasamy Rd, R.S. Puram, Coimbatore, Tamil Nadu 641002</span></p>
-            <p><strong>📞 Phone:</strong> <span>04224522333</span></p>
-          </div>
-
-          <div class="tariff-section">
-            <h4>Room Tariff (Including Breakfast)</h4>
-            
-            <div style="margin-top: 1rem;">
-              <div class="rate-item">
-                <span class="rate-label">Executive Room - Single</span>
-                <span class="rate-price">₹3,900 + GST</span>
-              </div>
-              <div class="rate-item">
-                <span class="rate-label">Executive Room - Double</span>
-                <span class="rate-price">₹4,200 + GST</span>
-              </div>
-              <div class="rate-item">
-                <span class="rate-label">Club Room - Single</span>
-                <span class="rate-price">₹5,100 + GST</span>
-              </div>
-              <div class="rate-item">
-                <span class="rate-label">Club Room - Double</span>
-                <span class="rate-price">₹5,400 + GST</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="amenities">
-            <strong>✨ Note</strong>
-            <p>All rates include complimentary breakfast per room per night</p>
-          </div>
-        </div>
-
-        <!-- Final Important Note -->
-        <div class="note-box">
-          <h3>⚠️ Important Note</h3>
-          <ul>
-            <li>Hotel tariffs are subject to availability and individual hotel policies.</li>
-            <li>Participants are requested to contact hotels directly for booking and payment.</li>
-            <li>The organising committee is not responsible for accommodation arrangements or billing.</li>
-          </ul>
+        <div class="amenities">
+          <strong>✨ Features</strong>
+          <p>Business-class hotel • Deluxe Single, Deluxe Double & Family Suites • Complimentary buffet breakfast •
+            Centrally located with easy transport access</p>
         </div>
       </div>
-    </section>
 
-    <footer>
-      <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
-        &copy; 2026 ICSSS-FoodXplore'25 - International Conference
-      </p>
-      <p>
-        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
-      </p>
-      <p style="margin-top: 1rem; opacity: 0.8">
-        Department of Food Process Engineering, TNAU, Coimbatore
-      </p>
-    </footer>
+      <!-- Hotel 5: Hotel STM Palace -->
+      <div class="hotel-card">
+        <h3>5. Hotel STM Palace</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>Thadagam Road, Near Paal Company, R.S. Puram, Coimbatore – 641002, Tamil
+              Nadu</span></p>
+          <p><strong>📞 Hotel Phone:</strong> <span>0422 495901</span></p>
+          <p><strong>📱 Mobile:</strong> <span>+91 99433 22003, +91 83500 06000</span></p>
+          <p><strong>📧 Email:</strong> <span>stmhotels@gmail.com</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>Room Tariff (Indicative) - 10% discount applicable for participants</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Single Room</strong></td>
+                <td>₹1,800/-</td>
+              </tr>
+              <tr>
+                <td><strong>Double Room</strong></td>
+                <td>₹2,700/-</td>
+              </tr>
+              <tr>
+                <td><strong>Triple Room</strong></td>
+                <td>₹3,700/-</td>
+              </tr>
+              <tr>
+                <td><strong>Suite Room</strong></td>
+                <td>₹6,500/-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="amenities">
+          <strong>✨ Facilities</strong>
+          <p>24-hour check-in/check-out • Complimentary breakfast • Wi-Fi • Power backup • Car parking • Travel desk •
+            Laundry service</p>
+        </div>
+      </div>
+
+      <!-- Hotel 6: SVARGA Residency -->
+      <div class="hotel-card">
+        <h3>6. SVARGA Residency</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>85C, Arun Nagar, Maruthamalai Main Road, Vadavalli, Coimbatore – 641041,
+              Tamil Nadu</span></p>
+          <p><strong>📞 Contact Person:</strong> <span>Front Office</span></p>
+          <p><strong>📱 Phone:</strong> <span>+91 82200 51782</span></p>
+          <p><strong>☎️ Hotel Phone:</strong> <span>+91 422 242 7677</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>Special / Corporate Tariff – 2025 - 10% discount applicable for participants</h4>
+
+          <table class="tariff-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Single Occupancy</th>
+                <th>Double Occupancy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Superior Rooms</strong></td>
+                <td>₹2,499/-</td>
+                <td>₹2,999/-</td>
+              </tr>
+              <tr>
+                <td><strong>Deluxe Rooms</strong></td>
+                <td>₹2,999/-</td>
+                <td>₹3,499/-</td>
+              </tr>
+              <tr>
+                <td><strong>Executive Rooms</strong></td>
+                <td>₹3,499/-</td>
+                <td>₹3,999/-</td>
+              </tr>
+              <tr>
+                <td colspan="3"><strong>Extra Person:</strong> ₹900/-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="amenities">
+          <strong>✨ Amenities</strong>
+          <p>Complimentary breakfast • Wi-Fi access • Air-conditioned rooms • 24/7 hot water • Housekeeping services •
+            Television • Room service • Parking facility</p>
+        </div>
+      </div>
+
+      <!-- Hotel 7: IKON by Annapoorna -->
+      <div class="hotel-card">
+        <h3>7. IKON by Annapoorna</h3>
+        <div class="hotel-meta">
+          <p><strong>📍 Address:</strong> <span>Second floor, 75, E Arokiasamy Rd, R.S. Puram, Coimbatore, Tamil Nadu
+              641002</span></p>
+          <p><strong>📞 Phone:</strong> <span>04224522333</span></p>
+        </div>
+
+        <div class="tariff-section">
+          <h4>Room Tariff (Including Breakfast)</h4>
+
+          <div style="margin-top: 1rem;">
+            <div class="rate-item">
+              <span class="rate-label">Executive Room - Single</span>
+              <span class="rate-price">₹3,900 + GST</span>
+            </div>
+            <div class="rate-item">
+              <span class="rate-label">Executive Room - Double</span>
+              <span class="rate-price">₹4,200 + GST</span>
+            </div>
+            <div class="rate-item">
+              <span class="rate-label">Club Room - Single</span>
+              <span class="rate-price">₹5,100 + GST</span>
+            </div>
+            <div class="rate-item">
+              <span class="rate-label">Club Room - Double</span>
+              <span class="rate-price">₹5,400 + GST</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="amenities">
+          <strong>✨ Note</strong>
+          <p>All rates include complimentary breakfast per room per night</p>
+        </div>
+      </div>
+
+      <!-- Final Important Note -->
+      <div class="note-box">
+        <h3>⚠️ Important Note</h3>
+        <ul>
+          <li>Hotel tariffs are subject to availability and individual hotel policies.</li>
+          <li>Participants are requested to contact hotels directly for booking and payment.</li>
+          <li>The organising committee is not responsible for accommodation arrangements or billing.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
+      &copy; 2026 ICSSS-FoodXplore'25 - International Conference
+    </p>
+    <p>
+      Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+    </p>
+    <p style="margin-top: 1rem; opacity: 0.8">
+      Department of Food Process Engineering, TNAU, Coimbatore
+    </p>
+  </footer>
 
 </body>
+
 </html>
