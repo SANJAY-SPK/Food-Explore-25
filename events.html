@@ -1,721 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ICSSS-FoodXplore'25 - International Conference</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
-    <style>
-      :root {
-        --primary: #2e7d32;
-        --secondary: #1a237e;
-        --accent: #ffc107;
-        --light: #f5f7fa;
-        --dark: #333;
-        --white: #ffffff;
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICSSS-FoodXplore'25 - International Conference</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1a237e;
+      --accent: #ffc107;
+      --light: #f5f7fa;
+      --dark: #333;
+      --white: #ffffff;
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-      body {
-        line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--light);
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      ul {
-        list-style: none;
-      }
+    body {
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
 
-      /* NAVIGATION */
-      header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+    }
+
+    nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--dark);
+      transition: all 0.3s;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:not(.cta-btn):hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:not(.cta-btn)::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:not(.cta-btn):hover::after {
+      width: 100%;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: var(--white) !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .section-title .line {
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+
+    .events-container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .event-category {
+      margin: 4rem 0 2rem;
+      padding: 1.2rem 2rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(26, 35, 126, 0.1));
+      border-left: 6px solid var(--primary);
+      border-radius: 12px;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .event-category::before {
+      content: "🎯";
+      font-size: 2rem;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .event-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(46, 125, 50, 0.2);
+      border-color: var(--primary);
+    }
+
+    .event-card:hover::before {
+      opacity: 1;
+    }
+
+    .event-header {
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      padding: 1.8rem 2rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-header::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .event-header:hover::after {
+      opacity: 1;
+    }
+
+    .event-title {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+
+    .event-card.active .event-icon {
+      transform: rotate(180deg);
+    }
+
+    .event-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s;
+      padding: 0 2rem;
+    }
+
+    .event-card.active .event-content {
+      max-height: 1000px;
+      padding: 2rem;
+    }
+
+    .event-content p {
+      margin-bottom: 1rem;
+      color: var(--dark);
+      line-height: 1.8;
+    }
+
+    .event-content strong {
+      color: var(--secondary);
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-content ul {
+      padding-left: 1.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .event-content li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+      color: #555;
+    }
+
+    .event-content li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), #ff9800);
+      color: var(--dark);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+    }
+
+    /* EVENT REGISTRATION CARD */
+    .registration-card {
+      background: linear-gradient(135deg, #ffffff, #f1f8f4);
+      border-radius: 22px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
+      border: 2px solid rgba(46, 125, 50, 0.2);
+      margin: 4rem auto 0;
+      max-width: 800px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .registration-card::before {
+      content: "📝";
+      position: absolute;
+      top: -25px;
+      right: -25px;
+      font-size: 6rem;
+      opacity: 0.08;
+    }
+
+    .registration-card h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .registration-card p {
+      font-size: 1.05rem;
+      color: #555;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .register-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: var(--white);
+      padding: 0.9rem 2.4rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(46, 125, 50, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .register-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(46, 125, 50, 0.6);
+    }
+
+    .event-register-btn {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: #fff;
+      padding: 0.6rem 1.6rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 30px;
+      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .event-register-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(46, 125, 50, 0.55);
+    }
+
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1a1a1a);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
       }
 
       nav {
-        max-width: 1300px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.2rem 2.5rem;
+        flex-direction: column;
+        gap: 1rem;
       }
 
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-size: 1.4rem;
       }
 
       .logo img {
-        width: 45px;
-        height: 45px;
-        object-fit: contain;
-        border-radius: 8px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
-      }
-
-      .nav-links a {
-        font-weight: 600;
-        color: var(--dark);
-        transition: all 0.3s;
-        position: relative;
-        font-size: 0.95rem;
-      }
-
-      .nav-links a:not(.cta-btn):hover {
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
-
-      .nav-links a:not(.cta-btn)::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        transition: width 0.3s;
-        border-radius: 2px;
-      }
-
-      .nav-links a:not(.cta-btn):hover::after {
-        width: 100%;
-      }
-
-      .cta-btn {
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        color: var(--white) !important;
-        padding: 0.7rem 1.8rem;
-        border-radius: 30px;
-        transition: all 0.3s;
-        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
-      }
-
-      .cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
-      }
-
-      /* SECTIONS */
-      section {
-        padding: 5rem 2.5rem;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 4rem;
+        width: 38px;
+        height: 38px;
       }
 
       .section-title h2 {
-        font-size: 3rem;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        font-weight: 800;
-      }
-
-      .section-title .line {
-        width: 100px;
-        height: 5px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        margin: 0 auto;
-        border-radius: 3px;
-      }
-
-      .events-container {
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      .event-category {
-        margin: 4rem 0 2rem;
-        padding: 1.2rem 2rem;
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(26, 35, 126, 0.1));
-        border-left: 6px solid var(--primary);
-        border-radius: 12px;
-        color: var(--secondary);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      .event-category::before {
-        content: "🎯";
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       .events-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
 
-      .event-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
-        position: relative;
-      }
-
-      .event-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 6px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .event-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(46, 125, 50, 0.2);
-        border-color: var(--primary);
-      }
-
-      .event-card:hover::before {
-        opacity: 1;
-      }
-
-      .event-header {
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        padding: 1.8rem 2rem;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .event-header::after {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-
-      .event-header:hover::after {
-        opacity: 1;
+      .event-category {
+        font-size: 1.4rem;
+        padding: 1rem 1.5rem;
       }
 
       .event-title {
-        color: white;
-        font-size: 1.2rem;
-        font-weight: 700;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        position: relative;
-        z-index: 1;
+        font-size: 1.05rem;
       }
 
-      .event-icon {
-        font-size: 1.5rem;
-        transition: transform 0.3s;
+      section {
+        padding: 3rem 1.5rem;
       }
+    }
+  </style>
+</head>
 
-      .event-card.active .event-icon {
-        transform: rotate(180deg);
-      }
-
-      .event-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s;
-        padding: 0 2rem;
-      }
-
-      .event-card.active .event-content {
-        max-height: 1000px;
-        padding: 2rem;
-      }
-
-      .event-content p {
-        margin-bottom: 1rem;
-        color: var(--dark);
-        line-height: 1.8;
-      }
-
-      .event-content strong {
-        color: var(--secondary);
-        font-weight: 700;
-        display: inline-block;
-        margin-bottom: 0.5rem;
-      }
-
-      .event-content ul {
-        padding-left: 1.5rem;
-        margin-top: 0.8rem;
-      }
-
-      .event-content li {
-        margin-bottom: 0.8rem;
-        position: relative;
-        padding-left: 1.5rem;
-        color: #555;
-      }
-
-      .event-content li::before {
-        content: "▸";
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-        font-weight: bold;
-      }
-
-      .badge {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--accent), #ff9800);
-        color: var(--dark);
-        padding: 0.3rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-top: 0.5rem;
-        box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
-      }
-
-      /* EVENT REGISTRATION CARD */
-.registration-card {
-  background: linear-gradient(135deg, #ffffff, #f1f8f4);
-  border-radius: 22px;
-  padding: 3rem 2.5rem;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
-  border: 2px solid rgba(46, 125, 50, 0.2);
-  margin: 4rem auto 0;
-  max-width: 800px;
-  position: relative;
-  overflow: hidden;
-}
-
-.registration-card::before {
-  content: "📝";
-  position: absolute;
-  top: -25px;
-  right: -25px;
-  font-size: 6rem;
-  opacity: 0.08;
-}
-
-.registration-card h3 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--secondary), var(--primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.registration-card p {
-  font-size: 1.05rem;
-  color: #555;
-  margin-bottom: 2rem;
-  line-height: 1.8;
-}
-
-.register-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--primary), #1b5e20);
-  color: var(--white);
-  padding: 0.9rem 2.4rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border-radius: 40px;
-  box-shadow: 0 10px 30px rgba(46, 125, 50, 0.4);
-  transition: all 0.3s ease;
-}
-
-.register-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(46, 125, 50, 0.6);
-}
-
-      /* FOOTER */
-      footer {
-        background: linear-gradient(135deg, var(--dark), #1a1a1a);
-        color: var(--white);
-        text-align: center;
-        padding: 3rem;
-      }
-
-      footer p {
-        margin: 0.5rem 0;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .logo {
-          font-size: 1.4rem;
-        }
-
-        .logo img {
-          width: 38px;
-          height: 38px;
-        }
-
-        .section-title h2 {
-          font-size: 2.2rem;
-        }
-
-        .events-grid {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        .event-category {
-          font-size: 1.4rem;
-          padding: 1rem 1.5rem;
-        }
-
-        .event-title {
-          font-size: 1.05rem;
-        }
-
-        section {
-          padding: 3rem 1.5rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
-          <span>ICSSS-FoodXplore'25</span>
-        </div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="themes.html">Abstract</a></li>
-          <li><a href="registration.html">Registration</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="committee.html">Committees</a></li>
-          <li><a href="venue.html">Venue</a></li>
-          <li><a href="accommodation.html">Accommodation</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section id="Events" style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)">
-      <div class="section-title">
-        <h2>Conference Events</h2>
-        <div class="line"></div>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
+        <span>ICSSS-FoodXplore'25</span>
       </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="themes.html">Abstract</a></li>
+        <li><a href="registration.html">Registration</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committees</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <div class="registration-card">
-  <h3>Event Registration</h3>
-  <p>
-    Ready to participate in ICSSS-FoodXplore’25 events?  
-    Click the button below to register for your preferred events and secure your spot.
-    
-  </p>
-  
+  <section id="Events" style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)">
+    <div class="section-title">
+      <h2>Conference Events</h2>
+      <div class="line"></div>
+    </div>
 
-  <a
-    href="https://forms.gle/v1Nyw8VEsDkbCDe58"
-    target="_blank"
-    class="register-btn"
-  >
-    Register for Events
-  </a>
-  <div style="margin-top: 1rem;">
-    <p>Check the Events Listed Below</p>
-  </div>
-</div>
-
-      <div class="events-container">
-        <!-- ONLINE EVENTS -->
-        <h3 class="event-category">ONLINE EVENTS</h3>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>InnovateX – Ideathon</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🎯 Participation:</strong> Individual</p>
-              <span class="badge">Innovation Challenge</span>
-              
-              <p><strong>📌 Poster Themes:</strong></p>
-              <ul>
-                <li>Novel food products / functional foods</li>
-                <li>Food safety & quality innovations</li>
-                <li>Sustainable food processing & packaging</li>
-                <li>Smart foods</li>
-                <li>Food startups & entrepreneurship ideas</li>
-              </ul>
-
-              <p><strong>📋 Poster Rules:</strong></p>
-              <ul>
-                <li>Mode: Online submission</li>
-                <li>Poster size: A3 (29.7 × 42 cm)</li>
-                <li>File format: PDF / JPEG / PNG</li>
-                <li>Resolution: Minimum 300 dpi</li>
-                <li>File name: ParticipantName_IdeathonPoster</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>Food Alert – Swipe for Safety</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🎬 Reel Competition</strong></p>
-              <span class="badge">Creative Content</span>
-              <ul>
-                <li>Theme: "From Farm to Future" & "From Waste to Wealth"</li>
-                <li>Duration: Max 30 seconds</li>
-                <li>Format: Vertical (9:16)</li>
-                <li>Max size: 20 MB</li>
-                <li>Only original content</li>
-                <li>No vulgar, political, or religious content</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>FoodfliX – Commercial Edit</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🎥 Video Editing Challenge</strong></p>
-              <span class="badge">Team Event</span>
-              <ul>
-                <li>Team of 2–3 members</li>
-                <li>30 minutes raw footage provided</li>
-                <li>Final video: 1–2 minutes</li>
-                <li>Format: MP4 (Min 720p)</li>
-                <li>No AI-generated or external clips allowed</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- OFF-STAGE EVENTS -->
-        <h3 class="event-category">OFF-STAGE EVENTS</h3>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>BrainBites – Quiz</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🧠 Knowledge Challenge</strong></p>
-              <span class="badge">Team of 2</span>
-              <ul>
-                <li>2 participants per team</li>
-                <li>Prelims: Online</li>
-                <li>Mains & Finals: Conference day</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>Wealth Out of Waste</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🎨 Food Waste Art Competition</strong></p>
-              <span class="badge">Sustainability</span>
-              <ul>
-                <li>Max 2 members per team</li>
-                <li>Only food waste materials allowed</li>
-                <li>No plastic or glitter</li>
-                <li>Judging: Creativity & sustainability</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>XploreX – Treasure Hunt</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🗺️ Adventure Challenge</strong></p>
-              <span class="badge">Team of 4</span>
-              <ul>
-                <li>Team of exactly 4 members</li>
-                <li>No mobile phones or gadgets</li>
-                <li>Two rounds: Prelims & Main</li>
-                <li>Teams must stay together</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- ON-STAGE EVENTS -->
-        <h3 class="event-category">ON-STAGE EVENTS</h3>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>Pitch Perfect – Product Pitch</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>💼 Business Challenge</strong></p>
-              <span class="badge">Team of 2</span>
-              <ul>
-                <li>2 participants per team</li>
-                <li>Eco-friendly & sustainable food themes</li>
-                <li>Marketing pitch for assigned product</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>JAM – Just A Minute</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>🎤 Speaking Challenge</strong></p>
-              <span class="badge">Individual</span>
-              <ul>
-                <li>1 min preparation + 1 min speaking</li>
-                <li>Topic on the spot</li>
-                <li>Judging: Fluency, clarity, confidence</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-header">
-              <div class="event-title">
-                <span>Colloquium – Debate</span>
-                <span class="event-icon">▼</span>
-              </div>
-            </div>
-            <div class="event-content">
-              <p><strong>⚖️ Critical Thinking Challenge</strong></p>
-              <span class="badge">Team of 3</span>
-              <ul>
-                <li>3 members per team</li>
-                <li>Topic shared one week before</li>
-                <li>3 minutes per speaker</li>
-                <li>No interruptions allowed</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-     <footer>
-      <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
-        &copy; 2026 ICSSS-FoodXplore'25 - International Conference
-      </p>
+    <div class="registration-card">
+      <h3>Event Registration</h3>
       <p>
-        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
-      </p>
-      <p style="margin-top: 1rem; opacity: 0.8">
-        Department of Food Process Engineering, TNAU, Coimbatore
-      </p>
-    </footer>
+        Ready to participate in ICSSS-FoodXplore’25 events?
+        Click the button below to register for your preferred events and secure your spot.
 
-    <script>
-      document.querySelectorAll(".event-header").forEach((header) => {
-        header.addEventListener("click", () => {
-          const card = header.parentElement;
-          const wasActive = card.classList.contains("active");
-          
-          // Close all other cards
-          document.querySelectorAll(".event-card").forEach((c) => {
-            c.classList.remove("active");
-          });
-          
-          // Toggle current card
-          if (!wasActive) {
-            card.classList.add("active");
-          }
+      </p>
+
+
+      <a href="https://forms.gle/v1Nyw8VEsDkbCDe58" target="_blank" class="register-btn">
+        Register for Events
+      </a>
+      <div style="margin-top: 1rem;">
+        <p>Check the Events Listed Below</p>
+      </div>
+    </div>
+
+    <div class="events-container">
+      <!-- ONLINE EVENTS -->
+      <h3 class="event-category">ONLINE EVENTS</h3>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>InnovateX – Ideathon</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🎯 Participation:</strong> Individual</p>
+            <span class="badge">Innovation Challenge</span>
+
+            <p><strong>📌 Poster Themes:</strong></p>
+            <ul>
+              <li>Novel food products / functional foods</li>
+              <li>Food safety & quality innovations</li>
+              <li>Sustainable food processing & packaging</li>
+              <li>Smart foods</li>
+              <li>Food startups & entrepreneurship ideas</li>
+            </ul>
+
+            <p><strong>📋 Poster Rules:</strong></p>
+            <ul>
+              <li>Mode: Online submission</li>
+              <li>Poster size: A3 (29.7 × 42 cm)</li>
+              <li>File format: PDF / JPEG / PNG</li>
+              <li>Resolution: Minimum 300 dpi</li>
+              <li>File name: ParticipantName_IdeathonPoster</li>
+            </ul>
+            <a href="https://forms.gle/RJfWrufXnHHa3APSA" target="_blank" class="event-register-btn">
+              Register for InnovateX
+            </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>Food Alert – Swipe for Safety</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🎬 Reel Competition</strong></p>
+            <span class="badge">Creative Content</span>
+            <ul>
+              <li>Theme: "From Farm to Future" & "From Waste to Wealth"</li>
+              <li>Duration: Max 30 seconds</li>
+              <li>Format: Vertical (9:16)</li>
+              <li>Max size: 20 MB</li>
+              <li>Only original content</li>
+              <li>No vulgar, political, or religious content</li>
+            </ul>
+            <a href="https://forms.gle/k22ejqkH5xLZ7Pq79" target="_blank" class="event-register-btn">
+            Register for Food Alert
+          </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>FoodfliX – Commercial Edit</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🎥 Video Editing Challenge</strong></p>
+            <span class="badge">Team Event</span>
+            <ul>
+              <li>Team of 2–3 members</li>
+              <li>30 minutes raw footage provided</li>
+              <li>Final video: 1–2 minutes</li>
+              <li>Format: MP4 (Min 720p)</li>
+              <li>No AI-generated or external clips allowed</li>
+            </ul>
+             <a href="https://forms.gle/DtoYhGLuptymfixK8" target="_blank" class="event-register-btn">
+          Register for FoodFlix
+        </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- OFF-STAGE EVENTS -->
+      <h3 class="event-category">OFF-STAGE EVENTS</h3>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>BrainBites – Quiz</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🧠 Knowledge Challenge</strong></p>
+            <span class="badge">Team of 2</span>
+            <ul>
+              <li>2 participants per team</li>
+              <li>Prelims: Online</li>
+              <li>Mains & Finals: Conference day</li>
+            </ul>
+            <a href="https://forms.gle/fjKqKQCLgcS5Acdt6" target="_blank" class="event-register-btn">
+            Register for BrainBites
+          </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>Wealth Out of Waste</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🎨 Food Waste Art Competition</strong></p>
+            <span class="badge">Sustainability</span>
+            <ul>
+              <li>Max 2 members per team</li>
+              <li>Only food waste materials allowed</li>
+              <li>No plastic or glitter</li>
+              <li>Judging: Creativity & sustainability</li>
+            </ul>
+            <a href="https://forms.gle/vScEYWL7VUP5g8KC9" target="_blank" class="event-register-btn">
+            Register for Wealth Out of Waste
+          </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>XploreX – Treasure Hunt</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🗺️ Adventure Challenge</strong></p>
+            <span class="badge">Team of 4</span>
+            <ul>
+              <li>Team of exactly 4 members</li>
+              <li>No mobile phones or gadgets</li>
+              <li>Two rounds: Prelims & Main</li>
+              <li>Teams must stay together</li>
+            </ul>
+            <a href="https://forms.gle/XLSi3VxpTUDgx6KD7" target="_blank" class="event-register-btn">
+            Register for XploreX
+          </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ON-STAGE EVENTS -->
+      <h3 class="event-category">ON-STAGE EVENTS</h3>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>Pitch Perfect – Product Pitch</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>💼 Business Challenge</strong></p>
+            <span class="badge">Team of 2</span>
+            <ul>
+              <li>2 participants per team</li>
+              <li>Eco-friendly & sustainable food themes</li>
+              <li>Marketing pitch for assigned product</li>
+            </ul>
+            <a href="https://forms.gle/QGfqodL1TSUgpWWa6" target="_blank" class="event-register-btn">
+            Register for Pitch Perfect
+          </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>JAM – Just A Minute</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>🎤 Speaking Challenge</strong></p>
+            <span class="badge">Individual</span>
+            <ul>
+              <li>1 min preparation + 1 min speaking</li>
+              <li>Topic on the spot</li>
+              <li>Judging: Fluency, clarity, confidence</li>
+            </ul>
+             <a href="https://forms.gle/DaTQ5ZNv3wDyEnRT9" target="_blank" class="event-register-btn">
+            Register for JAM
+          </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-header">
+            <div class="event-title">
+              <span>Colloquium – Debate</span>
+              <span class="event-icon">▼</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <p><strong>⚖️ Critical Thinking Challenge</strong></p>
+            <span class="badge">Team of 3</span>
+            <ul>
+              <li>3 members per team</li>
+              <li>Topic shared one week before</li>
+              <li>3 minutes per speaker</li>
+              <li>No interruptions allowed</li>
+            </ul>
+            <a href="https://forms.gle/RYs4WT2i2sinnfyg6" target="_blank" class="event-register-btn">
+            Register for Colloquium
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
+      &copy; 2026 ICSSS-FoodXplore'25 - International Conference
+    </p>
+    <p>
+      Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+    </p>
+    <p style="margin-top: 1rem; opacity: 0.8">
+      Department of Food Process Engineering, TNAU, Coimbatore
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".event-header").forEach((header) => {
+      header.addEventListener("click", () => {
+        const card = header.parentElement;
+        const wasActive = card.classList.contains("active");
+
+        // Close all other cards
+        document.querySelectorAll(".event-card").forEach((c) => {
+          c.classList.remove("active");
         });
+
+        // Toggle current card
+        if (!wasActive) {
+          card.classList.add("active");
+        }
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
