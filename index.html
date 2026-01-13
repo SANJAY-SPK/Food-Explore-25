@@ -743,10 +743,70 @@
           max-height: 50px;
         }
       }
+
+        /* ANNOUNCEMENT TICKER & BANNER (Responsive) */
+        .announcement-ticker {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(90deg,#ff6b6b,#ff9800,#ff6b6b);
+          color: #fff;
+          padding: 10px 16px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 0.95rem;
+          z-index: 1001;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .announcement-ticker .announcement-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .announcement-ticker a { color: #fff; text-decoration: underline; font-weight: 900; }
+
+        /* small inline banner shown below hero */
+        .announcement-banner {
+          max-width: 1100px;
+          margin: 18px auto;
+          background: linear-gradient(90deg,#fff3cd,#ffe6cc);
+          border: 1px solid #ffd580;
+          color: #8a3b12;
+          padding: 10px 14px;
+          border-radius: 8px;
+          font-weight: 700;
+          text-align: center;
+          box-shadow: 0 6px 18px rgba(255, 193, 7, 0.12);
+        }
+
+        body { padding-top: 56px; }
+
+        @media (max-width: 900px) {
+          .announcement-ticker { font-size: 0.92rem; padding: 9px 12px; }
+          body { padding-top: 52px; }
+        }
+
+        @media (max-width: 480px) {
+          .announcement-ticker { font-size: 0.65rem; padding: 8px 10px; }
+          .announcement-banner { margin: 12px 16px; font-size: 0.92rem; padding: 8px 10px; }
+          body { padding-top: 48px; }
+        }
     </style>
   </head>
 
   <body>
+    <div class="announcement-ticker" role="region" aria-label="Important announcement">
+      <div class="announcement-content">
+        <span>📢</span>
+        <span>The Submission Date has been <strong>extended</strong> — Refer to <a href="themes.html">Abstract</a> for new dates</span>
+      </div>
+    </div>
+
     <header>
       <nav>
         <div class="logo">
@@ -837,6 +897,11 @@
         </div>
       </div>
     </section>
+
+    <!-- Short announcement banner (visible below hero) -->
+    <div class="announcement-banner" role="note">
+      📣 Submission dates extended — Abstract deadline: <strong>18 January 2026</strong>; Full paper: <strong>10 February 2026</strong>. See the <a href="themes.html">Abstract</a> page for details.
+    </div>
 
     <section id="about">
       <div class="section-title">
