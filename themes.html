@@ -1,669 +1,801 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ICSSS-FoodXplore'25 - International Conference</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
-    <style>
-      :root {
-        --primary: #2e7d32;
-        --secondary: #1a237e;
-        --accent: #ffc107;
-        --light: #f5f7fa;
-        --dark: #333;
-        --white: #ffffff;
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICSSS-FoodXplore'25 - International Conference</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1a237e;
+      --accent: #ffc107;
+      --light: #f5f7fa;
+      --dark: #333;
+      --white: #ffffff;
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-      body {
-        line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--light);
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      ul {
-        list-style: none;
-      }
+    body {
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
 
-      /* NAVIGATION */
-      header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
-      }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-      nav {
-        max-width: 1300px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.2rem 2.5rem;
-      }
+    ul {
+      list-style: none;
+    }
 
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+    /* NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+    }
 
-      .logo img {
-        width: 45px;
-        height: 45px;
-        object-fit: contain;
-        border-radius: 8px;
-      }
+    nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+    }
 
-      .nav-links {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
-      }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-      .nav-links a {
-        font-weight: 600;
-        color: var(--dark);
-        transition: all 0.3s;
-        position: relative;
-        font-size: 0.95rem;
-      }
+    .logo img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-      .nav-links a:not(.cta-btn):hover {
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
 
-      .nav-links a:not(.cta-btn)::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        transition: width 0.3s;
-        border-radius: 2px;
-      }
+    .nav-links a {
+      font-weight: 600;
+      color: var(--dark);
+      transition: all 0.3s;
+      position: relative;
+      font-size: 0.95rem;
+    }
 
-      .nav-links a:not(.cta-btn):hover::after {
-        width: 100%;
-      }
+    .nav-links a:not(.cta-btn):hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
 
-      .cta-btn {
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        color: var(--white) !important;
-        padding: 0.7rem 1.8rem;
-        border-radius: 30px;
-        transition: all 0.3s;
-        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
-      }
+    .nav-links a:not(.cta-btn)::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
 
-      .cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
-      }
+    .nav-links a:not(.cta-btn):hover::after {
+      width: 100%;
+    }
 
-      /* SECTIONS */
-      section {
-        padding: 2rem 2.5rem;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
+    .cta-btn {
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: var(--white) !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+    }
 
-      .section-title {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+    }
 
-      .section-title h2 {
-        font-size: 2.8rem;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        font-weight: 800;
-      }
+    /* SECTIONS */
+    section {
+      padding: 2rem 2.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-      .section-title .line {
-        width: 100px;
-        height: 5px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        margin: 0 auto;
-        border-radius: 3px;
-      }
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
 
-      /* THEMES - UPDATED */
-      .themes-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
-        perspective: 1000px;
-      }
+    .section-title h2 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
 
-      .theme-item {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fdf9 100%);
-        padding: 2.5rem 2rem;
-        border-radius: 20px;
-        text-align: center;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: default;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid transparent;
-      }
+    .section-title .line {
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 0 auto;
+      border-radius: 3px;
+    }
 
-      .theme-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: linear-gradient(
-          90deg,
+    /* THEMES - UPDATED */
+    .themes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      perspective: 1000px;
+    }
+
+    .theme-item {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fdf9 100%);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .theme-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg,
           var(--primary),
           var(--accent),
-          var(--secondary)
-        );
-        background-size: 200% 100%;
-        animation: gradientShift 3s ease infinite;
+          var(--secondary));
+      background-size: 200% 100%;
+      animation: gradientShift 3s ease infinite;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .theme-item:hover::before {
+      opacity: 1;
+    }
+
+    .theme-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .theme-item:hover {
+      transform: translateY(-15px) rotateX(5deg) scale(1.03);
+      box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
+    }
+
+    .theme-item:hover::after {
+      opacity: 1;
+    }
+
+    .theme-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+      transition: all 0.5s;
+      display: inline-block;
+    }
+
+    .theme-item:hover .theme-icon {
+      transform: scale(1.15) rotateY(360deg);
+    }
+
+    .theme-item h4 {
+      color: var(--dark);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .theme-item:hover h4 {
+      color: var(--primary);
+    }
+
+    /* Staggered animation on page load */
+    @keyframes fadeInUp {
+      from {
         opacity: 0;
-        transition: opacity 0.4s;
+        transform: translateY(30px);
       }
 
-      @keyframes gradientShift {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-
-      .theme-item:hover::before {
+      to {
         opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      .theme-item::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 20px;
-        padding: 2px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
+    .theme-item {
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
 
-      .theme-item:hover {
-        transform: translateY(-15px) rotateX(5deg) scale(1.03);
-        box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
-      }
+    .theme-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-      .theme-item:hover::after {
-        opacity: 1;
-      }
+    .theme-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-      .theme-icon {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-        transition: all 0.5s;
-        display: inline-block;
-      }
+    .theme-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-      .theme-item:hover .theme-icon {
-        transform: scale(1.15) rotateY(360deg);
-      }
+    .theme-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
 
-      .theme-item h4 {
-        color: var(--dark);
-        font-size: 1.1rem;
-        line-height: 1.7;
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
-        transition: color 0.3s;
-      }
+    .theme-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
 
-      .theme-item:hover h4 {
-        color: var(--primary);
-      }
+    .theme-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
 
-      /* Staggered animation on page load */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    .theme-item:nth-child(7) {
+      animation-delay: 0.7s;
+    }
 
-      .theme-item {
-        animation: fadeInUp 0.6s ease-out backwards;
-      }
+    /* ABSTRACT SECTION */
+    .dates-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
 
-      .theme-item:nth-child(1) {
-        animation-delay: 0.1s;
+    .card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .dates-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .dates-table td {
+      padding: 12px 6px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    .guidelines-list li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    /* ABSTRACT TEMPLATE DOWNLOAD */
+    .template-download {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .template-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: var(--white);
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 6px 20px rgba(26, 35, 126, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .template-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(26, 35, 126, 0.5);
+    }
+
+    .award-note {
+      margin-top: 15px;
+      background: #eaf4ff;
+      padding: 12px;
+      border-radius: 10px;
+      border-left: 4px solid var(--secondary);
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1a1a1a);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem;
+      margin-top: 3rem;
+    }
+
+    /* -------------------------------------- */
+    /* 🌐 MOBILE RESPONSIVENESS (ALL PAGES)   */
+    /* -------------------------------------- */
+
+    @media (max-width: 1024px) {
+      nav {
+        padding: 1rem 1.5rem;
       }
-      .theme-item:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .theme-item:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .theme-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .theme-item:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      .theme-item:nth-child(6) {
-        animation-delay: 0.6s;
-      }
-      .theme-item:nth-child(7) {
-        animation-delay: 0.7s;
-      }
-      /* ABSTRACT SECTION */
-      .dates-wrapper {
+    }
+
+    /* ---------- TABLETS ---------- */
+    @media (max-width: 768px) {
+      .nav-links {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 30px;
+        gap: 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+
+      .logo img {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content h2 {
+        font-size: 1.3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      /* Cards become full width */
+      .dates-wrapper {
+        grid-template-columns: 1fr;
       }
 
       .card {
-        background: var(--white);
-        padding: 30px;
-        border-radius: 18px;
-        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-        transition: 0.3s ease;
+        padding: 24px;
       }
 
-      .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-      }
-
+      /* Text scaling */
       .card-title {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--secondary);
-        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1a1a1a);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
       }
 
-      .dates-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 15px;
+      nav {
+        flex-direction: column;
+        gap: 1rem;
       }
 
-      .dates-table td {
-        padding: 12px 6px;
-        border-bottom: 1px solid #e6e6e6;
+      .logo {
+        font-size: 1.4rem;
       }
 
-      .guidelines-list li {
-        margin-bottom: 10px;
-        line-height: 1.5;
-      }
-      /* ABSTRACT TEMPLATE DOWNLOAD */
-      .template-download {
-        margin-top: 1.5rem;
-        text-align: center;
+      .logo img {
+        width: 38px;
+        height: 38px;
       }
 
-      .template-btn {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
-        color: var(--white);
-        padding: 0.8rem 1.8rem;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 0.95rem;
-        box-shadow: 0 6px 20px rgba(26, 35, 126, 0.35);
-        transition: all 0.3s ease;
+      .hero-content h1 {
+        font-size: 2.2rem;
       }
 
-      .template-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(26, 35, 126, 0.5);
+      .hero-content h2 {
+        font-size: 1.3rem;
       }
 
-      .award-note {
-        margin-top: 15px;
-        background: #eaf4ff;
-        padding: 12px;
-        border-radius: 10px;
-        border-left: 4px solid var(--secondary);
-        color: var(--secondary);
-        font-weight: 600;
+      .section-title h2 {
+        font-size: 2rem;
       }
 
-      footer {
-        background: linear-gradient(135deg, var(--dark), #1a1a1a);
-        color: var(--white);
-        text-align: center;
-        padding: 3rem;
-        margin-top: 3rem;
-      }
-      /* -------------------------------------- */
-      /* 🌐 MOBILE RESPONSIVENESS (ALL PAGES)   */
-      /* -------------------------------------- */
-
-      @media (max-width: 1024px) {
-        nav {
-          padding: 1rem 1.5rem;
-        }
+      .themes-list {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
-      /* ---------- TABLETS ---------- */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .logo {
-          font-size: 1.4rem;
-        }
-
-        .logo img {
-          width: 38px;
-          height: 38px;
-        }
-
-        .hero-content h1 {
-          font-size: 2.2rem;
-        }
-        .hero-content h2 {
-          font-size: 1.3rem;
-        }
-        .section-title h2 {
-          font-size: 2rem;
-        }
-
-        /* Cards become full width */
-        .dates-wrapper {
-          grid-template-columns: 1fr;
-        }
-
-        .card {
-          padding: 24px;
-        }
-
-        /* Text scaling */
-        .card-title {
-          font-size: 1.3rem;
-        }
+      .theme-item:hover {
+        transform: translateY(-10px) scale(1.02);
       }
+    }
+  </style>
+</head>
 
-      /* FOOTER */
-      footer {
-        background: linear-gradient(135deg, var(--dark), #1a1a1a);
-        color: var(--white);
-        text-align: center;
-        padding: 3rem;
-      }
-
-      footer p {
-        margin: 0.5rem 0;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .logo {
-          font-size: 1.4rem;
-        }
-
-        .logo img {
-          width: 38px;
-          height: 38px;
-        }
-
-        .hero-content h1 {
-          font-size: 2.2rem;
-        }
-        .hero-content h2 {
-          font-size: 1.3rem;
-        }
-        .section-title h2 {
-          font-size: 2rem;
-        }
-
-        .themes-list {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-
-        .theme-item:hover {
-          transform: translateY(-10px) scale(1.02);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
-          <span>ICSSS-FoodXplore'25</span>
-        </div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="themes.html">Abstract</a></li>
-          <li><a href="registration.html">Registration</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="committee.html">Committees</a></li>
-          <li><a href="venue.html">Venue</a></li>
-          <li><a href="accommodation.html">Accommodation</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section
-      id="themes"
-      style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)"
-    >
-      <div class="section-title">
-        <h2>Conference Themes</h2>
-        <div class="line"></div>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
+        <span>ICSSS-FoodXplore'25</span>
       </div>
-      <div class="themes-list">
-        <div class="theme-item">
-          <div class="theme-icon">⚙️</div>
-          <h4>Advances in Food Processing and Post-Harvest Machinery</h4>
-        </div>
-        <div class="theme-item">
-          <div class="theme-icon">💡</div>
-          <h4>Innovative Technologies in Food Processing and Packaging</h4>
-        </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="themes.html">Abstract</a></li>
+        <li><a href="registration.html">Registration</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committees</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <div class="theme-item">
-          <div class="theme-icon">🥗</div>
-          <h4>Functional Foods for Nutritional Security</h4>
-        </div>
-        <div class="theme-item">
-          <div class="theme-icon">♻️</div>
-          <h4>Valorisation of Agro Residues for Circular Economy</h4>
-        </div>
-        <div class="theme-item">
-          <div class="theme-icon">🌤️</div>
-          <h4>Climate Smart Agriculture for Food Production and Processing</h4>
-        </div>
-        <div class="theme-item">
-          <div class="theme-icon">🧬</div>
-          <h4>Advances in Food Safety and Quality Standards</h4>
-        </div>
+  <section id="themes" style="background: linear-gradient(135deg, #f9f9f9, #e8f5e9)">
+    <div class="section-title">
+      <h2>Conference Themes</h2>
+      <div class="line"></div>
+    </div>
+    <div class="themes-list">
+      <div class="theme-item">
+        <div class="theme-icon">⚙️</div>
+        <h4>Advances in Food Processing and Post-Harvest Machinery</h4>
       </div>
-    </section>
-
-    <!-- 🌟 ABSTRACT CONTENT SECTION -->
-    <section id="abstract">
-      <div class="section-title">
-        <h2>Important Dates & Guidelines</h2>
-        <div class="line"></div>
+      <div class="theme-item">
+        <div class="theme-icon">💡</div>
+        <h4>Innovative Technologies in Food Processing and Packaging</h4>
       </div>
 
-      <div style="background: linear-gradient(135deg, #fff3cd, #ffe6cc); border: 2px solid #ffc107; border-radius: 12px; padding: 18px 24px; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.25);">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+      <div class="theme-item">
+        <div class="theme-icon">🥗</div>
+        <h4>Functional Foods for Nutritional Security</h4>
+      </div>
+      <div class="theme-item">
+        <div class="theme-icon">♻️</div>
+        <h4>Valorisation of Agro Residues for Circular Economy</h4>
+      </div>
+      <div class="theme-item">
+        <div class="theme-icon">🌤️</div>
+        <h4>Climate Smart Agriculture for Food Production and Processing</h4>
+      </div>
+      <div class="theme-item">
+        <div class="theme-icon">🧬</div>
+        <h4>Advances in Food Safety and Quality Standards</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🌟 ABSTRACT CONTENT SECTION -->
+  <section id="abstract">
+    <div class="section-title">
+      <h2>Important Dates & Guidelines</h2>
+      <div class="line"></div>
+    </div>
+
+    <div
+      style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border: 2px solid #ffb300; border-radius: 12px; padding: 18px 24px; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 15px rgba(255, 179, 0, 0.2);">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
         <span style="font-size: 1.5rem;">📢</span>
-        <strong style="color: #f57f17; font-size: 1.1rem;">Important Update</strong>
+        <strong style="color: #bf360c; font-size: 1.2rem;">Latest Updates</strong>
       </div>
-      <p style="color: #d84315; font-weight: 600; margin: 0;">
-        ⏳ Submission dates have been <strong>extended</strong>!
-      </p>
-      <div style="margin-top: 10px; font-size: 0.95rem; color: #333;">
-        <p style="margin: 4px 0;"><strong>📋 Abstract last submission:</strong> 18 January 2026</p>
-        <p style="margin: 4px 0;"><strong>📄 Full length paper last submission:</strong> 10 February 2026</p>
+      <div style="font-size: 1rem; color: #333;">
+        <p style="margin: 6px 0; color: #d32f2f; font-weight: 700;">
+          🖼️ Final Poster Submission Deadline: 27th January 2026 (Submit Today!)
+        </p>
+        <p style="margin: 6px 0; font-weight: 600;">
+          🎤 Oral & Poster Presentation Templates have been released!
+        </p>
+        <p style="margin: 6px 0; color: #1565c0; font-weight: 600;">
+          📄 Full length paper submission deadline: 10th February 2026
+        </p>
+      </div>
+      <div style="margin-top: 10px; font-size: 0.9rem; color: #666; font-style: italic;">
+        Scroll down to the 'Presentation Guidelines' section to download the templates.
       </div>
     </div>
 
-      <div class="dates-wrapper">
-        <!-- Event Dates Card -->
-        <div class="card">
-          <h3 class="card-title">Event Schedule</h3>
+    <div class="dates-wrapper">
+      <!-- Event Dates Card -->
+      <div class="card">
+        <h3 class="card-title">Event Schedule</h3>
 
-          <table class="dates-table">
-            <tbody>
-              <tr>
-                <td><strong>Abstract Submission Deadline</strong></td>
-                <td>18-01-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Notification of Acceptance</strong></td>
-                <td>20-01-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Early Bird Registration Deadline</strong></td>
-                <td>10-01-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Full Paper Submission</strong></td>
-                <td>10-02-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Conference Dates</strong></td>
-                <td>29 & 30-01-2026</td>
-              </tr>
-            </tbody>
-          </table>
+        <table class="dates-table">
+          <tbody>
+            <tr>
+              <td><strong>Abstract Submission Deadline</strong></td>
+              <td>18-01-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Notification of Acceptance</strong></td>
+              <td>20-01-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Early Bird Registration Deadline</strong></td>
+              <td>10-01-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Full Paper Submission</strong></td>
+              <td>10-02-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Conference Dates</strong></td>
+              <td>29 & 30-01-2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Guidelines Card -->
+      <div class="card">
+        <h3 class="card-title">Call for Abstracts & Author Guidelines</h3>
+
+        <p class="text-muted">
+          Original research papers, reviews, and case studies aligned with
+          conference themes are invited.
+        </p>
+
+        <ul class="guidelines-list">
+          <li><strong>Title:</strong> Times New Roman, 12, Bold</li>
+          <li>
+            <strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding
+            author with *
+          </li>
+          <li>
+            <strong>Abstract:</strong> Times New Roman, 12, max 300 words
+          </li>
+          <li><strong>Format:</strong> .doc or .docx only</li>
+          <li>
+            <strong>Poster:</strong> Single PPTX converted to PDF for E-poster
+            (Virtual Mode)
+          </li>
+        </ul>
+
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.8">
+          Please use this template strictly for abstract submission.
+        </p>
+
+        <div class="template-download">
+          <a href="assets/docs/ICSSS-FoodXplore'25-Abstract_Template.docx" download class="template-btn">
+            ⬇ Download Abstract Template
+          </a>
         </div>
 
-        <!-- Guidelines Card -->
-        <div class="card">
-          <h3 class="card-title">Call for Abstracts & Author Guidelines</h3>
+        <p class="award-note">
+          🏅 Awards will be given separately for students & scientists.
+        </p>
+      </div>
+    </div>
+  </section>
 
-          <p class="text-muted">
-            Original research papers, reviews, and case studies aligned with
-            conference themes are invited.
-          </p>
+  <!-- 🎓 PRESENTATION INSTRUCTIONS SECTION -->
+  <section id="presentation-instructions" style="background: #fdfdfd; padding-bottom: 5rem;">
+    <div class="section-title">
+      <h2>Presentation Guidelines</h2>
+      <div class="line"></div>
+    </div>
 
-          <ul class="guidelines-list">
-            <li><strong>Title:</strong> Times New Roman, 12, Bold</li>
-            <li>
-              <strong>Authors:</strong> Times New Roman, 11, Bold. Corresponding
-              author with *
-            </li>
-            <li>
-              <strong>Abstract:</strong> Times New Roman, 12, max 300 words
-            </li>
-            <li><strong>Format:</strong> .doc or .docx only</li>
-            <li>
-              <strong>Poster:</strong> Single PPTX converted to PDF for E-poster
-              (Virtual Mode)
-            </li>
-          </ul>
-
-          <p style="margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.8">
-            Please use this template strictly for abstract submission.
-          </p>
-
-          <div class="template-download">
-            <a
-              href="assets/docs/ICSSS-FoodXplore'25-Abstract_Template.docx"
-              download
-              class="template-btn"
-            >
-              ⬇ Download Abstract Template 
-            </a>
+    <div class="dates-wrapper"
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: stretch;">
+      <!-- Oral Presentation Card -->
+      <div class="card"
+        style="border-top: 6px solid var(--primary); display: flex; flex-direction: column; background: #fff; padding: 40px;">
+        <div style="flex-grow: 1;">
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+            <div
+              style="background: rgba(46, 125, 50, 0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+              🎤</div>
+            <h3 class="card-title" style="margin: 0; font-size: 1.6rem;">Oral Presentation</h3>
           </div>
 
-          <p class="award-note">
-            🏅 Awards will be given separately for students & scientists.
+          <div style="font-size: 1rem; line-height: 1.8; color: #444;">
+            <p style="margin-bottom: 15px;">Dear Participant, <span
+                style="color: var(--primary); font-weight: 700;">Greetings!</span></p>
+            <p>The template for oral presentation is now available. Please prepare your slides according to the
+              following guidelines:</p>
+
+            <div
+              style="background: #f8fdf9; border-radius: 12px; padding: 20px; margin-top: 20px; border: 1px dashed var(--primary);">
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                  <span style="color: var(--primary);">⏱️</span> <strong>Presentation:</strong> 5 Minutes
+                </li>
+                <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                  <span style="color: var(--primary);">💬</span> <strong>Discussion/Q&A:</strong> 2 Minutes
+                </li>
+                <li style="display: flex; gap: 10px;">
+                  <span style="color: var(--primary);">📄</span> <strong>Format:</strong> .ppt or .pdf
+                </li>
+              </ul>
+            </div>
+
+            <p style="margin-top: 20px; font-style: italic; color: #666;">* Detailed program schedule will be shared
+              shortly.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 35px; padding-top: 20px; border-top: 1px solid #eee;">
+          <a href="assets/docs/ICSSS_FoodXplore'25_Oral_template.pptx" download class="template-btn"
+            style="width: 100%; text-align: center; justify-content: center;">
+            ⬇ Download Oral Template
+          </a>
+          <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #888;">
+            Organizing Secretary, ICSSS
           </p>
         </div>
       </div>
-    </section>
 
+      <!-- Poster Presentation Card -->
+      <div class="card"
+        style="border-top: 6px solid var(--secondary); display: flex; flex-direction: column; background: #fff; padding: 40px;">
+        <div style="flex-grow: 1;">
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+            <div
+              style="background: rgba(26, 35, 126, 0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+              🖼️</div>
+            <h3 class="card-title" style="margin: 0; font-size: 1.6rem;">Poster Submission</h3>
+          </div>
 
-    <footer>
-      <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
-        &copy; 2026 ICSSS-FoodXplore'25 - International Conference
-      </p>
-      <p>
-        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
-      </p>
-      <p style="margin-top: 1rem; opacity: 0.8">
-        Department of Food Process Engineering, TNAU, Coimbatore
-      </p>
-    </footer>
-  </body>
+          <div style="font-size: 1rem; line-height: 1.8; color: #444;">
+            <p style="margin-bottom: 15px;">Dear Participant, <span
+                style="color: var(--secondary); font-weight: 700;">Greetings!</span></p>
+
+            <div
+              style="background: #f0f2ff; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--secondary);">
+              <p style="margin: 0;"><strong>Submission Deadline:</strong> <span
+                  style="color: #d32f2f; font-weight: 800;">27th January 2026</span></p>
+              <p style="margin-top: 5px;"><strong>Email to:</strong> <a href="mailto:foodxplore2025@gmail.com"
+                  style="color: var(--secondary); font-weight: 700; text-decoration: underline;">foodxplore2025@gmail.com</a>
+              </p>
+            </div>
+
+            <p><strong>Submission Requirements:</strong></p>
+            <ul style="list-style: none; padding: 0; margin: 10px 0 20px 0;">
+              <li style="display: flex; gap: 10px; margin-bottom: 8px;"><span style="color: var(--secondary);">✅</span>
+                File format: <strong>.jpeg or .pdf</strong></li>
+              <li style="display: flex; gap: 10px; margin-bottom: 8px;"><span style="color: var(--secondary);">✅</span>
+                Filename: <strong>Paper ID</strong> (from acceptance letter)</li>
+              <li style="display: flex; gap: 10px; margin-bottom: 8px;"><span style="color: var(--secondary);">✅</span>
+                Email Body: Mention <strong>Paper ID and Theme</strong></li>
+            </ul>
+
+            <div
+              style="background: #fff4f4; padding: 12px 15px; border-radius: 8px; border: 1px solid #ffcdd2; display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.2rem;">🚫</span>
+              <p style="margin: 0; color: #b71c1c; font-weight: 600; font-size: 0.9rem;">No live presentation for
+                posters.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 35px; padding-top: 20px; border-top: 1px solid #eee;">
+          <a href="assets/docs/ICSSS_FoodXplore25_Poster_format.pptx" download class="template-btn"
+            style="width: 100%; text-align: center; justify-content: center; background: linear-gradient(135deg, var(--secondary), #0d47a1);">
+            ⬇ Download Poster Template
+          </a>
+          <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #888;">
+            Organizing Secretary, ICSSS
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
+      &copy; 2026 ICSSS-FoodXplore'25 - International Conference
+    </p>
+    <p>
+      Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+    </p>
+    <p style="margin-top: 1rem; opacity: 0.8">
+      Department of Food Process Engineering, TNAU, Coimbatore
+    </p>
+  </footer>
+</body>
+
 </html>

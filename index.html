@@ -1,1178 +1,1193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ICSSS-FoodXplore'25 - International Conference</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
-    <style>
-      :root {
-        --primary: #2e7d32;
-        --secondary: #1a237e;
-        --accent: #ffc107;
-        --light: #f5f7fa;
-        --dark: #333;
-        --white: #ffffff;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICSSS-FoodXplore'25 - International Conference</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/logo-fx.jpg" />
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1a237e;
+      --accent: #ffc107;
+      --light: #f5f7fa;
+      --dark: #333;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+    }
+
+    nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--dark);
+      transition: all 0.3s;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:not(.cta-btn):hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:not(.cta-btn)::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:not(.cta-btn):hover::after {
+      width: 100%;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: var(--white) !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    /* LOGOS SECTION - Simple version */
+    .hero-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-item {
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-item img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg,
+          rgba(46, 125, 50, 0.9),
+          rgba(26, 35, 126, 0.85)),
+        url("https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%,
+          rgba(255, 193, 7, 0.2),
+          transparent 60%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      background: linear-gradient(135deg, var(--accent), #ff9800);
+      color: var(--dark);
+      padding: 1.2rem 2.4rem;
+      font-weight: bold;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 25px rgba(255, 193, 7, 0.5);
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
       }
 
-      html {
-        scroll-behavior: smooth;
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .hero-badge-text {
+      font-size: 2rem;
+    }
+
+    .hero-cta-group {
+      position: relative;
+    }
+
+    .hero-side-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: var(--white) !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+    }
+
+    .hero-side-btn:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-side-btn:first-child {
+      left: 5px;
+    }
+
+    .hero-side-btn:last-child {
+      right: 5px;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+      line-height: 1.2;
+    }
+
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+      line-height: 1.2;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2rem 2.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .section-title .line {
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-top: 5px solid var(--primary);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle,
+          rgba(46, 125, 50, 0.1),
+          transparent);
+      border-radius: 50%;
+      transform: translate(50%, -50%);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* READ MORE FEATURE */
+    .card p {
+      max-height: 180px;
+      /* visible height */
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .card:not(.expanded)::after {
+      content: "";
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0),
+          var(--white));
+    }
+
+    .card.expanded p {
+      max-height: 2000px;
+      /* enough to show full text */
+    }
+
+    .read-more-btn {
+      margin-top: 1.2rem;
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .read-more-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* IMAGES SECTION */
+    .images-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .image-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s;
+      height: 250px;
+    }
+
+    .image-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: white;
+      padding: 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.4s;
+    }
+
+    .image-card:hover .image-overlay {
+      transform: translateY(0);
+    }
+
+    /* IMPORTANT DATES */
+    .dates-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .dates-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-top: 5px solid var(--primary);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guidelines-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-top: 5px solid var(--primary);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-title {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* TABLE */
+    .dates-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .dates-table td {
+      padding: 1rem 0.5rem;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dates-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .dates-table tr:hover {
+      background: rgba(46, 125, 50, 0.05);
+      transition: 0.3s ease;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-person {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-person:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-8px);
+      border-color: var(--accent);
+    }
+
+    .contact-icon {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--accent), #ff9800);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 0 8px 30px rgba(255, 193, 7, 0.5);
+    }
+
+    .contact-person h4 {
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .contact-person p {
+      margin: 0.4rem 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1a1a1a);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    .download-toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), #1b5e20);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      z-index: 3000;
+    }
+
+    .download-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .about-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      body {
-        line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--light);
+      .card {
+        padding: 2rem;
       }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      ul {
-        list-style: none;
+      .hero-logos {
+        gap: 2rem;
       }
 
-      /* NAVIGATION */
-      header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+      .logo-item {
+        min-width: 130px;
+        padding: 1rem;
       }
 
-      nav {
-        max-width: 1300px;
-        margin: 0 auto;
+      .logo-item img {
+        max-width: 100px;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      /* HERO */
+      .hero {
+        flex-direction: column;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .hero-cta-group {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        padding: 1.2rem 2.5rem;
+        gap: 1.2rem;
+      }
+
+      .hero-downloads {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .hero-side-btn {
+        position: static;
+        /* 🔥 VERY IMPORTANT */
+        transform: none;
+        width: auto;
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero-badge-text {
+        font-size: 1rem;
+      }
+
+      /* NAV */
+      nav {
+        flex-direction: column;
+        gap: 1rem;
       }
 
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-size: 1.4rem;
       }
 
       .logo img {
-        width: 45px;
-        height: 45px;
-        object-fit: contain;
-        border-radius: 8px;
+        width: 38px;
+        height: 38px;
       }
 
       .nav-links {
         display: flex;
-        gap: 2.5rem;
-        align-items: center;
-      }
-
-      .nav-links a {
-        font-weight: 600;
-        color: var(--dark);
-        transition: all 0.3s;
-        position: relative;
-        font-size: 0.95rem;
-      }
-
-      .nav-links a:not(.cta-btn):hover {
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
-
-      .nav-links a:not(.cta-btn)::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        transition: width 0.3s;
-        border-radius: 2px;
-      }
-
-      .nav-links a:not(.cta-btn):hover::after {
-        width: 100%;
-      }
-
-      .cta-btn {
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        color: var(--white) !important;
-        padding: 0.7rem 1.8rem;
-        border-radius: 30px;
-        transition: all 0.3s;
-        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
-      }
-
-      .cta-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
-      }
-
-      /* LOGOS SECTION - Simple version */
-      .hero-logos {
-        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        margin-bottom: 2.5rem;
+        gap: 1rem;
+      }
+
+      /* GRIDS */
+      .dates-container,
+      .committee-container,
+      .venue-section,
+      .images-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* LOGOS */
+      .hero-logos {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .logo-item {
+        min-width: 100px;
+        min-height: 80px;
+        padding: 0.8rem;
+      }
+
+      .logo-item img {
+        max-width: 80px;
+        max-height: 60px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 1.8rem 1.6rem;
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+      }
+
+      .card h3 {
+        font-size: 1.25rem;
+      }
+
+      .card p {
+        font-size: 0.92rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-logos {
+        gap: 0.8rem;
         flex-wrap: wrap;
       }
 
       .logo-item {
-        height: 120px;
-        width: 120px;
-        border-radius: 50%;
-
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        min-width: 80px;
+        min-height: 60px;
+        padding: 0.6rem;
       }
 
       .logo-item img {
-        width: 90%;
-        height: 90%;
-        object-fit: contain;
+        max-width: 70px;
+        max-height: 50px;
+      }
+    }
+
+    /* ANNOUNCEMENT TICKER & BANNER (Responsive) */
+    .announcement-ticker {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #ff6b6b, #ff9800, #ff6b6b);
+      color: #fff;
+      padding: 10px 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      z-index: 1001;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .announcement-ticker .announcement-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .announcement-ticker a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 900;
+    }
+
+    /* small inline banner shown below hero */
+    .announcement-banner {
+      max-width: 1100px;
+      margin: 18px auto;
+      background: linear-gradient(90deg, #fff3cd, #ffe6cc);
+      border: 1px solid #ffd580;
+      color: #8a3b12;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(255, 193, 7, 0.12);
+    }
+
+    body {
+      padding-top: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .announcement-ticker {
+        font-size: 0.92rem;
+        padding: 9px 12px;
       }
 
-      /* HERO */
-      .hero {
-        background: linear-gradient(
-            135deg,
-            rgba(46, 125, 50, 0.9),
-            rgba(26, 35, 126, 0.85)
-          ),
-          url("https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        min-height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: var(--white);
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
+      body {
+        padding-top: 52px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .announcement-ticker {
+        font-size: 0.65rem;
+        padding: 8px 10px;
       }
 
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-          circle at 30% 50%,
-          rgba(255, 193, 7, 0.2),
-          transparent 60%
-        );
+      .announcement-banner {
+        margin: 12px 16px;
+        font-size: 0.92rem;
+        padding: 8px 10px;
       }
 
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 1000px;
-        animation: fadeInUp 1s ease;
+      body {
+        padding-top: 48px;
       }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hero-badge {
-        background: linear-gradient(135deg, var(--accent), #ff9800);
-        color: var(--dark);
-        padding: 1.2rem 2.4rem;
-        font-weight: bold;
-        border-radius: 50px;
-        display: inline-block;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 6px 25px rgba(255, 193, 7, 0.5);
-        animation: pulse 2.5s infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.15);
-        }
-      }
-      .hero-badge-text {
-        font-size: 2rem;
-      }
-
-      .hero-cta-group {
-        position: relative;
-      }
-
-      .hero-side-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        color: var(--white) !important;
-        padding: 0.7rem 1.8rem;
-        border-radius: 30px;
-        transition: all 0.3s;
-        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
-      }
-
-      .hero-side-btn:hover {
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
-      }
-
-      .hero-side-btn:first-child {
-        left: 5px;
-      }
-
-      .hero-side-btn:last-child {
-        right: 5px;
-      }
-
-      .hero-content h1 {
-        font-size: 4rem;
-        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-        margin-bottom: 1rem;
-        letter-spacing: 3px;
-        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-        line-height: 1.2;
-      }
-
-      .hero-content h2 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        letter-spacing: 3px;
-        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-        line-height: 1.2;
-      }
-
-      /* SECTIONS */
-      section {
-        padding: 2rem 2.5rem;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .section-title h2 {
-        font-size: 2.8rem;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        font-weight: 800;
-      }
-
-      .section-title .line {
-        width: 100px;
-        height: 5px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        margin: 0 auto;
-        border-radius: 3px;
-      }
-
-      /* ABOUT */
-      .about-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-      }
-      .card {
-        background: var(--white);
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        border-top: 5px solid var(--primary);
-        transition: all 0.4s;
-        position: relative;
-        overflow: hidden;
-      }
-      .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(
-          circle,
-          rgba(46, 125, 50, 0.1),
-          transparent
-        );
-        border-radius: 50%;
-        transform: translate(50%, -50%);
-      }
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-      }
-      .card-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
-        position: relative;
-        z-index: 1;
-      }
-      .card h3 {
-        color: var(--secondary);
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* READ MORE FEATURE */
-      .card p {
-        max-height: 180px; /* visible height */
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-      }
-      .card:not(.expanded)::after {
-        content: "";
-        position: absolute;
-        bottom: 60px;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0),
-          var(--white)
-        );
-      }
-
-      .card.expanded p {
-        max-height: 2000px; /* enough to show full text */
-      }
-
-      .read-more-btn {
-        margin-top: 1.2rem;
-        display: inline-block;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--primary);
-        cursor: pointer;
-        background: none;
-        border: none;
-        padding: 0;
-      }
-
-      .read-more-btn:hover {
-        text-decoration: underline;
-      }
-
-      /* IMAGES SECTION */
-      .images-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
-      }
-
-      .image-card {
-        position: relative;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        transition: all 0.4s;
-        height: 250px;
-      }
-
-      .image-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-      }
-
-      .image-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s;
-      }
-
-      .image-card:hover img {
-        transform: scale(1.1);
-      }
-
-      .image-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        color: white;
-        padding: 1.5rem;
-        transform: translateY(100%);
-        transition: transform 0.4s;
-      }
-
-      .image-card:hover .image-overlay {
-        transform: translateY(0);
-      }
-
-      /* IMPORTANT DATES */
-      .dates-wrapper {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-
-      .dates-card {
-        background: var(--white);
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        border-top: 5px solid var(--primary);
-        transition: all 0.4s;
-        position: relative;
-        overflow: hidden;
-      }
-      .guidelines-card {
-        background: var(--white);
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        border-top: 5px solid var(--primary);
-        transition: all 0.4s;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .card-title {
-        color: var(--secondary);
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* TABLE */
-      .dates-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      .dates-table td {
-        padding: 1rem 0.5rem;
-        border-bottom: 1px solid #f1f1f1;
-      }
-
-      .dates-table tr:last-child td {
-        border-bottom: none;
-      }
-
-      .dates-table tr:hover {
-        background: rgba(46, 125, 50, 0.05);
-        transition: 0.3s ease;
-      }
-
-      /* CONTACT */
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
-        margin-top: 2.5rem;
-      }
-
-      .contact-person {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        border-radius: 16px;
-        text-align: center;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.4s;
-        backdrop-filter: blur(10px);
-      }
-
-      .contact-person:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-8px);
-        border-color: var(--accent);
-      }
-
-      .contact-icon {
-        width: 90px;
-        height: 90px;
-        margin: 0 auto 1.5rem;
-        background: linear-gradient(135deg, var(--accent), #ff9800);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        box-shadow: 0 8px 30px rgba(255, 193, 7, 0.5);
-      }
-
-      .contact-person h4 {
-        color: var(--accent);
-        margin-bottom: 0.8rem;
-        font-size: 1.2rem;
-      }
-
-      .contact-person p {
-        margin: 0.4rem 0;
-      }
-
-      /* FOOTER */
-      footer {
-        background: linear-gradient(135deg, var(--dark), #1a1a1a);
-        color: var(--white);
-        text-align: center;
-        padding: 3rem;
-      }
-
-      footer p {
-        margin: 0.5rem 0;
-      }
-
-      .download-toast {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: linear-gradient(135deg, var(--primary), #1b5e20);
-        color: #fff;
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
-        font-weight: 600;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s ease;
-        z-index: 3000;
-      }
-
-      .download-toast.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (max-width: 1024px) {
-        .about-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .card {
-          padding: 2rem;
-        }
-
-        .hero-logos {
-          gap: 2rem;
-        }
-
-        .logo-item {
-          min-width: 130px;
-          padding: 1rem;
-        }
-
-        .logo-item img {
-          max-width: 100px;
-        }
-      }
-      @media (max-width: 768px) {
-        /* HERO */
-        .hero {
-          flex-direction: column;
-          padding: 2.5rem 1.5rem;
-        }
-
-        .hero-cta-group {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1.2rem;
-        }
-
-        .hero-downloads {
-          display: flex;
-          gap: 1rem;
-        }
-
-        .hero-side-btn {
-          position: static; /* 🔥 VERY IMPORTANT */
-          transform: none;
-          width: auto;
-          padding: 0.8rem 1.8rem;
-          font-size: 1rem;
-        }
-
-        .hero-content h1 {
-          font-size: 2rem;
-        }
-
-        .hero-content h2 {
-          font-size: 2.2rem;
-        }
-
-        .hero-badge-text {
-          font-size: 1rem;
-        }
-
-        /* NAV */
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .logo {
-          font-size: 1.4rem;
-        }
-
-        .logo img {
-          width: 38px;
-          height: 38px;
-        }
-
-        .nav-links {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-
-        /* GRIDS */
-        .dates-container,
-        .committee-container,
-        .venue-section,
-        .images-grid {
-          grid-template-columns: 1fr;
-        }
-
-        /* LOGOS */
-        .hero-logos {
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .logo-item {
-          min-width: 100px;
-          min-height: 80px;
-          padding: 0.8rem;
-        }
-
-        .logo-item img {
-          max-width: 80px;
-          max-height: 60px;
-        }
-      }
-      @media (max-width: 600px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .card {
-          padding: 1.8rem 1.6rem;
-        }
-
-        .card-icon {
-          width: 60px;
-          height: 60px;
-          font-size: 2rem;
-        }
-
-        .card h3 {
-          font-size: 1.25rem;
-        }
-
-        .card p {
-          font-size: 0.92rem;
-        }
-      }
-      @media (max-width: 480px) {
-        .hero-logos {
-          gap: 0.8rem;
-          flex-wrap: wrap;
-        }
-
-        .logo-item {
-          min-width: 80px;
-          min-height: 60px;
-          padding: 0.6rem;
-        }
-
-        .logo-item img {
-          max-width: 70px;
-          max-height: 50px;
-        }
-      }
-
-        /* ANNOUNCEMENT TICKER & BANNER (Responsive) */
-        .announcement-ticker {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          background: linear-gradient(90deg,#ff6b6b,#ff9800,#ff6b6b);
-          color: #fff;
-          padding: 10px 16px;
-          text-align: center;
-          font-weight: 700;
-          font-size: 0.95rem;
-          z-index: 1001;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-        }
-
-        .announcement-ticker .announcement-content {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          flex-wrap: wrap;
-        }
-
-        .announcement-ticker a { color: #fff; text-decoration: underline; font-weight: 900; }
-
-        /* small inline banner shown below hero */
-        .announcement-banner {
-          max-width: 1100px;
-          margin: 18px auto;
-          background: linear-gradient(90deg,#fff3cd,#ffe6cc);
-          border: 1px solid #ffd580;
-          color: #8a3b12;
-          padding: 10px 14px;
-          border-radius: 8px;
-          font-weight: 700;
-          text-align: center;
-          box-shadow: 0 6px 18px rgba(255, 193, 7, 0.12);
-        }
-
-        body { padding-top: 56px; }
-
-        @media (max-width: 900px) {
-          .announcement-ticker { font-size: 0.92rem; padding: 9px 12px; }
-          body { padding-top: 52px; }
-        }
-
-        @media (max-width: 480px) {
-          .announcement-ticker { font-size: 0.65rem; padding: 8px 10px; }
-          .announcement-banner { margin: 12px 16px; font-size: 0.92rem; padding: 8px 10px; }
-          body { padding-top: 48px; }
-        }
-    </style>
-  </head>
-
-  <body>
-    <div class="announcement-ticker" role="region" aria-label="Important announcement">
-      <div class="announcement-content">
-        <span>📢</span>
-        <span>The Submission Date has been <strong>extended</strong> — Refer to <a href="themes.html">Abstract</a> for new dates</span>
-      </div>
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement-ticker" role="region" aria-label="Important announcement">
+    <div class="announcement-content">
+      <span>📢</span>
+      <span>Poster Submission Deadline: <strong>27th January 2026</strong> — Templates now available on <a
+          href="themes.html">Abstract</a> page</span>
     </div>
+  </div>
 
-    <header>
-      <nav>
-        <div class="logo">
-          <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
-          <span>ICSSS-FoodXplore'25</span>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/logos/logo-fx.jpg" alt="FoodXplore Logo" />
+        <span>ICSSS-FoodXplore'25</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="themes.html">Abstract</a></li>
+        <li><a href="registration.html">Registration</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committees</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <!-- Logos Section -->
+      <div class="hero-logos">
+        <div class="logo-item">
+          <img src="assets/logos/TNAU-Logo.png" alt="AICTE Logo" />
         </div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="themes.html">Abstract</a></li>
-          <li><a href="registration.html">Registration</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="committee.html">Committees</a></li>
-          <li><a href="venue.html">Venue</a></li>
-          <li><a href="accommodation.html">Accommodation</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <!-- Logos Section -->
-        <div class="hero-logos">
-          <div class="logo-item">
-            <img src="assets/logos/TNAU-Logo.png" alt="AICTE Logo" />
-          </div>
-          <div class="logo-item" style="padding: 0.5em">
-            <img src="assets/logos/FINAL-FOOD-CLUB.png" alt="ICAR Logo" />
-          </div>
-          <div class="logo-item">
-            <img src="assets/logos/aecri-logow.png" alt="TNAU Logo" />
-          </div>
-          <div class="logo-item" style="padding: 0.5rem">
-            <img
-              src="assets/logos/images (2) (5).png"
-              alt="Agricultural Research Logo"
-            />
-          </div>
+        <div class="logo-item" style="padding: 0.5em">
+          <img src="assets/logos/FINAL-FOOD-CLUB.png" alt="ICAR Logo" />
         </div>
+        <div class="logo-item">
+          <img src="assets/logos/aecri-logow.png" alt="TNAU Logo" />
+        </div>
+        <div class="logo-item" style="padding: 0.5rem">
+          <img src="assets/logos/images (2) (5).png" alt="Agricultural Research Logo" />
+        </div>
+      </div>
 
-        <span class="hero-badge">
-          <p class="hero-badge-text">🌍 International Conference 2026</p>
-        </span>
+      <span class="hero-badge">
+        <p class="hero-badge-text">🌍 International Conference 2026</p>
+      </span>
 
-        <h2>
-          Safe, Standard and Sustainable Food Processing for a Healthier
-          Tomorrow
-        </h2>
+      <h2>
+        Safe, Standard and Sustainable Food Processing for a Healthier
+        Tomorrow
+      </h2>
 
-        <hr
-          style="
+      <hr style="
             width: 60px;
             border: 2px solid var(--accent);
             margin: 1.5rem auto;
-          "
-        />
+          " />
 
-        <h1>ICSSS-FoodXplore'25</h1>
+      <h1>ICSSS-FoodXplore'25</h1>
 
-        <p style="font-size: 1.7rem; margin: 2.5rem 0">
-          <strong>January 29 & 30, 2026</strong><br />
-          Tamil Nadu Agricultural University (TNAU), Coimbatore, India
-        </p>
-        <div class="hero-cta-group">
-          <a href="https://forms.gle/giCMUTttj3yvaAQx7" class="cta-btn">
-            Register Now →
+      <p style="font-size: 1.7rem; margin: 2.5rem 0">
+        <strong>January 29 & 30, 2026</strong><br />
+        Tamil Nadu Agricultural University (TNAU), Coimbatore, India
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://forms.gle/giCMUTttj3yvaAQx7" class="cta-btn">
+          Register Now →
+        </a>
+        <div class="hero-downloads">
+          <a href="assets/docs/ICSSS-FoodXplore'25_Brochure2025.pdf" download class="hero-side-btn"
+            onclick="showToast('Brochure')">
+            ⬇ Brochure
           </a>
-          <div class="hero-downloads">
-            <a
-              href="assets/docs/ICSSS-FoodXplore'25_Brochure2025.pdf"
-              download
-              class="hero-side-btn"
-              onclick="showToast('Brochure')"
-            >
-              ⬇ Brochure
-            </a>
 
-            <a
-              href="assets/docs/ICSSS-FoodXplore'25_Flyer.pdf"
-              download
-              class="hero-side-btn"
-              onclick="showToast('Flyer')"
-            >
-              ⬇ Flyer
-            </a>
-          </div>
+          <a href="assets/docs/ICSSS-FoodXplore'25_Flyer.pdf" download class="hero-side-btn"
+            onclick="showToast('Flyer')">
+            ⬇ Flyer
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Short announcement banner (visible below hero) -->
-    <div class="announcement-banner" role="note">
-      📣 Submission dates extended — Abstract deadline: <strong>18 January 2026</strong>; Full paper: <strong>10 February 2026</strong>. See the <a href="themes.html">Abstract</a> page for details.
+  <!-- Short announcement banner (visible below hero) -->
+  <div class="announcement-banner" role="note">
+    � <strong>New Update:</strong> Poster Submission Deadline: <strong>27th January 2026</strong>. Presentation
+    Templates are now available on the <a href="themes.html">Abstract</a> page.
+  </div>
+
+  <section id="about">
+    <div class="section-title">
+      <h2>About The Organizers</h2>
+      <div class="line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>About TNAU</h3>
+        <p>
+          Tamil Nadu Agricultural University (TNAU), established in 1971 and
+          headquartered in Coimbatore, is a globally recognized center of
+          excellence in agricultural education, research, and extension. The
+          university offers a comprehensive portfolio of academic programs,
+          including 14 undergraduate, 34 postgraduate, and 29 doctoral
+          degrees, encompassing disciplines such as agriculture, horticulture,
+          forestry, agricultural engineering, and allied sciences, thereby
+          serving as a pivotal hub for agricultural innovation in Tamil Nadu.
+          Tamil Nadu Agricultural University (TNAU) operates through a robust
+          network of 19 constituent colleges, 40 research stations, and 15
+          Krishi Vigyan Kendras (KVKs), addressing contemporary agricultural
+          challenges and advancing sustainable farming practices. Emphasizing
+          technology-driven agriculture, TNAU collaborates with global
+          institutions and industries to develop innovative solutions aimed at
+          enhancing agricultural productivity and societal benets. Renowned
+          for its farmer-centric approach and pioneering research, the
+          university serves as a critical center for knowledge dissemination
+          and technological advancements, driving progress in the agricultural
+          sector.
+        </p>
+        <button class="read-more-btn">Read more</button>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>About AEC & RI</h3>
+        <p>
+          Agricultural Engineering College and Research Institute is a leading
+          institution for agricultural engineering in India, recognized for
+          its academic excellence and research contributions. Offers
+          undergraduate, postgraduate, and doctoral programs in Agricultural
+          Engineering and allied elds. Focuses on equipping students with
+          knowledge and skills in modern agricultural practices, engineering
+          techniques, and automation. AEC & RI conducts advanced research in
+          soil and water conservation, farm machinery, post-harvest
+          technology, food processing, renewable energy, and environmental
+          engineering to enhance agricultural sustainability and productivity.
+        </p>
+        <button class="read-more-btn">Read more</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🍽️</div>
+        <h3>About FPE</h3>
+        <p>
+          Department of Food Process Engineering, established in 1974 as the
+          Department of Agricultural Processing, is a distinguished division
+          of the College of Agricultural Engineering, TNAU, Coimbatore.
+          Renowned for its pioneering advancements, the department specializes
+          in the development of advanced post-harvest equipment and innovative
+          food processing technologies designed to benet the farming
+          community, the food industry, and allied sectors. Supported by a
+          research-driven faculty, the department has been recognized by the
+          Indian Council of Agricultural Research (ICAR) as a premier centre
+          under the All India Coordinated Research Project (AICRP) on Post
+          Harvest Engineering and Technology and received “Best Centre Award”
+          for the past two years. To date, the department has successfully
+          commercialized and disseminated over 50 post-harvest technologies
+          and equipment, signicantly beneting the agricultural and
+          industrial sectors. Enhancing its global presence, the department
+          has established academic collaboration with premier national and
+          international institutions viz., University of California, Purdue
+          University, McGill University, University of Saskatchewan, Kyung Hee
+          University, Amrita Vishwa Vidyapeetham, ICAR-CIPHET, BIS and KVIC
+          etc., enabling advanced collaborative research in food processing
+          and technology
+        </p>
+        <button class="read-more-btn">Read more</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h3>About Conference</h3>
+        <p>
+          The International Conference on “Safe, Standard and Sustainable Food
+          Processing for a Healthier Tomorrow” FoodXplore'25 serves as a
+          vibrant platform uniting researchers, academicians, industry
+          leaders, policymakers, students, and stakeholders from across the
+          globe. This two-day event is dedicated to fostering
+          interdisciplinary collaboration and catalyzing transformative
+          innovations in food processing that align with global goals for
+          health, safety, and sustainability. The conference addresses
+          critical challenges in the food sector, including the reduction of
+          post-harvest losses, the adoption of standardized and safe
+          processing protocols, and the integration of sustainable
+          technologies to ensure long-term nutritional security. With a strong
+          emphasis on safe and standardized practices, the event will explore
+          the latest advancements in food safety systems, regulatory
+          frameworks, and quality assurance mechanisms that are essential for
+          consumer trust and public health.
+        </p>
+        <button class="read-more-btn">Read more</button>
+      </div>
     </div>
 
-    <section id="about">
-      <div class="section-title">
-        <h2>About The Organizers</h2>
-        <div class="line"></div>
-      </div>
-      <div class="about-grid">
-        <div class="card">
-          <div class="card-icon">🎓</div>
-          <h3>About TNAU</h3>
-          <p>
-            Tamil Nadu Agricultural University (TNAU), established in 1971 and
-            headquartered in Coimbatore, is a globally recognized center of
-            excellence in agricultural education, research, and extension. The
-            university offers a comprehensive portfolio of academic programs,
-            including 14 undergraduate, 34 postgraduate, and 29 doctoral
-            degrees, encompassing disciplines such as agriculture, horticulture,
-            forestry, agricultural engineering, and allied sciences, thereby
-            serving as a pivotal hub for agricultural innovation in Tamil Nadu.
-            Tamil Nadu Agricultural University (TNAU) operates through a robust
-            network of 19 constituent colleges, 40 research stations, and 15
-            Krishi Vigyan Kendras (KVKs), addressing contemporary agricultural
-            challenges and advancing sustainable farming practices. Emphasizing
-            technology-driven agriculture, TNAU collaborates with global
-            institutions and industries to develop innovative solutions aimed at
-            enhancing agricultural productivity and societal benets. Renowned
-            for its farmer-centric approach and pioneering research, the
-            university serves as a critical center for knowledge dissemination
-            and technological advancements, driving progress in the agricultural
-            sector.
-          </p>
-          <button class="read-more-btn">Read more</button>
-        </div>
-        <div class="card">
-          <div class="card-icon">🔬</div>
-          <h3>About AEC & RI</h3>
-          <p>
-            Agricultural Engineering College and Research Institute is a leading
-            institution for agricultural engineering in India, recognized for
-            its academic excellence and research contributions. Offers
-            undergraduate, postgraduate, and doctoral programs in Agricultural
-            Engineering and allied elds. Focuses on equipping students with
-            knowledge and skills in modern agricultural practices, engineering
-            techniques, and automation. AEC & RI conducts advanced research in
-            soil and water conservation, farm machinery, post-harvest
-            technology, food processing, renewable energy, and environmental
-            engineering to enhance agricultural sustainability and productivity.
-          </p>
-          <button class="read-more-btn">Read more</button>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🍽️</div>
-          <h3>About FPE</h3>
-          <p>
-            Department of Food Process Engineering, established in 1974 as the
-            Department of Agricultural Processing, is a distinguished division
-            of the College of Agricultural Engineering, TNAU, Coimbatore.
-            Renowned for its pioneering advancements, the department specializes
-            in the development of advanced post-harvest equipment and innovative
-            food processing technologies designed to benet the farming
-            community, the food industry, and allied sectors. Supported by a
-            research-driven faculty, the department has been recognized by the
-            Indian Council of Agricultural Research (ICAR) as a premier centre
-            under the All India Coordinated Research Project (AICRP) on Post
-            Harvest Engineering and Technology and received “Best Centre Award”
-            for the past two years. To date, the department has successfully
-            commercialized and disseminated over 50 post-harvest technologies
-            and equipment, signicantly beneting the agricultural and
-            industrial sectors. Enhancing its global presence, the department
-            has established academic collaboration with premier national and
-            international institutions viz., University of California, Purdue
-            University, McGill University, University of Saskatchewan, Kyung Hee
-            University, Amrita Vishwa Vidyapeetham, ICAR-CIPHET, BIS and KVIC
-            etc., enabling advanced collaborative research in food processing
-            and technology
-          </p>
-          <button class="read-more-btn">Read more</button>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🏆</div>
-          <h3>About Conference</h3>
-          <p>
-            The International Conference on “Safe, Standard and Sustainable Food
-            Processing for a Healthier Tomorrow” FoodXplore'25 serves as a
-            vibrant platform uniting researchers, academicians, industry
-            leaders, policymakers, students, and stakeholders from across the
-            globe. This two-day event is dedicated to fostering
-            interdisciplinary collaboration and catalyzing transformative
-            innovations in food processing that align with global goals for
-            health, safety, and sustainability. The conference addresses
-            critical challenges in the food sector, including the reduction of
-            post-harvest losses, the adoption of standardized and safe
-            processing protocols, and the integration of sustainable
-            technologies to ensure long-term nutritional security. With a strong
-            emphasis on safe and standardized practices, the event will explore
-            the latest advancements in food safety systems, regulatory
-            frameworks, and quality assurance mechanisms that are essential for
-            consumer trust and public health.
-          </p>
-          <button class="read-more-btn">Read more</button>
-        </div>
+    <div class="images-grid">
+      <div class="image-card">
+        <img src="https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg"
+          alt="Food Technology" />
+        <div class="image-overlay"></div>
       </div>
 
-      <div class="images-grid">
-        <div class="image-card">
-          <img
-            src="https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg"
-            alt="Food Technology"
-          />
-          <div class="image-overlay"></div>
-        </div>
-
-        <div class="image-card">
-          <img src="assets/Images/tnau2.jpg" alt="Research Laboratory" />
-          <div class="image-overlay"></div>
-        </div>
-
-        <div class="image-card">
-          <img src="assets/Images/tnau1.jpg" alt="Sustainable Agriculture" />
-          <div class="image-overlay"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="dates">
-      <div class="section-title">
-        <h2>Important Dates & Guidelines</h2>
-        <div class="divider"></div>
+      <div class="image-card">
+        <img src="assets/Images/tnau2.jpg" alt="Research Laboratory" />
+        <div class="image-overlay"></div>
       </div>
 
-      <div class="dates-wrapper">
-        <!-- Event Dates Card -->
-        <div class="dates-card">
-          <h3 class="card-title">Event Schedule</h3>
-          <table class="dates-table">
-            <tbody>
-              <tr>
-                <td><strong>Abstract Submission Deadline</strong></td>
-                <td>18-01-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Notification of Acceptance</strong></td>
-                <td>20-01-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Early Bird Registration Deadline</strong></td>
-                <td>10-01-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Full Paper Submission</strong></td>
-                <td>10-02-2026</td>
-              </tr>
-              <tr>
-                <td><strong>Conference Dates</strong></td>
-                <td>29 & 30-01-2026</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="image-card">
+        <img src="assets/Images/tnau1.jpg" alt="Sustainable Agriculture" />
+        <div class="image-overlay"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section
-      id="contact"
-      style="
+  <section id="dates">
+    <div class="section-title">
+      <h2>Important Dates & Guidelines</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="dates-wrapper">
+      <!-- Event Dates Card -->
+      <div class="dates-card">
+        <h3 class="card-title">Event Schedule</h3>
+        <table class="dates-table">
+          <tbody>
+            <tr>
+              <td><strong>Abstract Submission Deadline</strong></td>
+              <td>18-01-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Notification of Acceptance</strong></td>
+              <td>20-01-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Early Bird Registration Deadline</strong></td>
+              <td>10-01-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Full Paper Submission</strong></td>
+              <td>10-02-2026</td>
+            </tr>
+            <tr>
+              <td><strong>Conference Dates</strong></td>
+              <td>29 & 30-01-2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="
         background: linear-gradient(135deg, var(--secondary), var(--primary));
         color: var(--white);
         padding: 5rem 2.5rem;
-      "
-    >
-      <div class="section-title">
-        <h2
-          style="
+      ">
+    <div class="section-title">
+      <h2 style="
             background: linear-gradient(135deg, var(--accent), #ff9800);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-          "
-        >
-          Contact Us
-        </h2>
-        <div
-          class="line"
-          style="background: linear-gradient(90deg, var(--accent), #ff9800)"
-        ></div>
+          ">
+        Contact Us
+      </h2>
+      <div class="line" style="background: linear-gradient(90deg, var(--accent), #ff9800)"></div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-person">
+        <div class="contact-icon">👤</div>
+        <h4>Organizing Secretary</h4>
+        <p><strong>Dr. M. Balakrishnan</strong></p>
+        <p>Professor and Head (FPE)</p>
+        <p>bala_tnau@tnau.ac.in</p>
+        <p>+91 98420 10693</p>
+      </div>
+      <div class="contact-person">
+        <div class="contact-icon">👤</div>
+        <h4>Joint Organizing Secretary</h4>
+        <p><strong>Dr. A. Ramalakshmi</strong></p>
+        <p>Professor, Dept of FPE</p>
+        <p>ramalakshmi.a@tnau.ac.in</p>
+        <p>+91 99940 60865</p>
+      </div>
+      <div class="contact-person">
+        <div class="contact-icon">👤</div>
+        <h4>Joint Organizing Secretary</h4>
+        <p><strong>Dr. M. Anand</strong></p>
+        <p>Assoc. Professor, Dept of FPE</p>
+        <p>anandhort@gmail.com</p>
+        <p>+91 88702 22090</p>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-person">
-          <div class="contact-icon">👤</div>
-          <h4>Organizing Secretary</h4>
-          <p><strong>Dr. M. Balakrishnan</strong></p>
-          <p>Professor and Head (FPE)</p>
-          <p>bala_tnau@tnau.ac.in</p>
-          <p>+91 98420 10693</p>
-        </div>
-        <div class="contact-person">
-          <div class="contact-icon">👤</div>
-          <h4>Joint Organizing Secretary</h4>
-          <p><strong>Dr. A. Ramalakshmi</strong></p>
-          <p>Professor, Dept of FPE</p>
-          <p>ramalakshmi.a@tnau.ac.in</p>
-          <p>+91 99940 60865</p>
-        </div>
-        <div class="contact-person">
-          <div class="contact-icon">👤</div>
-          <h4>Joint Organizing Secretary</h4>
-          <p><strong>Dr. M. Anand</strong></p>
-          <p>Assoc. Professor, Dept of FPE</p>
-          <p>anandhort@gmail.com</p>
-          <p>+91 88702 22090</p>
-        </div>
-
-        <div class="contact-person">
-          <div class="contact-icon">👤</div>
-          <h4>Student Secretary</h4>
-          <p><strong>Mr. P. Vijayakumar</strong></p>
-          <p>Final Year, B.Tech - Food Technology</p>
-          <p>vijayakumar.fot2022@tnau.ac.in</p>
-          <p>+91 8220263254</p>
-        </div>
-
-        <div class="contact-person">
-          <div class="contact-icon">👤</div>
-          <h4>Student Secretary</h4>
-          <p><strong>Ms. K. S. Harshinie </strong></p>
-          <p>Final Year, B.Tech - Food Technology</p>
-          <p>harshinie.fot2022@tnau.ac.in</p>
-          <p>+91 98940 39100</p>
-        </div>
+      <div class="contact-person">
+        <div class="contact-icon">👤</div>
+        <h4>Student Secretary</h4>
+        <p><strong>Mr. P. Vijayakumar</strong></p>
+        <p>Final Year, B.Tech - Food Technology</p>
+        <p>vijayakumar.fot2022@tnau.ac.in</p>
+        <p>+91 8220263254</p>
       </div>
-    </section>
 
-    <footer>
-      <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
-        &copy; 2026 ICSSS-FoodXplore'25 - International Conference
-      </p>
-      <p>
-        Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
-      </p>
-      <p style="margin-top: 1rem; opacity: 0.8">
-        Department of Food Process Engineering, TNAU, Coimbatore
-      </p>
-    </footer>
+      <div class="contact-person">
+        <div class="contact-icon">👤</div>
+        <h4>Student Secretary</h4>
+        <p><strong>Ms. K. S. Harshinie </strong></p>
+        <p>Final Year, B.Tech - Food Technology</p>
+        <p>harshinie.fot2022@tnau.ac.in</p>
+        <p>+91 98940 39100</p>
+      </div>
+    </div>
+  </section>
 
-    <div id="download-toast" class="download-toast">📥 Download started</div>
+  <footer>
+    <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem">
+      &copy; 2026 ICSSS-FoodXplore'25 - International Conference
+    </p>
+    <p>
+      Safe, Standard and Sustainable Food Processing for a Healthier Tomorrow
+    </p>
+    <p style="margin-top: 1rem; opacity: 0.8">
+      Department of Food Process Engineering, TNAU, Coimbatore
+    </p>
+  </footer>
 
-    <script>
-      document.querySelectorAll(".read-more-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const card = btn.closest(".card");
-          card.classList.toggle("expanded");
+  <div id="download-toast" class="download-toast">📥 Download started</div>
 
-          btn.textContent = card.classList.contains("expanded")
-            ? "Read less"
-            : "Read more";
-        });
+  <script>
+    document.querySelectorAll(".read-more-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".card");
+        card.classList.toggle("expanded");
+
+        btn.textContent = card.classList.contains("expanded")
+          ? "Read less"
+          : "Read more";
       });
-    </script>
-    <script>
-      function showToast(type) {
-        const toast = document.getElementById("download-toast");
-        toast.textContent = `📥 ${type} download started`;
-        toast.classList.add("show");
+    });
+  </script>
+  <script>
+    function showToast(type) {
+      const toast = document.getElementById("download-toast");
+      toast.textContent = `📥 ${type} download started`;
+      toast.classList.add("show");
 
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3000);
-      }
-    </script>
-  </body>
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+  </script>
+</body>
+
 </html>
